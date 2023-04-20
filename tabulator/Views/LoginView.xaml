@@ -77,7 +77,8 @@
                     <Image Source="../Resources/Images/logo.png"
                            Width="150" Height="150" />
 
-                    <TextBlock Text="THERE ARE BUGS UNDER YOUR SKIN"
+                    <TextBlock x:Name="dupa"
+                               Text="THERE ARE BUGS UNDER YOUR SKIN"
                                Foreground="White"
                                FontSize="13"
                                FontWeight="Medium"
