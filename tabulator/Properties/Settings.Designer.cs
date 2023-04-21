@@ -23,16 +23,13 @@ namespace tabulator.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Projects\\tabulator\\tabulat" +
-            "or\\_Data\\EqRecordsDB.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\studia\\github\\tabulator\\ta" +
+            "bulator\\_Data\\EqRecordsDB.mdf;Integrated Security=True")]
         public string db_connect_str {
             get {
                 return ((string)(this["db_connect_str"]));
-            }
-            set {
-                this["db_connect_str"] = value;
             }
         }
     }
