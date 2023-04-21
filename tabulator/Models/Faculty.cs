@@ -9,19 +9,19 @@ namespace tabulator.Models
 {
     public class Faculty
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
     }
 
     public class FacultyConfiguration : EntityTypeConfiguration<Faculty>
     {
         public FacultyConfiguration()
         {
-            ToTable("Faculty");
-            HasKey(c => c.id);
-            Property(c => c.name).IsRequired().HasMaxLength(256);
-            Property(c => c.address).IsRequired().HasMaxLength(128);
+            ToTable("Faculties");
+            HasKey(c => c.Id);
+            Property(c => c.Name).IsRequired().HasMaxLength(256);
+            Property(c => c.Address).IsRequired().HasMaxLength(256);
         }
     }
 }

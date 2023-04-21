@@ -53,7 +53,7 @@ namespace tabulator.Views
             DBContext ctx = DBContext.GetInstance();
             Faculty fac = ctx.Faculties.First();
 
-            dupa.Text = $"ID: {fac.id}, Name: {fac.name}, Addr: {fac.address}";
+            dupa.Text = $"ID: {fac.Id}, Name: {fac.Name}, Addr: {fac.Address}";
         }
     }
 }
