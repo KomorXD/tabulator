@@ -23,24 +23,33 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
-                    <RowDefinition />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="17*"/>
                 </Grid.RowDefinitions>
 
-                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="550"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="TAB PROJEKT - Admin"
+                               Foreground="LightGray"
+                               FontSize="15"
+                               FontFamily="Verdana"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               VerticalAlignment="Center"
+                               Margin="15, 0, 0, 0" />
+
+                <Grid Grid.Row="0"
+                      Grid.Column="1">
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="25" />
                         <ColumnDefinition Width="25" />
                         <ColumnDefinition Width="5" />
                     </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="TAB PROJEKT - Admin"
-                               Foreground="LightGray"
-                               FontSize="15"
-                               FontFamily="Verdana"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               Margin="15, 0, 0, 0" />
 
                     <Button x:Name="btnMinimize"
                             Background="HotPink"
@@ -63,12 +72,14 @@
                             Cursor="Hand"
                             Grid.Column="2"
                             Click="btnClose_Click" />
+
                 </Grid>
 
                 <StackPanel Width="250"
                             Grid.Row="1"
+                            Grid.Column="0"
                             Orientation="Vertical"
-                            Margin="0,0,546,34">
+                            Grid.RowSpan="2">
 
                     <RadioButton Content="Add user"
                                  Height="50"
@@ -90,9 +101,11 @@
                                  Foreground="White" 
                                  FontSize="20"
                                  Style="{StaticResource MenuButtonTheme}"/>
-
-
                 </StackPanel>
+
+                <ContentControl Grid.Row="1" 
+                                Grid.Column="1"
+                                Grid.RowSpan="2"/>
 
 
 
