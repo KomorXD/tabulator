@@ -28,8 +28,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="17*"/>
+                    <RowDefinition Height="420" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -83,8 +82,7 @@
                 <StackPanel Width="250"
                             Grid.Row="1"
                             Grid.Column="0"
-                            Orientation="Vertical"
-                            Grid.RowSpan="2">
+                            Orientation="Vertical">
 
                     <RadioButton Content="Add user"
                                  Height="50"
@@ -115,7 +113,6 @@
 
                 <ContentControl Grid.Row="1" 
                                 Grid.Column="1"
-                                Grid.RowSpan="2"
                                 Content="{Binding CurrentView}"/>
 
 
