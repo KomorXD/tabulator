@@ -11,7 +11,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
-        Background="Black"
+        Background="Transparent"
         AllowsTransparency="True">
 
     <Window.DataContext>
@@ -23,8 +23,7 @@
         <Border CornerRadius="5"
                 Background="SlateBlue"
                 BorderBrush="DarkSlateBlue"
-                BorderThickness="2"
-                Opacity="0.8">
+                BorderThickness="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
@@ -36,75 +35,85 @@
                     <ColumnDefinition Width="600"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="TAB PROJEKT - Admin"
-                               Foreground="LightGray"
-                               FontSize="15"
-                               FontFamily="Verdana"
-                               Grid.Column="0"
-                               Grid.Row="0"
-                               VerticalAlignment="Center"
-                               Margin="15, 0, 0, 0" />
+                <Border Grid.ColumnSpan="2"
+                        BorderBrush="White"
+                        BorderThickness="0,0,0,3">
 
-                <Grid Grid.Row="0"
-                      Grid.Column="1">
+                    <Grid>
 
-                    <Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
                         <ColumnDefinition />
-                        <ColumnDefinition Width="25" />
-                        <ColumnDefinition Width="25" />
-                        <ColumnDefinition Width="5" />
-                    </Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="3" />
+                        </Grid.ColumnDefinitions>
 
-                    <Button x:Name="btnMinimize"
-                            Background="HotPink"
-                            BorderThickness="0"
-                            Content="-"
-                            Foreground="Black"
-                            FontSize="16"
-                            FontFamily="Verdana"
-                            Cursor="Hand"
-                            Grid.Column="1"
-                            Click="btnMinimize_Click" />
+                        <TextBlock Text="TAB PROJEKT - Admin"
+                                   Foreground="LightGray"
+                                   FontSize="15"
+                                   FontFamily="Verdana"
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   VerticalAlignment="Center"
+                                   Margin="15, 0, 0, 0" />
 
-                    <Button x:Name="btnClose"
-                            Background="LightPink"
-                            BorderThickness="0"
-                            Content="X"
-                            Foreground="Black"
-                            FontSize="12"
-                            FontFamily="Verdana"
-                            Cursor="Hand"
-                            Grid.Column="2"
-                            Click="btnClose_Click" />
+                        <Button x:Name="btnMinimize"
+                                Background="HotPink"
+                                BorderThickness="0"
+                                Content="-"
+                                Foreground="Black"
+                                FontSize="16"
+                                FontFamily="Verdana"
+                                Cursor="Hand"
+                                Grid.Column="1"
+                                Click="btnMinimize_Click"/>
 
-                </Grid>
+                        <Button x:Name="btnClose"
+                                Background="LightPink"
+                                BorderThickness="0"
+                                Content="X"
+                                Foreground="Black"
+                                FontSize="12"
+                                FontFamily="Verdana"
+                                Cursor="Hand"
+                                Grid.Column="2"
+                                Click="btnClose_Click"/>
+                    </Grid>
 
-                <StackPanel Grid.Row="1"
-                            Grid.Column="0"
-                            Orientation="Vertical">
+                </Border>
 
-                    <RadioButton Content="Add user"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 IsChecked="True"
-                                 Command="{Binding AddUserViewCommand}"/>
-                    <RadioButton Content="Edit user data"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding EditUserDataViewCommand}"/>
-                    <RadioButton Content="Edit user permissions" 
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding EditUserPermissionsViewCommand}"/>
-                    <RadioButton Content="Remove user"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding RemoveUserViewCommand}"/>
-                </StackPanel>
+                <Border Grid.Row="1"
+                        BorderBrush="White"
+                        BorderThickness="0,0,3,0">
+
+                    <StackPanel Orientation="Vertical"
+                                Margin="3">
+                        
+                        <RadioButton Content="Add user"
+                                     IsChecked="True"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding AddUserViewCommand}"/>
+                        
+                        <RadioButton Content="Edit user data"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EditUserDataViewCommand}"/>
+                        
+                        <RadioButton Content="Edit user permissions" 
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EditUserPermissionsViewCommand}"/>
+
+                        <RadioButton Content="Remove user"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding RemoveUserViewCommand}"/>
+
+                    </StackPanel>
+                    
+                </Border>
 
                 <ContentControl Grid.Row="1" 
                                 Grid.Column="1"
                                 Content="{Binding CurrentView}"/>
-
-
-
-
+                
             </Grid>
         </Border>
     </Border>
