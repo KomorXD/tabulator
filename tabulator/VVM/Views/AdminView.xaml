@@ -1,9 +1,10 @@
-﻿<Window x:Class="tabulator.MVVM.Views.AdminView"
+﻿<Window x:Class="tabulator.VVM.Views.AdminView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:tabulator.MVVM.Views"
+        xmlns:viewModel="clr-namespace:tabulator.VVM.Viewmodels"
+        xmlns:local="clr-namespace:tabulator.VVM.Views"
         mc:Ignorable="d"
         Title="AdminView" Height="450" Width="800"
         WindowStyle="None"
@@ -13,6 +14,10 @@
         Background="Black"
         AllowsTransparency="True">
 
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
     <Border CornerRadius="15">
 
         <Border CornerRadius="5"
@@ -85,27 +90,33 @@
                                  Height="50"
                                  Foreground="White" 
                                  FontSize="20"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 IsChecked="True"
+                                 Command="{Binding AddUserViewCommand}"/>
                     <RadioButton Content="Edit user data"
                                  Height="50"
                                  Foreground="White" 
                                  FontSize="20"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding EditUserDataViewCommand}"/>
                     <RadioButton Content="Edit user permissions"
                                  Height="50"
                                  Foreground="White" 
                                  FontSize="20"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding EditUserPermissionsViewCommand}"/>
                     <RadioButton Content="Remove user"
                                  Height="50"
                                  Foreground="White" 
                                  FontSize="20"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding RemoveUserViewCommand}"/>
                 </StackPanel>
 
                 <ContentControl Grid.Row="1" 
                                 Grid.Column="1"
-                                Grid.RowSpan="2"/>
+                                Grid.RowSpan="2"
+                                Content="{Binding CurrentView}"/>
 
 
 

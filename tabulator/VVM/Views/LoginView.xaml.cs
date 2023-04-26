@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,23 +13,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.guwno;
 using tabulator.Models;
 
-namespace tabulator.MVVM.Views
+namespace tabulator.VVM.Views
 {
     /// <summary>
-    /// Interaction logic for AdminView.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class AdminView : Window
+    public partial class LoginView : Window
     {
-        public AdminView()
+        public LoginView()
         {
             InitializeComponent();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if(e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
@@ -35,7 +38,9 @@ namespace tabulator.MVVM.Views
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            // WindowState = WindowState.Minimized;
+
+            dupa.Text = "";
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -45,7 +50,10 @@ namespace tabulator.MVVM.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            DBContext ctx = DBContext.GetInstance();
+            Faculty fac = ctx.Faculties.First();
 
+            dupa.Text = $"ID: {fac.Id}, Name: {fac.Name}, Addr: {fac.Address}";
         }
     }
 }
