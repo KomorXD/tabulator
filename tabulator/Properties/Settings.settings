@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="db_connect_str" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\studia\github\tabulator\tabulator\_Data\EqRecordsDB.mdf;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projekty\tabulator\tabulator\_Data\EqRecordsDB.mdf;Integrated Security=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

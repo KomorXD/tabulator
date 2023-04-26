@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tabulator.Models;
 
-namespace tabulator.Views
+namespace tabulator.MVVM.Views
 {
     /// <summary>
     /// Interaction logic for AdminView.xaml

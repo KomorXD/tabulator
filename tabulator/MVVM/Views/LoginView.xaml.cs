@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using tabulator.guwno;
 using tabulator.Models;
 
-namespace tabulator.Views
+namespace tabulator.MVVM.Views
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
