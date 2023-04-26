@@ -32,8 +32,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
-                    <ColumnDefinition Width="550"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="600"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="TAB PROJEKT - Admin"
@@ -79,34 +79,21 @@
 
                 </Grid>
 
-                <StackPanel Width="250"
-                            Grid.Row="1"
+                <StackPanel Grid.Row="1"
                             Grid.Column="0"
                             Orientation="Vertical">
 
                     <RadioButton Content="Add user"
-                                 Height="50"
-                                 Foreground="White" 
-                                 FontSize="20"
                                  Style="{StaticResource MenuButtonTheme}"
                                  IsChecked="True"
                                  Command="{Binding AddUserViewCommand}"/>
                     <RadioButton Content="Edit user data"
-                                 Height="50"
-                                 Foreground="White" 
-                                 FontSize="20"
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding EditUserDataViewCommand}"/>
-                    <RadioButton Content="Edit user permissions"
-                                 Height="50"
-                                 Foreground="White" 
-                                 FontSize="20"
+                    <RadioButton Content="Edit user permissions" 
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding EditUserPermissionsViewCommand}"/>
                     <RadioButton Content="Remove user"
-                                 Height="50"
-                                 Foreground="White" 
-                                 FontSize="20"
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding RemoveUserViewCommand}"/>
                 </StackPanel>
