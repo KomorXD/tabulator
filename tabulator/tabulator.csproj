@@ -83,7 +83,11 @@
     <Compile Include="Controllers\DBContext.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\DepartmentRooms.cs" />
     <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\FacultyRooms.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="VVM\Viewmodels\AddUserViewModel.cs" />
     <Compile Include="VVM\Viewmodels\EditUserDataViewModel.cs" />
     <Compile Include="VVM\Viewmodels\EditUserPermissionsViewModel.cs" />
