@@ -85,8 +85,13 @@
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DepartmentRooms.cs" />
+    <Compile Include="Models\DepartmentTechEmployee.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EquipmentCaretakers.cs" />
+    <Compile Include="Models\EquipmentItem.cs" />
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\FacultyRooms.cs" />
+    <Compile Include="Models\FacultyTechEmployee.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="VVM\Viewmodels\AddUserViewModel.cs" />
     <Compile Include="VVM\Viewmodels\EditUserDataViewModel.cs" />
