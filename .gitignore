@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 tabulator/Properties/Settings.Designer.cs
 tabulator/Properties/Settings.settings
+tabulator/App.config
