@@ -15,10 +15,18 @@ namespace tabulator.Models
 
         [Column]
         public string Address { get; set; }
+
+        [ForeignKey("StorageRoom")]
+        public int StorageId { get; set; }
+        
+        public virtual Room StorageRoom { get; set; }
         
         public virtual ICollection<Department> Departments { get; set; }
 
         [ForeignKey("DepartmentId")]
         public virtual ICollection<FacultyRoom> FacultyRooms { get; set; }
+
+        [ForeignKey("FacultyId")]
+        public virtual ICollection<FacultyTechEmployee> FacultyTechEmployees { get; set; }
     }
 }
