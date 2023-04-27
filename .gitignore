@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+tabulator/Properties/Settings.Designer.cs
+tabulator/Properties/Settings.settings
