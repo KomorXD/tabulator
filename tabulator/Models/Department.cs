@@ -24,5 +24,8 @@ namespace tabulator.Models
 
         [ForeignKey("DepartmentId")]
         public virtual ICollection<DepartmentRoom> DepartmentRooms { get; set; }
+
+        [ForeignKey("DepartmentId")]
+        public virtual ICollection<DepartmentTechEmployee> DepartmentTechEmployees { get; set; }
     }
 }
