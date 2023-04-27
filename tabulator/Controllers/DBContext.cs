@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using tabulator.Models;
 
 namespace tabulator.guwno
@@ -17,12 +12,9 @@ namespace tabulator.guwno
 
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add(new FacultyConfiguration());
-        }
-
         public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Room> Rooms { get; set; }
 
         static public DBContext GetInstance()
         {
