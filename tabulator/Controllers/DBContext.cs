@@ -15,6 +15,8 @@ namespace tabulator.guwno
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EquipmentItem> Equipment { get; set; }
 
         static public DBContext GetInstance()
         {
