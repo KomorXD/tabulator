@@ -7,18 +7,40 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
-                        <Grid VerticalAlignment="Stretch"
-                              HorizontalAlignment="Stretch"
-                              Height="30"
-                              Background="{TemplateBinding Background}">
+                        <Border BorderBrush="#17202e"
+                                BorderThickness="3"
+                                CornerRadius="3"
+                                Margin="3">
+                            <Grid VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch"
+                                  Height="30"
+                                  Background="{TemplateBinding Background}">
 
-                            <TextBlock Text="{TemplateBinding Property=Content}"
+                                <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        Margin="20,0,0,0"
                                        FontSize="15"
-                                       Foreground="White"/>
+                                       Foreground="LightGray"/>
 
-                        </Grid>
+                            </Grid>
+                        </Border>
+                       
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Background" Value="#212d40"/>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#11151c"/>
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#7d4e57"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -26,13 +48,5 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0"/>
         </Style.Setters>
-
-        <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#22202f"/>
-            </Trigger>
-            
-        </Style.Triggers>
-        
     </Style>
 </ResourceDictionary>
