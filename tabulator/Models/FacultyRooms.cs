@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tabulator.Models
 {
+    [Table("FacultyRooms")]
     public class FacultyRoom
     {
         [Key]
