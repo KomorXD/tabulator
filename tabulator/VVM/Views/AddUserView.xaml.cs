@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using tabulator.Models;
+using tabulator.VVM.Viewmodels;
 
 namespace tabulator.VVM.Views
 {
@@ -20,9 +22,24 @@ namespace tabulator.VVM.Views
     /// </summary>
     public partial class AddUserView : UserControl
     {
+        public AddUserViewModel ViewModel { get; set; }
         public AddUserView()
         {
             InitializeComponent();
+            ViewModel = new AddUserViewModel();
+
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            User xd = new User();
+            xd.Username = NameInput.Text;
+            xd.Password = SurnameInput.Text;
+            xd.FunctionId = UserFunction.ADMIN_ROLE;
+      
+            ViewModel.AddPerson(xd);
+
+            btnLogin.Content = xd.Username;
         }
     }
 }

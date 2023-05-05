@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using tabulator.DatabaseContext;
 using tabulator.Models;
 
 namespace tabulator.VVM.Views
@@ -26,7 +27,8 @@ namespace tabulator.VVM.Views
         {
             InitializeComponent();
 
-            //DBContext context = DBContext.GetInstance();
+            DBContext context = DBContext.GetInstance();
+
             //Employee employee = context.Employees.Find(18);
             //Employee employee2 = new Employee
             //{

@@ -92,6 +92,8 @@
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\FacultyRooms.cs" />
     <Compile Include="Models\FacultyTechEmployee.cs" />
+    <Compile Include="Models\UserFunction.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

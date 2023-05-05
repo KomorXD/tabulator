@@ -17,7 +17,7 @@
                         FontWeight="Medium"
                         FontFamily="Verdana"
                         Margin="0, 35, 0, 0"/>
-            <TextBox x:Name="x"
+            <TextBox x:Name="NameInput"
                      Width="200"
                      FontSize="13"
                      FontWeight="Medium"
@@ -37,7 +37,7 @@
                         FontWeight="Medium"
                         FontFamily="Verdana"
                         Margin="0, 35, 0, 0"/>
-            <TextBox x:Name="d"
+            <TextBox x:Name="SurnameInput"
                      Width="200"
                      FontSize="13"
                      FontWeight="Medium"
@@ -71,7 +71,8 @@
                                 FontFamily="Verdana"
                                 Cursor="Hand"
                                 Grid.Column="2"
-                                Margin="0, 30, 0, 0">
+                                Margin="0, 30, 0, 0"
+                                Click="btnAdd_Click">
 
                 <Button.Style>
                     <Style TargetType="Button">

@@ -17,6 +17,8 @@ namespace tabulator.DatabaseContext
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EquipmentItem> Equipment { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserFunction> UserFunctions { get; set; }
 
         static public DBContext GetInstance()
         {
@@ -26,6 +28,7 @@ namespace tabulator.DatabaseContext
             }
 
             return INSTANCE;
+
         }
     }
 }
