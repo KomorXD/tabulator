@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using tabulator.Models;
 
-namespace tabulator.guwno
+namespace tabulator.DatabaseContext
 {
     internal class DBContext : DbContext
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using tabulator.Models;
 
 namespace tabulator.VVM.Views
 {
@@ -23,6 +25,20 @@ namespace tabulator.VVM.Views
         public EditUserDataView()
         {
             InitializeComponent();
+
+            //DBContext context = DBContext.GetInstance();
+            //Employee employee = context.Employees.Find(18);
+            //Employee employee2 = new Employee
+            //{
+            //    Name = "Ziutek",
+            //    Surname = "Eluwa",
+            //    PESEL = "123456",
+            //    PhoneNumber = "111111"
+            //};
+            //context.Employees.Attach(employee);
+            //context.Employees.Remove(employee);
+            //context.Employees.Add(employee2);
+            //context.SaveChanges();
         }
     }
 }
