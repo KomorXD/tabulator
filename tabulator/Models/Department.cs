@@ -13,9 +13,6 @@ namespace tabulator.Models
         [Column]
         public string Name { get; set; }
 
-        [Column]
-        public string Address { get; set; }
-
         [ForeignKey("Faculty")]
         public int FacultyId { get; set; }
 
@@ -23,9 +20,9 @@ namespace tabulator.Models
         public virtual Faculty Faculty { get; set; }
 
         [ForeignKey("DepartmentId")]
-        public virtual ICollection<DepartmentRoom> DepartmentRooms { get; set; }
+        public virtual ICollection<DepartmentRoom> Rooms { get; set; }
 
         [ForeignKey("DepartmentId")]
-        public virtual ICollection<DepartmentTechEmployee> DepartmentTechEmployees { get; set; }
+        public virtual ICollection<DepartmentTechEmployee> TechEmployees { get; set; }
     }
 }
