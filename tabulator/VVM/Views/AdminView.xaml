@@ -17,13 +17,14 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
-    <Border CornerRadius="15">
+
+    <Border>
 
         <Border CornerRadius="5"
-                Background="SlateBlue"
-                BorderBrush="DarkSlateBlue"
-                BorderThickness="2">
+                Background="#364156"
+                BorderBrush="#11151c"
+                BorderThickness="3">
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
@@ -36,7 +37,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.ColumnSpan="2"
-                        BorderBrush="White"
+                        BorderBrush="#11151c"
                         BorderThickness="0,0,0,3">
 
                     <Grid>
@@ -83,7 +84,7 @@
                 </Border>
 
                 <Border Grid.Row="1"
-                        BorderBrush="White"
+                        BorderBrush="#11151c"
                         BorderThickness="0,0,3,0">
 
                     <StackPanel Orientation="Vertical"

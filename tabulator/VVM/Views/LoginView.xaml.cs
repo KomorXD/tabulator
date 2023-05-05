@@ -38,9 +38,7 @@ namespace tabulator.VVM.Views
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            // WindowState = WindowState.Minimized;
-
-            dupa.Text = "";
+            WindowState = WindowState.Minimized;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -50,10 +48,6 @@ namespace tabulator.VVM.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            DBContext ctx = DBContext.GetInstance();
-            Faculty fac = ctx.Faculties.First();
-
-            dupa.Text = $"ID: {fac.Id}, Name: {fac.Name}, Addr: {fac.Address}";
         }
     }
 }
