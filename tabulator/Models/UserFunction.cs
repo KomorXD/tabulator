@@ -8,9 +8,8 @@ namespace tabulator.Models
     [Table("UserFunctions")]
     public class UserFunction
     {
-        //NIE ZMIENIAĆ!!!
-        public static int ADMIN_ROLE = 1;
-        public static int USER_ROLE = 2;
+        public static readonly int ADMIN_ROLE = 1;
+        public static readonly int USER_ROLE = 2;
 
         [Key]
         public int Id { get; set; } 
