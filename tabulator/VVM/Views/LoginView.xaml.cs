@@ -28,6 +28,13 @@ namespace tabulator.VVM.Views
             InitializeComponent();
         }
 
+        private void SwitchToAdminView(object sender, RoutedEventArgs e)
+        {
+            AdminView adminView = new AdminView();
+            adminView.Show();
+            this.Hide();
+        }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if(e.LeftButton == MouseButtonState.Pressed)
@@ -48,6 +55,8 @@ namespace tabulator.VVM.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            //we se to ogarnijcie rzeby dzialalo
+            SwitchToAdminView(sender, e);
         }
     }
 }

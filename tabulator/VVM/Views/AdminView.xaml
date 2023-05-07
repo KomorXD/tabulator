@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.VVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.VVM.Views"
         mc:Ignorable="d"
-        Title="AdminView" Height="450" Width="800"
+        Title="AdminView" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -28,7 +28,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
-                    <RowDefinition Height="420" />
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
