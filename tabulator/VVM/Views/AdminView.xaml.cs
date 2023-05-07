@@ -25,6 +25,13 @@ namespace tabulator.VVM.Views
             InitializeComponent();
         }
 
+        private void SwitchToLoginView(object sender, RoutedEventArgs e)
+        {
+            LoginView loginView = new LoginView();
+            loginView.Show();
+            this.Hide();
+        }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -46,6 +53,11 @@ namespace tabulator.VVM.Views
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            SwitchToLoginView(sender, e);
         }
     }
 }

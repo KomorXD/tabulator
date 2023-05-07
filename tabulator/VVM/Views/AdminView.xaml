@@ -28,7 +28,8 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -84,6 +85,7 @@
                 </Border>
 
                 <Border Grid.Row="1"
+                        Grid.RowSpan="2"
                         BorderBrush="#11151c"
                         BorderThickness="0,0,3,0">
 
@@ -114,7 +116,44 @@
                 <ContentControl Grid.Row="1" 
                                 Grid.Column="1"
                                 Content="{Binding CurrentView}"/>
-                
+
+                <Button x:Name="btnLogout"                       
+                        BorderThickness="0"
+                        Content="Logout"
+                        Foreground="White"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        FontFamily="Verdana"
+                        Cursor="Hand"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Click="btnLogout_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#d66853" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#7d4e57" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+
             </Grid>
         </Border>
     </Border>

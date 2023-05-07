@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:tabulator"
              xmlns:viewModel="clr-namespace:tabulator.VVM.Viewmodels"
              xmlns:view="clr-namespace:tabulator.VVM.Views"
-             StartupUri="VVM/Views/LoginView.xaml">
+             StartupUri="VVM/Views/AdminView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
