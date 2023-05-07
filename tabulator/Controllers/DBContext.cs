@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using tabulator.Models;
 
-namespace tabulator.guwno
+namespace tabulator.DatabaseContext
 {
     internal class DBContext : DbContext
     {
@@ -17,12 +12,13 @@ namespace tabulator.guwno
 
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add(new FacultyConfiguration());
-        }
-
         public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EquipmentItem> Equipment { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserFunction> UserFunctions { get; set; }
 
         static public DBContext GetInstance()
         {
@@ -32,6 +28,7 @@ namespace tabulator.guwno
             }
 
             return INSTANCE;
+
         }
     }
 }
