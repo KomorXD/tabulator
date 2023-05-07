@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="VVM/Views/Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="VVM/Views/Themes/InputTextboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:AddUserViewModel}">
