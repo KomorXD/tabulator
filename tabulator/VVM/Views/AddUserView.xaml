@@ -17,7 +17,7 @@
                         FontWeight="Medium"
                         FontFamily="Verdana"
                         Margin="0, 35, 0, 0"/>
-            <TextBox x:Name="x"                    
+            <TextBox x:Name="NameInput"                    
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Surname"
                        Width="200"
@@ -26,7 +26,7 @@
                         FontWeight="Medium"
                         FontFamily="Verdana"
                         Margin="0, 35, 0, 0"/>
-            <TextBox x:Name="d"                    
+            <TextBox x:Name="SurnameInput"                    
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Function"
                        Width="200"                       
