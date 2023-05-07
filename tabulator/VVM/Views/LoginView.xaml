@@ -46,35 +46,26 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="TAB PROJEKT - Login"
-                               Foreground="LightGray"
-                               FontSize="15"
-                               FontFamily="Verdana"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               Margin="15, 0, 0, 0" />
+                                   Foreground="LightGray"
+                                   FontSize="15"
+                                   FontFamily="Verdana"
+                                   Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Margin="15, 0, 0, 0" />
 
                         <Button x:Name="btnMinimize"
                                 Background="HotPink"
-                                BorderThickness="0"
                                 Content="-"
-                                Foreground="Black"
-                                FontSize="16"
-                                FontFamily="Verdana"
-                                Cursor="Hand"
                                 Grid.Column="1"
-                                Opacity="1"
+                                Style="{StaticResource CloseButtonTheme}"                              
                                 Click="btnMinimize_Click" />
 
                         <Button x:Name="btnClose"
-                            Background="LightPink"
-                            BorderThickness="0"
-                            Content="X"
-                            Foreground="Black"
-                            FontSize="12"
-                            FontFamily="Verdana"
-                            Cursor="Hand"
-                            Grid.Column="2"
-                            Click="btnClose_Click" />
+                                Background="LightPink"
+                                Content="X"
+                                Grid.Column="2"
+                                Style="{StaticResource CloseButtonTheme}"
+                                Click="btnClose_Click" />
                     </Grid>
 
                 </Border>
@@ -92,81 +83,23 @@
                                Width="150" Height="150" />
 
                         <TextBlock Text="Username"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   FontWeight="Medium"
-                                   FontFamily="Verdana"
-                                   Margin="0, 35, 0, 0"/>
+                                   Style="{StaticResource TextblockTheme}"/>
 
                         <TextBox x:Name="inputUsername"
-                                 FontSize="13"
-                                 FontWeight="Medium"
-                                 FontFamily="Verdana"
-                                 Background="Transparent"
-                                 Foreground="White"
-                                 CaretBrush="LightGray"
-                                 BorderBrush="DarkGray"
-                                 BorderThickness="0, 0, 0, 1"
-                                 Height="28"
-                                 VerticalContentAlignment="Center"
-                                 Margin="0, 5, 0, 0" />
+                                  Style="{StaticResource InputTextboxTheme}" />
 
                         <TextBlock Text="Password"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   FontWeight="Medium"
-                                   FontFamily="Verdana"
-                                   Margin="0, 25, 0, 0"/>
+                                   Style="{StaticResource TextblockTheme}"/>
 
                         <PasswordBox x:Name="inputPassword"
-                                     FontSize="13"
-                                     FontWeight="Medium"
-                                     FontFamily="Verdana"
-                                     Background="Transparent"
-                                     Foreground="White"
-                                     CaretBrush="LightGray"
-                                     BorderBrush="DarkGray"
-                                     BorderThickness="0, 0, 0, 1"
-                                     Height="28"
-                                     VerticalContentAlignment="Center"
-                                     Margin="0, 5, 0, 0" />
+                                     Style="{StaticResource PasswordboxTheme}" />
 
                         <Button x:Name="btnLogin"
-                                BorderThickness="0"
+                                Margin="0,100,0,0"
                                 Content="Login"
-                                Foreground="White"
-                                FontSize="12"
-                                FontWeight="Medium"
-                                FontFamily="Verdana"
-                                Cursor="Hand"
-                                Grid.Column="2"
-                                Margin="0, 30, 0, 0"
-                                Click="btnLogin_Click">
+                                Click="btnLogin_Click"
+                                Style="{StaticResource ButtonTheme}"/>
 
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="#d66853" />
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#7d4e57" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Width="150" Height="40"
-                                        CornerRadius="20"
-                                        Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center" />
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-
-                        </Button>
-                        
                     </StackPanel>
                 </Border>
             </Grid>

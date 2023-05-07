@@ -56,41 +56,13 @@
                 <ComboBoxItem>Admin</ComboBoxItem>
             </ComboBox>
 
+
             <Button x:Name="btnLogin"
-                    BorderThickness="0"
+                    Margin="0,100,0,0"
                     Content="Add"
-                    Foreground="White"
-                    FontSize="12"
-                    FontWeight="Medium"
-                    FontFamily="Verdana"
-                    Cursor="Hand"
-                    Grid.Column="2"
-                    Margin="0, 100, 0, 0"
-                    Click="btnAdd_Click">
+                    Click="btnAdd_Click"
+                    Style="{StaticResource ButtonTheme}"/>
 
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#d66853" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#7d4e57" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="150" Height="40"
-                                        CornerRadius="20"
-                                        Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-
-            </Button>
         </StackPanel>
         
     </Grid>
