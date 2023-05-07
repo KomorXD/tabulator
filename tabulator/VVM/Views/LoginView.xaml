@@ -85,13 +85,13 @@
                         <TextBlock Text="Username"
                                    Style="{StaticResource TextblockTheme}"/>
 
-                        <TextBox x:Name="inputUsername"
+                        <TextBox x:Name="UsernameInput"
                                   Style="{StaticResource InputTextboxTheme}" />
 
                         <TextBlock Text="Password"
                                    Style="{StaticResource TextblockTheme}"/>
 
-                        <PasswordBox x:Name="inputPassword"
+                        <PasswordBox x:Name="PasswordInput"
                                      Style="{StaticResource PasswordboxTheme}" />
 
                         <Button x:Name="btnLogin"

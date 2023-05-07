@@ -35,7 +35,7 @@ namespace tabulator.VVM.Views
         {
             User xd = new User();
             xd.Username = UsernameInput.Text;
-            xd.Password = PasswordInput.Text;
+            PasswordBox passwordBox = PasswordInput;
             xd.Name = NameInput.Text;
             xd.Surname = SurnameInput.Text;
             ComboBoxItem selectedObject = FunctionDropdown.SelectedItem as ComboBoxItem;
@@ -45,11 +45,11 @@ namespace tabulator.VVM.Views
                 string selectedValue = selectedObject.ToString();
                 if(selectedValue == "System.Windows.Controls.ComboBoxItem: User") 
                 {
-                   
+                    xd.FunctionId = UserFunction.USER_ROLE;
                 }
                 if (selectedValue == "System.Windows.Controls.ComboBoxItem: Admin")
                 {
-
+                    xd.FunctionId = UserFunction.ADMIN_ROLE;
                 }
             }
             else
@@ -57,7 +57,7 @@ namespace tabulator.VVM.Views
                 // No item is selected
             }
 
-            //ViewModel.AddPerson(xd);
+            ViewModel.AddPerson(xd);
         }
     }
 }

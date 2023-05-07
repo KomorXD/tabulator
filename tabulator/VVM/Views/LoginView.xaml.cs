@@ -56,6 +56,8 @@ namespace tabulator.VVM.Views
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             //we se to ogarnijcie rzeby dzialalo
+            string username = UsernameInput.Text;
+            PasswordBox passwordBox = PasswordInput;
             SwitchToAdminView(sender, e);
         }
     }

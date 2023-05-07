@@ -35,8 +35,8 @@
                     Grid.Row="1">
             <TextBlock Text="Password"
                        Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="PasswordInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
+            <PasswordBox x:Name="PasswordInput"                    
+                     Style="{StaticResource PasswordboxTheme}" />
             <TextBlock Text="Surname"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="SurnameInput"                    
