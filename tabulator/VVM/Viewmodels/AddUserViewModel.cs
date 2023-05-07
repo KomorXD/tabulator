@@ -5,12 +5,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.Models;
 
 namespace tabulator.VVM.Viewmodels
 {
-    public class AddUserViewModel : INotifyPropertyChanged
+    public class AddUserViewModel : ObservableObject
     {
         private ObservableCollection<User> Users;
 
@@ -28,11 +29,5 @@ namespace tabulator.VVM.Viewmodels
             context.SaveChanges();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
