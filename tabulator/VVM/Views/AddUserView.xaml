@@ -5,51 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tabulator.VVM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="520" d:DesignWidth="600"
              Background="#364156">
     
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0"
+                    Grid.Row="1">
+            <TextBlock Text="Username"
+                       Style="{StaticResource TextblockTheme}"/>
+            <TextBox x:Name="UsernameInput"                    
+                     Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Name"
-                       Width="200"
-                        Foreground="White"
-                        FontSize="15"
-                        FontWeight="Medium"
-                        FontFamily="Verdana"
-                        Margin="0, 35, 0, 0"/>
+                       Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"                    
                      Style="{StaticResource InputTextboxTheme}" />
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1">
+            <TextBlock Text="Password"
+                       Style="{StaticResource TextblockTheme}"/>
+            <TextBox x:Name="PasswordInput"                    
+                     Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Surname"
-                       Width="200"
-                        Foreground="White"
-                        FontSize="15"
-                        FontWeight="Medium"
-                        FontFamily="Verdana"
-                        Margin="0, 35, 0, 0"/>
+                       Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="SurnameInput"                    
                      Style="{StaticResource InputTextboxTheme}" />
+
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2">
             <TextBlock Text="Function"
-                       Width="200"                       
-                        Foreground="White"
-                        FontSize="15"
-                        FontWeight="Medium"
-                        FontFamily="Verdana"
-                        Margin="0, 35, 0, 0"/>
-            <ComboBox Width="200"
+                       Style="{StaticResource TextblockTheme}"/>
+            <ComboBox Name="FunctionDropdown"
+                      Width="200"
                       Margin="15 "
                       HorizontalAlignment="Center"   
-                      VerticalAlignment="Top"  />
+                      VerticalAlignment="Top">
+                <ComboBoxItem IsSelected="True">User</ComboBoxItem>
+                <ComboBoxItem>Admin</ComboBoxItem>
+            </ComboBox>
 
             <Button x:Name="btnLogin"
-                                BorderThickness="0"
-                                Content="Add"
-                                Foreground="White"
-                                FontSize="12"
-                                FontWeight="Medium"
-                                FontFamily="Verdana"
-                                Cursor="Hand"
-                                Grid.Column="2"
-                                Margin="0, 30, 0, 0">
+                    BorderThickness="0"
+                    Content="Add"
+                    Foreground="White"
+                    FontSize="12"
+                    FontWeight="Medium"
+                    FontFamily="Verdana"
+                    Cursor="Hand"
+                    Grid.Column="2"
+                    Margin="0, 100, 0, 0"
+                    Click="btnAdd_Click">
 
                 <Button.Style>
                     <Style TargetType="Button">
@@ -75,5 +92,6 @@
 
             </Button>
         </StackPanel>
+        
     </Grid>
 </UserControl>
