@@ -7,9 +7,8 @@ using tabulator.Core;
 
 namespace tabulator.VVM.Viewmodels
 {
-    class MainViewModel : ObservableObject
+    class AdminViewModel : ObservableObject
     {
-
         public RelayCommand AddUserViewCommand { get; set; }
         public RelayCommand EditUserDataViewCommand { get; set; }
         public RelayCommand EditUserPermissionsViewCommand { get; set; }
@@ -25,15 +24,15 @@ namespace tabulator.VVM.Viewmodels
 
         public object CurrentView
         {
-            get {  return _currentView;}
-            set 
+            get { return _currentView; }
+            set
             {
                 _currentView = value;
                 OnPropertyChanged();
             }
         }
 
-        public MainViewModel()
+        public AdminViewModel()
         {
             AddUserVM = new AddUserViewModel();
             EditUserDataVM = new EditUserDataViewModel();
@@ -45,8 +44,8 @@ namespace tabulator.VVM.Viewmodels
             AddUserViewCommand = new RelayCommand(o =>
             {
                 CurrentView = AddUserVM;
-            }); 
-            
+            });
+
             EditUserDataViewCommand = new RelayCommand(o =>
             {
                 CurrentView = EditUserDataVM;

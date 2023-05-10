@@ -101,9 +101,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="VVM\Viewmodels\AddUserViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\AdminViewModel.cs" />
     <Compile Include="VVM\Viewmodels\EditUserDataViewModel.cs" />
     <Compile Include="VVM\Viewmodels\EditUserPermissionsViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\MainViewModel.cs" />
     <Compile Include="VVM\Viewmodels\RemoveUserViewModel.cs" />
     <Compile Include="VVM\Views\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
