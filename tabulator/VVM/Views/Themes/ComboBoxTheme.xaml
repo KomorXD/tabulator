@@ -86,7 +86,8 @@
                                 <Grid Name="DropDown"
                                       SnapsToDevicePixels="True">
                                     <ScrollViewer Margin="3" SnapsToDevicePixels="True">
-                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                        <StackPanel IsItemsHost="True" 
+                                                    KeyboardNavigation.DirectionalNavigation="Contained"/>
                                     </ScrollViewer>
                                 </Grid>
                             </Border>

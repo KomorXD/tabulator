@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,38 +11,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using tabulator.DatabaseContext;
-using tabulator.Models;
 
 namespace tabulator.VVM.Views
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for UserView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class UserView : Window
     {
-        public LoginView()
+        public UserView()
         {
             InitializeComponent();
         }
 
-        private void SwitchToAdminView(object sender, RoutedEventArgs e)
+        private void SwitchToLoginView(object sender, RoutedEventArgs e)
         {
-            AdminView adminView = new AdminView();
-            adminView.Show();
-            this.Hide();
-        }
-
-        private void SwitchToUserView(object sender, RoutedEventArgs e)
-        {
-            UserView userView = new UserView();
-            userView.Show();
+            LoginView loginView = new LoginView();
+            loginView.Show();
             this.Hide();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
@@ -62,10 +51,12 @@ namespace tabulator.VVM.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //we se to ogarnijcie rzeby dzialalo
-            string username = UsernameInput.Text;
-            PasswordBox passwordBox = PasswordInput;
-            SwitchToUserView(sender, e);
+
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            SwitchToLoginView(sender, e);
         }
     }
 }

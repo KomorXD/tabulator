@@ -105,6 +105,7 @@
     <Compile Include="VVM\Viewmodels\EditUserDataViewModel.cs" />
     <Compile Include="VVM\Viewmodels\EditUserPermissionsViewModel.cs" />
     <Compile Include="VVM\Viewmodels\RemoveUserViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserViewModel.cs" />
     <Compile Include="VVM\Views\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
     </Compile>
@@ -122,6 +123,9 @@
     </Compile>
     <Compile Include="VVM\Views\RemoveUserView.xaml.cs">
       <DependentUpon>RemoveUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VVM\Views\Themes\TextblockTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
