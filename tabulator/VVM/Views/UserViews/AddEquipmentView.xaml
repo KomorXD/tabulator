@@ -11,7 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="300"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -22,43 +22,65 @@
 
         <StackPanel Grid.Column="0"
                     Grid.Row="1">
-            <TextBlock Text="Username"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="UsernameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Name"
+                       Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"                    
                      Style="{StaticResource InputTextboxTheme}" />
+            <TextBlock Text="Description"
+                       Margin="0, 35, 0, 0"
+                       Style="{StaticResource TextblockTheme}"/>
+            <TextBox x:Name="DescriptionInput"                    
+                     Style="{StaticResource InputTextboxTheme}" />
+            <TextBlock Text="RoomId"
+                       Margin="0,32,0,0"
+                       Style="{StaticResource TextblockTheme}"/>
+            <ComboBox x:Name="RoomDropdown"     
+                       Width="200"
+                        Margin="0,10,0,0"
+                     Style="{StaticResource ComboBoxTheme}" />
         </StackPanel>
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
-            <TextBlock Text="Password"
+            <TextBlock Text="Available"
+                       Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
-            <PasswordBox x:Name="PasswordInput"                    
-                     Style="{StaticResource PasswordboxTheme}" />
-            <TextBlock Text="Surname"
+
+            <ComboBox x:Name="AvailableInput"
+                        Width="200"
+                        Margin="0,10,0,0"
+                        Style="{StaticResource ComboBoxTheme}">
+                <ComboBoxItem IsSelected="True">True</ComboBoxItem>
+                <ComboBoxItem>False</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Text="Not in use"
                        Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="SurnameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
+            <ComboBox x:Name="NotInUseInput" 
+                        Width="200"
+                        Margin="0,10,0,0"
+                        Style="{StaticResource ComboBoxTheme}">
+                <ComboBoxItem>True</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">False</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Text="Destroyed"
+                       Style="{StaticResource TextblockTheme}"/>
+            <ComboBox x:Name="DestroyedInput" 
+                        Width="200"
+                        Margin="0,10,0,0"
+                        Style="{StaticResource ComboBoxTheme}">
+                <ComboBoxItem>True</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">False</ComboBoxItem>
+            </ComboBox>
 
         </StackPanel>
         <StackPanel Grid.Row="2"
                     Grid.ColumnSpan="2">
-            <TextBlock Text="Function"
-                       Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="FunctionDropdown"
-                      Margin="0,20,0,0"
-                      Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
-                <ComboBoxItem IsSelected="True">User</ComboBoxItem>
-                <ComboBoxItem>Admin</ComboBoxItem>
-            </ComboBox>
 
 
             <Button x:Name="btnLogin"
                     Margin="0,80,0,0"
                     Content="Add"
+                    Click="btnAdd_Click"
                     Style="{StaticResource ButtonTheme}"/>
 
         </StackPanel>
