@@ -35,10 +35,10 @@ namespace tabulator.VVM.Viewmodels
 
         public AdminViewModel()
         {
-            AddUserVM = new AddUserViewModel();
-            EditUserDataVM = new EditUserDataViewModel();
+            AddUserVM             = new AddUserViewModel();
+            EditUserDataVM        = new EditUserDataViewModel();
             EditUserPermissionsVM = new EditUserPermissionsViewModel();
-            RemoveUserVM = new RemoveUserViewModel();
+            RemoveUserVM          = new RemoveUserViewModel();
 
             CurrentView = AddUserVM;
 
