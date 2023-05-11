@@ -85,6 +85,7 @@
                                 Margin="3">
 
                         <RadioButton Content="Employee assignment"
+                                     IsChecked="True"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding RemoveUserViewCommand}"/>
 
@@ -97,7 +98,6 @@
                                      Command="{Binding RemoveUserViewCommand}"/>
 
                         <RadioButton Content="Add room"
-                                     IsChecked="True"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddUserViewCommand}"/>
 
