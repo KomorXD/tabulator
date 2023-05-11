@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tabulator.VVM.Viewmodels.UserVM
 {
-    internal class AddEquipmentViewModel
+    class AddEquipmentViewModel
     {
     }
 }
