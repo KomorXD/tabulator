@@ -15,23 +15,23 @@
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="RoomNumberInput"                    
                      Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="Department"
+            <TextBlock Text="Choose room type"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="DepartmentDropdown"
+            <ComboBox Name="RoomTypeDropdown"
                       Margin="0,20,0,0"
                       Style="{StaticResource ComboBoxTheme}"
+                      SelectionChanged="RoomTypeDropdownSelectionChanged"
                       Width="200">
-                <ComboBoxItem IsSelected="True">xd</ComboBoxItem>
-                <ComboBoxItem>dupa</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Faculty</ComboBoxItem>
+                <ComboBoxItem>Department</ComboBoxItem>
             </ComboBox>
-            <TextBlock Text="Faculty"
+            <TextBlock Name="RoomTypeText"
+                       Text="Faculty"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="FacultyDropdown"
+            <ComboBox Name="RoomTypeItemDropdown"
                       Margin="0,20,0,0"
-                      Style="{StaticResource ComboBoxTheme}"
+                      Style="{StaticResource ComboBoxTheme}"      
                       Width="200">
-                <ComboBoxItem IsSelected="True">nwm co tu dac</ComboBoxItem>
-                <ComboBoxItem>xdddd</ComboBoxItem>
             </ComboBox>
             <Button x:Name="btnAddRoom"
                     Margin="0,50,0,0"

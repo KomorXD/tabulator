@@ -23,11 +23,37 @@ namespace tabulator.VVM.Views.UserViews
         public AddRoomView()
         {
             InitializeComponent();
+            RoomTypeDropdownSelectionChanged(null, null);
         }
 
         private void btnAddRoom_Click(object sender, RoutedEventArgs e)
         {
             string roomNumber = RoomNumberInput.Text;
+        }
+
+        private void RoomTypeDropdownSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedRoomType = ((ComboBoxItem)RoomTypeDropdown.SelectedItem)?.Content?.ToString();
+            switch(selectedRoomType)
+            {
+                case "Faculty":
+                    RoomTypeText.Text = "Faculty";
+                    RoomTypeItemDropdown.Items.Clear();
+                    //zastapic uzupelniaime danych z bazy danych xd
+                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 1" });
+                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 2" });
+                    RoomTypeItemDropdown.SelectedIndex = 0;
+                    break;
+
+                case "Department":
+                    RoomTypeText.Text = "Department";
+                    RoomTypeItemDropdown.Items.Clear();
+                    //zastapic uzupelniaime danych z bazy danych xd
+                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Department Example 1" });
+                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Department Example 2" });
+                    RoomTypeItemDropdown.SelectedIndex = 0;
+                    break;
+            }
         }
     }
 }
