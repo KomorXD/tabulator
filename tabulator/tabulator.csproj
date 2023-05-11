@@ -127,6 +127,33 @@
     <Compile Include="VVM\Views\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VVM\Views\UserViews\AddDepartmentView.xaml.cs">
+      <DependentUpon>AddDepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\AddEquipmentView.xaml.cs">
+      <DependentUpon>AddEquipmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\AddFacultyView.xaml.cs">
+      <DependentUpon>AddFacultyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\AddRoomView.xaml.cs">
+      <DependentUpon>AddRoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\EditDepartmentView.xaml.cs">
+      <DependentUpon>EditDepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\EditEquipmentDataView.xaml.cs">
+      <DependentUpon>EditEquipmentDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\EditFacultyDataView.xaml.cs">
+      <DependentUpon>EditFacultyDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\EditRoomDataView.xaml.cs">
+      <DependentUpon>EditRoomDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VVM\Views\UserViews\EmployeeAssignmentView.xaml.cs">
+      <DependentUpon>EmployeeAssignmentView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -184,6 +211,42 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VVM\Views\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\AddDepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\AddEquipmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\AddFacultyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\AddRoomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\EditDepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\EditEquipmentDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\EditFacultyDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\EditRoomDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVM\Views\UserViews\EmployeeAssignmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
