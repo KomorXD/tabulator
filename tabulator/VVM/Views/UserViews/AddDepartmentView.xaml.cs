@@ -22,6 +22,20 @@ namespace tabulator.VVM.Views.UserViews
         public AddDepartmentView()
         {
             InitializeComponent();
+            FacultyDropdownSelection(null, null);
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            string name = NameInput.Text;
+            string selectedFaculty = ((ComboBoxItem)FacultyDropdown.SelectedItem)?.Content?.ToString();
+        }
+
+        private void FacultyDropdownSelection(object sender, SelectionChangedEventArgs e)
+        {
+            FacultyDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 1" });
+            FacultyDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 2" });
+            FacultyDropdown.SelectedIndex = 0;
         }
     }
 }
