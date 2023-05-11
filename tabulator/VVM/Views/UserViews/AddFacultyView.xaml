@@ -11,7 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="100"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -22,10 +22,6 @@
 
         <StackPanel Grid.Column="0"
                     Grid.Row="1">
-            <TextBlock Text="Username"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="UsernameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Name"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"                    
@@ -33,34 +29,18 @@
         </StackPanel>
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
-            <TextBlock Text="Password"
+            <TextBlock Text="Address"
                        Style="{StaticResource TextblockTheme}"/>
-            <PasswordBox x:Name="PasswordInput"                    
-                     Style="{StaticResource PasswordboxTheme}" />
-            <TextBlock Text="Surname"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="SurnameInput"                    
+            <TextBox x:Name="AddressInput"                    
                      Style="{StaticResource InputTextboxTheme}" />
-
         </StackPanel>
         <StackPanel Grid.Row="2"
                     Grid.ColumnSpan="2">
-            <TextBlock Text="Function"
-                       Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="FunctionDropdown"
-                      Margin="0,20,0,0"
-                      Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
-                <ComboBoxItem IsSelected="True">User</ComboBoxItem>
-                <ComboBoxItem>Admin</ComboBoxItem>
-            </ComboBox>
-
-
-            <Button x:Name="btnLogin"
+            <Button x:Name="btnAddFaculty"
                     Margin="0,80,0,0"
                     Content="Add"
+                    Click="btnAddFaculty_Click"
                     Style="{StaticResource ButtonTheme}"/>
-
         </StackPanel>
 
     </Grid>
