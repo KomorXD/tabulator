@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="VVM/Views/Themes/InputTextboxTheme.xaml"/>
                 <ResourceDictionary Source="VVM/Views/Themes/TextblockTheme.xaml"/>
                 <ResourceDictionary Source="VVM/Views/Themes/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="VVM/Views/Themes/ComboBoxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:AddUserViewModel}">

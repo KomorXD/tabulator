@@ -48,17 +48,16 @@
             <TextBlock Text="Function"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox Name="FunctionDropdown"
-                      Width="200"
-                      Margin="15 "
-                      HorizontalAlignment="Center"   
-                      VerticalAlignment="Top">
+                      Margin="0,20,0,0"
+                      Style="{StaticResource ComboBoxTheme}"
+                      Width="200">
                 <ComboBoxItem IsSelected="True">User</ComboBoxItem>
                 <ComboBoxItem>Admin</ComboBoxItem>
             </ComboBox>
 
 
             <Button x:Name="btnLogin"
-                    Margin="0,100,0,0"
+                    Margin="0,80,0,0"
                     Content="Add"
                     Click="btnAdd_Click"
                     Style="{StaticResource ButtonTheme}"/>

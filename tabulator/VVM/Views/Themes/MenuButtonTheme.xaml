@@ -15,18 +15,14 @@
                                   HorizontalAlignment="Stretch"
                                   Height="30"
                                   Background="{TemplateBinding Background}">
-
                                 <TextBlock Text="{TemplateBinding Property=Content}"
-                                       VerticalAlignment="Center"
-                                       Margin="20,0,0,0"
-                                       FontSize="15"
-                                       Foreground="LightGray"/>
-
+                                           VerticalAlignment="Center"
+                                           Margin="20,0,0,0"
+                                           FontSize="15"
+                                           Foreground="LightGray"/>
                             </Grid>
                         </Border>
-                       
                         <ControlTemplate.Triggers>
-
                             <Trigger Property="IsChecked" Value="False">
                                 <Setter Property="Background" Value="#212d40"/>
                             </Trigger>
@@ -38,13 +34,10 @@
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Background" Value="#7d4e57"/>
                             </Trigger>
-
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0"/>
         </Style.Setters>
