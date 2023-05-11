@@ -23,5 +23,11 @@ namespace tabulator.VVM.Views.UserViews
         {
             InitializeComponent();
         }
+
+        private void btnAddFaculty_Click(object sender, RoutedEventArgs e)
+        {
+            string name = NameInput.Text;
+            string address = AddressInput.Text;
+        }
     }
 }
