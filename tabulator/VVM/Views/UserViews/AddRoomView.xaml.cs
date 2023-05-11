@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.Models;
 
 namespace tabulator.VVM.Views.UserViews
 {
@@ -22,6 +23,11 @@ namespace tabulator.VVM.Views.UserViews
         public AddRoomView()
         {
             InitializeComponent();
+        }
+
+        private void btnAddRoom_Click(object sender, RoutedEventArgs e)
+        {
+            string roomNumber = RoomNumberInput.Text;
         }
     }
 }
