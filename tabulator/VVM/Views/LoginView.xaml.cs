@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tabulator.DatabaseContext;
 using tabulator.Models;
+using tabulator.VVM.Views.AdminViews;
 
 namespace tabulator.VVM.Views
 {
@@ -65,7 +66,7 @@ namespace tabulator.VVM.Views
             //we se to ogarnijcie rzeby dzialalo
             string username = UsernameInput.Text;
             PasswordBox passwordBox = PasswordInput;
-            SwitchToUserView(sender, e);
+            SwitchToAdminView(sender, e);
         }
     }
 }

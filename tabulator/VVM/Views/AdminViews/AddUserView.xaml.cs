@@ -16,7 +16,7 @@ using System.Xml.Linq;
 using tabulator.Models;
 using tabulator.VVM.Viewmodels;
 
-namespace tabulator.VVM.Views
+namespace tabulator.VVM.Views.AdminViews
 {
     /// <summary>
     /// Interaction logic for AddUserView.xaml

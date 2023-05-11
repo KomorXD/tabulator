@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace tabulator.VVM.Views
+namespace tabulator.VVM.Views.AdminViews
 {
     /// <summary>
-    /// Interaction logic for EditUserPermissionsView.xaml
+    /// Interaction logic for RemoveUserView.xaml
     /// </summary>
-    public partial class EditUserPermissionsView : UserControl
+    public partial class RemoveUserView : UserControl
     {
-        public EditUserPermissionsView()
+        public RemoveUserView()
         {
             InitializeComponent();
         }

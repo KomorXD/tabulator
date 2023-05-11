@@ -88,15 +88,6 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding RemoveUserViewCommand}"/>
 
-                        <RadioButton Content="Add room"
-                                     IsChecked="True"
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding AddUserViewCommand}"/>
-
-                        <RadioButton Content="Edit room data"
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding EditUserDataViewCommand}"/>
-
                         <RadioButton Content="Add equipment" 
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditUserPermissionsViewCommand}"/>
@@ -105,19 +96,28 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding RemoveUserViewCommand}"/>
 
-                        <RadioButton Content="Add faculty"
+                        <RadioButton Content="Add room"
+                                     IsChecked="True"
                                      Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding RemoveUserViewCommand}"/>
+                                     Command="{Binding AddUserViewCommand}"/>
 
-                        <RadioButton Content="Edit faculty data"
+                        <RadioButton Content="Edit room data"
                                      Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding RemoveUserViewCommand}"/>
-
+                                     Command="{Binding EditUserDataViewCommand}"/> 
+                        
                         <RadioButton Content="Add department"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding RemoveUserViewCommand}"/>
 
                         <RadioButton Content="Edit department data"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding RemoveUserViewCommand}"/>
+
+                        <RadioButton Content="Add faculty"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding RemoveUserViewCommand}"/>
+
+                        <RadioButton Content="Edit faculty data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding RemoveUserViewCommand}"/>
 

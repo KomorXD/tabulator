@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using tabulator.DatabaseContext;
 using tabulator.Models;
 
-namespace tabulator.VVM.Views
+namespace tabulator.VVM.Views.AdminViews
 {
     /// <summary>
     /// Interaction logic for EditUserDataView.xaml

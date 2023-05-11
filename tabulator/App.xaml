@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:tabulator"
              xmlns:viewModel="clr-namespace:tabulator.VVM.Viewmodels"
              xmlns:view="clr-namespace:tabulator.VVM.Views"
+             xmlns:adminView="clr-namespace:tabulator.VVM.Views.AdminViews"
              StartupUri="VVM/Views/LoginView.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,19 +17,19 @@
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:AddUserViewModel}">
-                <view:AddUserView/>
+                <adminView:AddUserView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:EditUserDataViewModel}">
-                <view:EditUserDataView/>
+                <adminView:EditUserDataView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:EditUserPermissionsViewModel}">
-                <view:EditUserPermissionsView/>
+                <adminView:EditUserPermissionsView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:RemoveUserViewModel}">
-                <view:RemoveUserView/>
+                <adminView:RemoveUserView/>
             </DataTemplate>
 
         </ResourceDictionary>
