@@ -66,7 +66,7 @@ namespace tabulator.VVM.Views
             //we se to ogarnijcie rzeby dzialalo
             string username = UsernameInput.Text;
             PasswordBox passwordBox = PasswordInput;
-            SwitchToAdminView(sender, e);
+            SwitchToUserView(sender, e);
         }
     }
 }

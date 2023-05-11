@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tabulator.Core;
+using tabulator.VVM.Viewmodels.AdminVM;
 
 namespace tabulator.VVM.Viewmodels
 {

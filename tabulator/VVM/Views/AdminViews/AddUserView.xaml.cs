@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using tabulator.Models;
-using tabulator.VVM.Viewmodels;
+using tabulator.VVM.Viewmodels.AdminVM;
 
 namespace tabulator.VVM.Views.AdminViews
 {

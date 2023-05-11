@@ -2,10 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:tabulator"
-             xmlns:viewModel="clr-namespace:tabulator.VVM.Viewmodels"
-             xmlns:view="clr-namespace:tabulator.VVM.Views"
+             xmlns:viewModel="clr-namespace:tabulator.VVM.Viewmodels.AdminVM"
              xmlns:adminView="clr-namespace:tabulator.VVM.Views.AdminViews"
-             StartupUri="VVM/Views/LoginView.xaml">
+             xmlns:userView="clr-namespace:tabulator.VVM.Views.UserViews"
+             StartupUri="VVM/Views/AdminView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

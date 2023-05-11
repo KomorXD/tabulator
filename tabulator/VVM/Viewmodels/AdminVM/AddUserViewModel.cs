@@ -9,7 +9,7 @@ using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.Models;
 
-namespace tabulator.VVM.Viewmodels
+namespace tabulator.VVM.Viewmodels.AdminVM
 {
     public class AddUserViewModel : ObservableObject
     {
