@@ -83,84 +83,84 @@
     <Compile Include="Controllers\DBContext.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\DepartmentRooms.cs" />
-    <Compile Include="Models\DepartmentTechEmployee.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\EquipmentCaretakers.cs" />
-    <Compile Include="Models\EquipmentItem.cs" />
-    <Compile Include="Models\Faculty.cs" />
-    <Compile Include="Models\FacultyRooms.cs" />
-    <Compile Include="Models\FacultyTechEmployee.cs" />
-    <Compile Include="Models\UserFunction.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Room.cs" />
+    <Compile Include="MVVM\Models\Department.cs" />
+    <Compile Include="MVVM\Models\DepartmentRooms.cs" />
+    <Compile Include="MVVM\Models\DepartmentTechEmployee.cs" />
+    <Compile Include="MVVM\Models\Employee.cs" />
+    <Compile Include="MVVM\Models\EquipmentCaretakers.cs" />
+    <Compile Include="MVVM\Models\EquipmentItem.cs" />
+    <Compile Include="MVVM\Models\Faculty.cs" />
+    <Compile Include="MVVM\Models\FacultyRooms.cs" />
+    <Compile Include="MVVM\Models\FacultyTechEmployee.cs" />
+    <Compile Include="MVVM\Models\UserFunction.cs" />
+    <Compile Include="MVVM\Models\User.cs" />
+    <Compile Include="MVVM\Models\Room.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Viewmodels\AdminVM\AddUserViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\AdminViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\AdminVM\EditUserDataViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\AdminVM\EditUserPermissionsViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\AdminVM\RemoveUserViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\AddDepartmentViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\AddEquipmentViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\AddFacultyViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\AddRoomViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\EditDepartmentDataViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\EditEquipmentDataViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\EditFacultyDataViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\EditRoomDataViewModel.cs" />
-    <Compile Include="VVM\Viewmodels\UserVM\EmployeeAssignmentViewModel.cs" />
-    <Compile Include="VVM\Views\AdminViews\AddUserView.xaml.cs">
+    <Compile Include="MVVM\Viewmodels\AdminVM\AddUserViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\AdminViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\AdminVM\EditUserDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\AdminVM\EditUserPermissionsViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\AdminVM\RemoveUserViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddDepartmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddEquipmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddFacultyViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddRoomViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditDepartmentDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditEquipmentDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditFacultyDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditRoomDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeAssignmentViewModel.cs" />
+    <Compile Include="MVVM\Views\AdminViews\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\AdminView.xaml.cs">
+    <Compile Include="MVVM\Views\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\AdminViews\EditUserDataView.xaml.cs">
+    <Compile Include="MVVM\Views\AdminViews\EditUserDataView.xaml.cs">
       <DependentUpon>EditUserDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\AdminViews\EditUserPermissionsView.xaml.cs">
+    <Compile Include="MVVM\Views\AdminViews\EditUserPermissionsView.xaml.cs">
       <DependentUpon>EditUserPermissionsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\LoginView.xaml.cs">
+    <Compile Include="MVVM\Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\AdminViews\RemoveUserView.xaml.cs">
+    <Compile Include="MVVM\Views\AdminViews\RemoveUserView.xaml.cs">
       <DependentUpon>RemoveUserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserView.xaml.cs">
+    <Compile Include="MVVM\Views\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\AddDepartmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\AddDepartmentView.xaml.cs">
       <DependentUpon>AddDepartmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\AddEquipmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\AddEquipmentView.xaml.cs">
       <DependentUpon>AddEquipmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\AddFacultyView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\AddFacultyView.xaml.cs">
       <DependentUpon>AddFacultyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\AddRoomView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\AddRoomView.xaml.cs">
       <DependentUpon>AddRoomView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\EditDepartmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EditDepartmentView.xaml.cs">
       <DependentUpon>EditDepartmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\EditEquipmentDataView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EditEquipmentDataView.xaml.cs">
       <DependentUpon>EditEquipmentDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\EditFacultyDataView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EditFacultyDataView.xaml.cs">
       <DependentUpon>EditFacultyDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\EditRoomDataView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EditRoomDataView.xaml.cs">
       <DependentUpon>EditRoomDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VVM\Views\UserViews\EmployeeAssignmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml.cs">
       <DependentUpon>EmployeeAssignmentView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -175,87 +175,87 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="VVM\Views\AdminViews\AddUserView.xaml">
+    <Page Include="MVVM\Views\AdminViews\AddUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\AdminView.xaml">
+    <Page Include="MVVM\Views\AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\AdminViews\EditUserDataView.xaml">
+    <Page Include="MVVM\Views\AdminViews\EditUserDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\AdminViews\EditUserPermissionsView.xaml">
+    <Page Include="MVVM\Views\AdminViews\EditUserPermissionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\LoginView.xaml">
+    <Page Include="MVVM\Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\AdminViews\RemoveUserView.xaml">
+    <Page Include="MVVM\Views\AdminViews\RemoveUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\Themes\ButtonTheme.xaml">
+    <Page Include="MVVM\Views\Themes\ButtonTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\Themes\ComboBoxTheme.xaml">
+    <Page Include="MVVM\Views\Themes\ComboBoxTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\Themes\InputTextboxTheme.xaml">
+    <Page Include="MVVM\Views\Themes\InputTextboxTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\Themes\MenuButtonTheme.xaml">
+    <Page Include="MVVM\Views\Themes\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\Themes\TextblockTheme.xaml">
+    <Page Include="MVVM\Views\Themes\TextblockTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserView.xaml">
+    <Page Include="MVVM\Views\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\AddDepartmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\AddDepartmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\AddEquipmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\AddEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\AddFacultyView.xaml">
+    <Page Include="MVVM\Views\UserViews\AddFacultyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\AddRoomView.xaml">
+    <Page Include="MVVM\Views\UserViews\AddRoomView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\EditDepartmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\EditDepartmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\EditEquipmentDataView.xaml">
+    <Page Include="MVVM\Views\UserViews\EditEquipmentDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\EditFacultyDataView.xaml">
+    <Page Include="MVVM\Views\UserViews\EditFacultyDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\EditRoomDataView.xaml">
+    <Page Include="MVVM\Views\UserViews\EditRoomDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VVM\Views\UserViews\EmployeeAssignmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

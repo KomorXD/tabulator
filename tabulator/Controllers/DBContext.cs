@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using tabulator.Models;
+using tabulator.MVVM.Models;
 
 namespace tabulator.DatabaseContext
 {
