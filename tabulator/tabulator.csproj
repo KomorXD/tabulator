@@ -106,6 +106,15 @@
     <Compile Include="VVM\Viewmodels\AdminVM\EditUserPermissionsViewModel.cs" />
     <Compile Include="VVM\Viewmodels\AdminVM\RemoveUserViewModel.cs" />
     <Compile Include="VVM\Viewmodels\UserViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\AddDepartmentViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\AddEquipmentViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\AddFacultyViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\AddRoomViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\EditDepartmentDataViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\EditEquipmentDataViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\EditFacultyDataViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\EditRoomDataViewModel.cs" />
+    <Compile Include="VVM\Viewmodels\UserVM\EmployeeAssignmentViewModel.cs" />
     <Compile Include="VVM\Views\AdminViews\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
     </Compile>
