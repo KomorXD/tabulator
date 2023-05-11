@@ -11,7 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="120"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -19,13 +19,8 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
         <StackPanel Grid.Column="0"
                     Grid.Row="1">
-            <TextBlock Text="Username"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="UsernameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Name"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"                    
@@ -33,32 +28,21 @@
         </StackPanel>
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
-            <TextBlock Text="Password"
+            <TextBlock Text="Faculty"
                        Style="{StaticResource TextblockTheme}"/>
-            <PasswordBox x:Name="PasswordInput"                    
-                     Style="{StaticResource PasswordboxTheme}" />
-            <TextBlock Text="Surname"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="SurnameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-
-        </StackPanel>
-        <StackPanel Grid.Row="2"
-                    Grid.ColumnSpan="2">
-            <TextBlock Text="Function"
-                       Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="FunctionDropdown"
+            <ComboBox Name="FacultyDropdown"
                       Margin="0,20,0,0"
                       Style="{StaticResource ComboBoxTheme}"
                       Width="200">
-                <ComboBoxItem IsSelected="True">User</ComboBoxItem>
-                <ComboBoxItem>Admin</ComboBoxItem>
             </ComboBox>
-
-
-            <Button x:Name="btnLogin"
-                    Margin="0,80,0,0"
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2">
+            
+            <Button x:Name="btnAdd"
+                    Margin="0,60,0,0"
                     Content="Add"
+                    Click="btnAdd_Click"
                     Style="{StaticResource ButtonTheme}"/>
 
         </StackPanel>
