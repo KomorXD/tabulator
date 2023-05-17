@@ -34,20 +34,25 @@
                   CellStyle="{DynamicResource DataGridCellStyle1}"
                   RowStyle="{DynamicResource DataGridRowStyle1}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Customer"
+                <DataGridTextColumn Header="Name"
                                             IsReadOnly="True"
                                             Width="*"
                                             Binding="{Binding Name}"/>
 
-                <DataGridTextColumn Header="Address"
+                <DataGridTextColumn Header="Surname"
                                             IsReadOnly="True"
                                             Width="*"
-                                            Binding="{Binding Address}"/>
+                                            Binding="{Binding Surname}"/>
 
-                <DataGridTextColumn Header="Phone"
+                <DataGridTextColumn Header="Username"
                                             IsReadOnly="True"
                                             Width="*"
-                                            Binding="{Binding Phone}"/>
+                                            Binding="{Binding Username}"/>
+
+                <DataGridTextColumn Header="Password"
+                                            IsReadOnly="True"
+                                            Width="*"
+                                            Binding="{Binding Password}"/>
 
                 <DataGridTemplateColumn Header="Operations"
                                                 IsReadOnly="True"
