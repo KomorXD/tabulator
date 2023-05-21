@@ -309,6 +309,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\icsearch.png" />
+    <Resource Include="Resources\Images\deletedark.png" />
+    <Resource Include="Resources\Images\editdark.png" />
+    <Resource Include="Resources\Images\deletelight.png" />
+    <Resource Include="Resources\Images\editlight.png" />
     <Content Include="_Data\EqRecordsDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
