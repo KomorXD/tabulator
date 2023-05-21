@@ -23,24 +23,29 @@ namespace tabulator.MVVM.Views.AdminViews
     /// </summary>
     public partial class EditUserDataView : UserControl
     {
+            DBContext context = DBContext.GetInstance();
+
         public EditUserDataView()
         {
             InitializeComponent();
 
-            DBContext context = DBContext.GetInstance();
+            UserDataGrid.ItemsSource = context.Users.ToList();
+        }
 
-            //Employee employee = context.Employees.Find(18);
-            //Employee employee2 = new Employee
-            //{
-            //    Name = "Ziutek",
-            //    Surname = "Eluwa",
-            //    PESEL = "123456",
-            //    PhoneNumber = "111111"
-            //};
-            //context.Employees.Attach(employee);
-            //context.Employees.Remove(employee);
-            //context.Employees.Add(employee2);
-            //context.SaveChanges();
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var result = context.Users.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Surname.Contains(SearchTextBox.Text) || x.Username.Contains(SearchTextBox.Text)).ToList();
+            UserDataGrid.ItemsSource = result;
         }
     }
 }

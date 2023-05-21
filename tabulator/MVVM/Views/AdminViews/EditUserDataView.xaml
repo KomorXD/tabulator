@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="200"/>
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -20,10 +20,12 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBox Style="{StaticResource SearchBarTheme}"/>
+        <TextBox Name="SearchTextBox"
+                 TextChanged="SearchTextBox_TextChanged"
+                 Style="{StaticResource SearchBarTheme}"/>
         <Image Style="{StaticResource IconSearchStyle}"/>
 
-        <DataGrid x:Name="DGridCustomer"
+        <DataGrid x:Name="UserDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.RowSpan="2"
@@ -35,90 +37,41 @@
                   RowStyle="{DynamicResource DataGridRowStyle1}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
-                                            IsReadOnly="True"
-                                            Width="*"
-                                            Binding="{Binding Name}"/>
-
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Surname"
-                                            IsReadOnly="True"
-                                            Width="*"
-                                            Binding="{Binding Surname}"/>
-
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Surname}"/>
                 <DataGridTextColumn Header="Username"
-                                            IsReadOnly="True"
-                                            Width="*"
-                                            Binding="{Binding Username}"/>
-
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Username}"/>
                 <DataGridTextColumn Header="Password"
-                                            IsReadOnly="True"
-                                            Width="*"
-                                            Binding="{Binding Password}"/>
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Password}"/>
 
                 <DataGridTemplateColumn Header="Operations"
-                                                IsReadOnly="True"
-                                                Width="auto">
+                                        IsReadOnly="True"
+                                        Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Button x:Name="BtnEdit"
                                                 Cursor="Hand"
-                                                Style="{StaticResource ButtonEditDGStyle}"
-                                                />
+                                                Style="{StaticResource EditButtonTheme}"
+                                                Click="BtnEdit_Click"/>
                                 <Button x:Name="BtnDelete"
                                                 Cursor="Hand"
-                                                Style="{StaticResource ButtonDeleteDGStyle}"
-                                                />
+                                                Style="{StaticResource DeleteButtonTheme}"
+                                                Click="BtnDelete_Click"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-
-        <!--<StackPanel Grid.Column="0"
-                    Grid.Row="1">
-            <TextBlock Text="Username"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="UsernameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="Name"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="NameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-        </StackPanel>
-        <StackPanel Grid.Column="1"
-                    Grid.Row="1">
-            <TextBlock Text="Password"
-                       Style="{StaticResource TextblockTheme}"/>
-            <PasswordBox x:Name="PasswordInput"                    
-                     Style="{StaticResource PasswordboxTheme}" />
-            <TextBlock Text="Surname"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="SurnameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-
-        </StackPanel>
-        <StackPanel Grid.Row="2"
-                    Grid.ColumnSpan="2">
-            <TextBlock Text="Function"
-                       Margin="0,15,0,0"
-                       Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="FunctionDropdown"
-                      Margin="0,10,0,0"
-                      Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
-                <ComboBoxItem IsSelected="True">User</ComboBoxItem>
-                <ComboBoxItem>Admin</ComboBoxItem>
-            </ComboBox>
-
-
-            <Button x:Name="btnLogin"
-                    Margin="0,10,0,0"
-                    Content="Add"
-                    Style="{StaticResource ButtonTheme}"/>
-
-        </StackPanel>-->
-
     </Grid>
 </UserControl>
