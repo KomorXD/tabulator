@@ -10,8 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="50"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -28,22 +27,13 @@
         <DataGrid x:Name="UserDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
-                  Grid.RowSpan="2"
                   Grid.Column="0"
                   Grid.ColumnSpan="2"
                   Style="{DynamicResource DataGridStyle1}"
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
-                  RowStyle="{DynamicResource DataGridRowStyle1}">
+                  RowStyle="{DynamicResource DataGridRowStyle1}" Margin="20,27,20,193">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name"
-                                    IsReadOnly="True"
-                                    Width="*"
-                                    Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Surname"
-                                    IsReadOnly="True"
-                                    Width="*"
-                                    Binding="{Binding Surname}"/>
                 <DataGridTextColumn Header="Username"
                                     IsReadOnly="True"
                                     Width="*"
@@ -52,6 +42,14 @@
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Name"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Surname"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Surname}"/>
 
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"

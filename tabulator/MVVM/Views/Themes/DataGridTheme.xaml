@@ -78,7 +78,6 @@
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="BorderBrush" Value="#11151c"/>
         <Setter Property="ColumnWidth" Value="*"/>
-        <Setter Property="Height" Value="250"/>
         <Setter Property="GridLinesVisibility" Value="None"/>
         <Setter Property="Template">
             <Setter.Value>

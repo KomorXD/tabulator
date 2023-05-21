@@ -23,23 +23,30 @@ namespace tabulator.MVVM.Views.AdminViews
     /// </summary>
     public partial class EditUserDataView : UserControl
     {
-            DBContext context = DBContext.GetInstance();
+        DBContext context = DBContext.GetInstance();
+        public static DataGrid dataGrid;
 
         public EditUserDataView()
         {
             InitializeComponent();
-
             UserDataGrid.ItemsSource = context.Users.ToList();
+            dataGrid = UserDataGrid;
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            int ID = (UserDataGrid.SelectedItem as User).Id;
+            var deleteUser = context.Users.Where(m  => m.Id == ID).Single();
+            context.Users.Remove(deleteUser);
+            context.SaveChanges();
+            UserDataGrid.ItemsSource = context.Users.ToList();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            int ID = (UserDataGrid.SelectedItem as User).Id;
+            EditUserPopup editUser = new EditUserPopup(ID);
+            editUser.ShowDialog();
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)

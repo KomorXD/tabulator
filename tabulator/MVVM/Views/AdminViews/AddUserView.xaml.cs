@@ -33,23 +33,24 @@ namespace tabulator.MVVM.Views.AdminViews
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            User xd = new User();
-            xd.Username = UsernameInput.Text;
+            User addUser = new User();
             PasswordBox passwordBox = PasswordInput;
-            xd.Name = NameInput.Text;
-            xd.Surname = SurnameInput.Text;
-            ComboBoxItem selectedObject = FunctionDropdown.SelectedItem as ComboBoxItem;
+            addUser.Username = UsernameInput.Text;
+            addUser.Name = NameInput.Text;
+            addUser.Surname = SurnameInput.Text;
+            addUser.Password = "xdddd";
 
+            ComboBoxItem selectedObject = FunctionDropdown.SelectedItem as ComboBoxItem;
             if (selectedObject != null)
             {
                 string selectedValue = selectedObject.ToString();
                 if(selectedValue == "System.Windows.Controls.ComboBoxItem: User") 
                 {
-                    xd.FunctionId = UserFunction.USER_ROLE;
+                    addUser.FunctionId = UserFunction.USER_ROLE;
                 }
                 if (selectedValue == "System.Windows.Controls.ComboBoxItem: Admin")
                 {
-                    xd.FunctionId = UserFunction.ADMIN_ROLE;
+                    addUser.FunctionId = UserFunction.ADMIN_ROLE;
                 }
             }
             else
@@ -57,7 +58,16 @@ namespace tabulator.MVVM.Views.AdminViews
                 // No item is selected
             }
 
-            ViewModel.AddPerson(xd);
+            ViewModel.AddPerson(addUser);
+            ClearTextBoxes();
+        }
+
+        void ClearTextBoxes()
+        {
+            UsernameInput.Clear();
+            NameInput.Clear();
+            PasswordInput.Clear();
+            SurnameInput.Clear();
         }
     }
 }
