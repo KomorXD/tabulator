@@ -79,9 +79,9 @@
                        Margin="0,5,0,0"
                        Style="{StaticResource TextblockTheme}"/>
                 <ComboBox Name="FunctionDropdown"
-                      Margin="0,20,0,0"
-                      Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
+                          Margin="0,20,0,0"
+                          Style="{StaticResource ComboBoxTheme}"
+                          Width="200">
                     <ComboBoxItem IsSelected="True">User</ComboBoxItem>
                     <ComboBoxItem>Admin</ComboBoxItem>
                 </ComboBox>
