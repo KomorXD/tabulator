@@ -99,6 +99,9 @@
     <Compile Include="MVVM\Views\AdminViews\EditUserPopup.xaml.cs">
       <DependentUpon>EditUserPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml.cs">
+      <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Views\UserViews\EditFacultyPopup.xaml.cs">
       <DependentUpon>EditFacultyPopup.xaml</DependentUpon>
     </Compile>
@@ -257,6 +260,10 @@
     <Page Include="MVVM\Views\UserViews\AddRoomView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\Views\UserViews\EditDepartmentView.xaml">
       <SubType>Designer</SubType>
