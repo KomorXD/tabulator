@@ -71,5 +71,10 @@
                 Grid.Row="1"
                 Style="{StaticResource HelpButtonTheme}"
                 Click="btnHelp_Click"/>
+        <Popup x:Name="helpPopup" IsOpen="False" Placement="Center">
+            <Border BorderBrush="Black" BorderThickness="1" Background="White">
+                <TextBlock Text="help!" Padding="10" />
+            </Border>
+        </Popup>
     </Grid>
 </UserControl>

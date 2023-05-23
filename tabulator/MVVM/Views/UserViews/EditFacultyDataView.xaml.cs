@@ -57,7 +57,7 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
-
+            helpPopup.IsOpen = !helpPopup.IsOpen;
         }
     }
 }
