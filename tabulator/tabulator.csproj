@@ -99,8 +99,8 @@
     <Compile Include="MVVM\Views\AdminViews\EditUserPopup.xaml.cs">
       <DependentUpon>EditUserPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml.cs">
-      <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
+    <Compile Include="MVVM\Views\UserViews\EditFacultyPopup.xaml.cs">
+      <DependentUpon>EditFacultyPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -258,10 +258,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MVVM\Views\UserViews\EditDepartmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\UserViews\EditFacultyDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditFacultyPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -36,7 +36,7 @@
             <TextBlock Text="Password"
                        Style="{StaticResource TextblockTheme}"/>
             <PasswordBox x:Name="PasswordInput"                    
-                     Style="{StaticResource PasswordboxTheme}" />
+                         Style="{StaticResource PasswordboxTheme}" />
             <TextBlock Text="Surname"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="SurnameInput"                    

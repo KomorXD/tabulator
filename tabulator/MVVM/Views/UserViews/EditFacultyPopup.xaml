@@ -1,4 +1,4 @@
-﻿<Window x:Class="tabulator.MVVM.Views.AdminViews.EditUserPopup"
+﻿<Window x:Class="tabulator.MVVM.Views.UserViews.EditFacultyPopup"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="AdminView" Height="380" Width="500"
+        Title="AdminView" Height="280" Width="700"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -21,7 +21,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="180"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -30,13 +30,11 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0"
-              Grid.ColumnSpan="2"
-              Grid.Row="0">
+            <Grid Grid.Column="2">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
-                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition />
                     <ColumnDefinition Width="30" />
                 </Grid.ColumnDefinitions>
 
@@ -47,57 +45,35 @@
                     Style="{StaticResource CloseButtonTheme}"
                     Click="btnClose_Click" />
             </Grid>
-
             <StackPanel Grid.Column="0"
                     Grid.Row="1">
-                <TextBlock Text="Username"
-                       Margin="0,5,0,0"
-                       Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="UsernameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
                 <TextBlock Text="Name"
+                           Width="300"
                        Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="NameInput"                    
+                <TextBox x:Name="NameInput"  
+                         Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
             </StackPanel>
             <StackPanel Grid.Column="1"
                     Grid.Row="1">
-                <TextBlock Text="Password"
-                       Margin="0,5,0,0"
+                <TextBlock Text="Address"
+                           Width="300"
                        Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="PasswordInput"                    
+                <TextBox x:Name="AddressInput" 
+                         Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
-                <TextBlock Text="Surname"
-                       Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="SurnameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-
             </StackPanel>
             <StackPanel Grid.Row="2"
                     Grid.ColumnSpan="2">
-                <TextBlock Text="Function"
-                       Margin="0,5,0,0"
-                       Style="{StaticResource TextblockTheme}"/>
-                <ComboBox Name="FunctionDropdown"
-                          Margin="0,20,0,0"
-                          Style="{StaticResource ComboBoxTheme}"
-                          Width="200">
-                    <ComboBoxItem IsSelected="True">User</ComboBoxItem>
-                    <ComboBoxItem>Admin</ComboBoxItem>
-                </ComboBox>
-
-
                 <Button x:Name="btnEdit"
-                        Margin="0,10,0,0"
-                        Width="100"
-                        Content="Edit"
-                        Click="btnEdit_Click"
-                        Style="{StaticResource ButtonTheme}"/>
-
+                    Margin="0,30,0,0"
+                    Content="Edit"
+                    Click="btnEdit_Click"
+                    Style="{StaticResource ButtonTheme}"/>
             </StackPanel>
 
         </Grid>
     </Border>
-    
-    
+
+
 </Window>
