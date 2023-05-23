@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tabulator.MVVM.Views.UserViews"
              mc:Ignorable="d" 
-             d:DesignHeight="520" d:DesignWidth="600"
+             d:DesignHeight="670" d:DesignWidth="900"
              Background="#364156">
 
     <Grid>
@@ -20,9 +20,11 @@
         </Grid.ColumnDefinitions>
 
         <TextBox Name="SearchTextBox"
+                 Margin="0,0,200,0"
                  TextChanged="SearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"/>
-        <Image Style="{StaticResource IconSearchStyle}"/>
+        <Image Style="{StaticResource IconSearchStyle}"
+               Margin="0,0,370,0"/>
 
         <DataGrid x:Name="DepartmentDataGrid"
                   x:FieldModifier="public"
