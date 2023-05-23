@@ -24,7 +24,7 @@
                  Style="{StaticResource SearchBarTheme}"/>
         <Image Style="{StaticResource IconSearchStyle}"/>
 
-        <DataGrid x:Name="DepartmentUserGrid"
+        <DataGrid x:Name="DepartmentDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="0"

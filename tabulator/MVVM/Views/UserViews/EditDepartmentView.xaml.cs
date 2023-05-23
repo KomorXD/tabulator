@@ -28,29 +28,29 @@ namespace tabulator.MVVM.Views.UserViews
         public EditDepartmentView()
         {
             InitializeComponent();
-            DepartmentUserGrid.ItemsSource = context.Departments.ToList();
-            dataGrid = DepartmentUserGrid;
+            DepartmentDataGrid.ItemsSource = context.Departments.ToList();
+            dataGrid = DepartmentDataGrid;
         }
             
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (DepartmentUserGrid.SelectedItem as Department).Id;
+            int ID = (DepartmentDataGrid.SelectedItem as Department).Id;
             EditDepartmentPopup editDepartment = new EditDepartmentPopup(ID);
             editDepartment.ShowDialog();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (DepartmentUserGrid.SelectedItem as Department).Id;
+            int ID = (DepartmentDataGrid.SelectedItem as Department).Id;
             var deleteDepartment = context.Departments.Where(m => m.Id == ID).Single();
             context.Departments.Remove(deleteDepartment);
             context.SaveChanges();
-            DepartmentUserGrid.ItemsSource = context.Departments.ToList();
+            DepartmentDataGrid.ItemsSource = context.Departments.ToList();
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = context.Departments.Where(x => x.Name.Contains(SearchTextBox.Text)).ToList();
-            DepartmentUserGrid.ItemsSource = result;
+            DepartmentDataGrid.ItemsSource = result;
         }
     }
 }
