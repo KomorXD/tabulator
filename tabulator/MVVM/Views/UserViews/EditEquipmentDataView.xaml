@@ -5,13 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tabulator.MVVM.Views.UserViews"
              mc:Ignorable="d" 
-             d:DesignHeight="520" d:DesignWidth="600"
+             d:DesignHeight="670" d:DesignWidth="900"
              Background="#364156">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="200"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -20,48 +19,68 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0"
-                    Grid.Row="1">
-            <TextBlock Text="Username"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="UsernameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="Name"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="NameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-        </StackPanel>
-        <StackPanel Grid.Column="1"
-                    Grid.Row="1">
-            <TextBlock Text="Password"
-                       Style="{StaticResource TextblockTheme}"/>
-            <PasswordBox x:Name="PasswordInput"                    
-                     Style="{StaticResource PasswordboxTheme}" />
-            <TextBlock Text="Surname"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="SurnameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
+        <TextBox Name="SearchTextBox"
+                 Margin="0,0,200,0"
+                 TextChanged="SearchTextBox_TextChanged"
+                 Style="{StaticResource SearchBarTheme}"/>
+        <Image Style="{StaticResource IconSearchStyle}"
+               Margin="0,0,370,0"/>
 
-        </StackPanel>
-        <StackPanel Grid.Row="2"
-                    Grid.ColumnSpan="2">
-            <TextBlock Text="Function"
-                       Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="FunctionDropdown"
-                      Margin="0,20,0,0"
-                      Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
-                <ComboBoxItem IsSelected="True">User</ComboBoxItem>
-                <ComboBoxItem>Admin</ComboBoxItem>
-            </ComboBox>
+        <DataGrid x:Name="EquipmentDataGrid"
+                  x:FieldModifier="public"
+                  Grid.Row="1"              
+                  Grid.Column="0"
+                  Grid.ColumnSpan="6"                 
+                  Style="{DynamicResource DataGridStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  CellStyle="{DynamicResource DataGridCellStyle1}"
+                  RowStyle="{DynamicResource DataGridRowStyle1}" Margin="20,27,20,193">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Description"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="RoomID"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding RoomId}"/>
+                <DataGridTextColumn Header="Available"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Available}"/>
+                <DataGridTextColumn Header="NotInUse"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding NotInUse}"/>
+                <DataGridTextColumn Header="Destroyed"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Destroyed}"/>
 
 
-            <Button x:Name="btnLogin"
-                    Margin="0,80,0,0"
-                    Content="Add"
-                    Style="{StaticResource ButtonTheme}"/>
-
-        </StackPanel>
-
+                <DataGridTemplateColumn Header="Operations"
+                                        IsReadOnly="True"
+                                        Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="BtnEdit"
+                                                Cursor="Hand"
+                                                Style="{StaticResource EditButtonTheme}"
+                                                Click="BtnEdit_Click"/>
+                                <Button x:Name="BtnDelete"
+                                                Cursor="Hand"
+                                                Style="{StaticResource DeleteButtonTheme}"
+                                                Click="BtnDelete_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

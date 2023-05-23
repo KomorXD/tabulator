@@ -102,6 +102,9 @@
     <Compile Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml.cs">
       <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditEquipmentPopup.xaml.cs">
+      <DependentUpon>EditEquipmentPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Views\UserViews\EditFacultyPopup.xaml.cs">
       <DependentUpon>EditFacultyPopup.xaml</DependentUpon>
     </Compile>
@@ -270,6 +273,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\UserViews\EditEquipmentDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditEquipmentPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
