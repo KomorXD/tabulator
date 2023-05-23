@@ -41,7 +41,7 @@
                 <DataGridTextColumn Header="Faculty ID"
                                     IsReadOnly="True"
                                     Width="*"
-                                    Binding="{Binding FacultyID}"/>
+                                    Binding="{Binding FacultyId}"/>
 
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"

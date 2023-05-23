@@ -113,8 +113,6 @@
     <Compile Include="MVVM\Viewmodels\AdminVM\AddUserViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\AdminViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\AdminVM\EditUserDataViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\AdminVM\EditUserPermissionsViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\AdminVM\RemoveUserViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\UserViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\UserVM\AddDepartmentViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\UserVM\AddEquipmentViewModel.cs" />
@@ -134,14 +132,8 @@
     <Compile Include="MVVM\Views\AdminViews\EditUserDataView.xaml.cs">
       <DependentUpon>EditUserDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\AdminViews\EditUserPermissionsView.xaml.cs">
-      <DependentUpon>EditUserPermissionsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Views\AdminViews\RemoveUserView.xaml.cs">
-      <DependentUpon>RemoveUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Views\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
@@ -197,19 +189,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\AdminViews\EditUserPermissionsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MVVM\Views\AdminViews\EditUserPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\Views\AdminViews\RemoveUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
