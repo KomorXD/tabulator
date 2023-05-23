@@ -2,8 +2,66 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:tabulator"
-             StartupUri="Views/LoginView.xaml">
+             xmlns:adminVM="clr-namespace:tabulator.MVVM.Viewmodels.AdminVM"
+             xmlns:userVM="clr-namespace:tabulator.MVVM.Viewmodels.UserVM"
+             xmlns:adminView="clr-namespace:tabulator.MVVM.Views.AdminViews"
+             xmlns:userView="clr-namespace:tabulator.MVVM.Views.UserViews"
+             StartupUri="MVVM/Views/AdminView.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MVVM/Views/Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/InputTextboxTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/TextblockTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/ComboBoxTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/SearchBarTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/DataGridTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type adminVM:AddUserViewModel}">
+                <adminView:AddUserView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type adminVM:EditUserDataViewModel}">
+                <adminView:EditUserDataView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:AddDepartmentViewModel}">
+                <userView:AddDepartmentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:AddEquipmentViewModel}">
+                <userView:AddEquipmentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:AddFacultyViewModel}">
+                <userView:AddFacultyView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:AddRoomViewModel}">
+                <userView:AddRoomView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:EditDepartmentDataViewModel}">
+                <userView:EditDepartmentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:EditFacultyDataViewModel}">
+                <userView:EditFacultyDataView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:EditRoomDataViewModel}">
+                <userView:EditRoomDataView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:EditEquipmentDataViewModel}">
+                <userView:EditEquipmentDataView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:EmployeeAssignmentViewModel}">
+                <userView:EmployeeAssignmentView/>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

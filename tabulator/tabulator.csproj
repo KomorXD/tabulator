@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,23 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +53,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,8 +81,96 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\LoginView.xaml.cs">
+    <Compile Include="Controllers\DBContext.cs" />
+    <Compile Include="Core\ObservableObject.cs" />
+    <Compile Include="Core\PasswordManager.cs" />
+    <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="MVVM\Models\Department.cs" />
+    <Compile Include="MVVM\Models\DepartmentRooms.cs" />
+    <Compile Include="MVVM\Models\DepartmentTechEmployee.cs" />
+    <Compile Include="MVVM\Models\Employee.cs" />
+    <Compile Include="MVVM\Models\EquipmentCaretakers.cs" />
+    <Compile Include="MVVM\Models\EquipmentItem.cs" />
+    <Compile Include="MVVM\Models\Faculty.cs" />
+    <Compile Include="MVVM\Models\FacultyRooms.cs" />
+    <Compile Include="MVVM\Models\FacultyTechEmployee.cs" />
+    <Compile Include="MVVM\Models\UserFunction.cs" />
+    <Compile Include="MVVM\Models\User.cs" />
+    <Compile Include="MVVM\Models\Room.cs" />
+    <Compile Include="MVVM\Views\AdminViews\EditUserPopup.xaml.cs">
+      <DependentUpon>EditUserPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml.cs">
+      <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditEquipmentPopup.xaml.cs">
+      <DependentUpon>EditEquipmentPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditFacultyPopup.xaml.cs">
+      <DependentUpon>EditFacultyPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditRoomPopup.xaml.cs">
+      <DependentUpon>EditRoomPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Viewmodels\AdminVM\AddUserViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\AdminViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\AdminVM\EditUserDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddDepartmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddEquipmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddFacultyViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddRoomViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditDepartmentDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditEquipmentDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditFacultyDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditRoomDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeAssignmentViewModel.cs" />
+    <Compile Include="MVVM\Views\AdminViews\AddUserView.xaml.cs">
+      <DependentUpon>AddUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\AdminView.xaml.cs">
+      <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\AdminViews\EditUserDataView.xaml.cs">
+      <DependentUpon>EditUserDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\AddDepartmentView.xaml.cs">
+      <DependentUpon>AddDepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\AddEquipmentView.xaml.cs">
+      <DependentUpon>AddEquipmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\AddFacultyView.xaml.cs">
+      <DependentUpon>AddFacultyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\AddRoomView.xaml.cs">
+      <DependentUpon>AddRoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditDepartmentView.xaml.cs">
+      <DependentUpon>EditDepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditEquipmentDataView.xaml.cs">
+      <DependentUpon>EditEquipmentDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditFacultyDataView.xaml.cs">
+      <DependentUpon>EditFacultyDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditRoomDataView.xaml.cs">
+      <DependentUpon>EditRoomDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml.cs">
+      <DependentUpon>EmployeeAssignmentView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -70,7 +184,107 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\LoginView.xaml">
+    <Page Include="MVVM\Views\AdminViews\AddUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\AdminViews\EditUserDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\AdminViews\EditUserPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Themes\ButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Themes\ComboBoxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Themes\DataGridTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Themes\InputTextboxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Themes\MenuButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Themes\SearchBarTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Themes\TextblockTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\AddDepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\AddEquipmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\AddFacultyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\AddRoomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditDepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditEquipmentDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditEquipmentPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditFacultyDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditFacultyPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditRoomDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditRoomPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,26 +298,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\loginBg.jpg" />
@@ -111,5 +315,42 @@
   <ItemGroup>
     <Resource Include="Resources\Images\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icsearch.png" />
+    <Resource Include="Resources\Images\deletedark.png" />
+    <Resource Include="Resources\Images\editdark.png" />
+    <Resource Include="Resources\Images\deletelight.png" />
+    <Resource Include="Resources\Images\editlight.png" />
+    <Resource Include="Resources\Images\helpicon.png" />
+    <Resource Include="Resources\Images\helpicon2.png" />
+    <Content Include="_Data\EqRecordsDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_Data\EqRecordsDB_log.ldf">
+      <DependentUpon>EqRecordsDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

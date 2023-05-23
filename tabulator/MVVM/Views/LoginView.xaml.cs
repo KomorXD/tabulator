@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +13,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.DatabaseContext;
+using tabulator.MVVM.Models;
+using tabulator.MVVM.Views.AdminViews;
 
-namespace tabulator.Views
+namespace tabulator.MVVM.Views
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
@@ -22,6 +27,20 @@ namespace tabulator.Views
         public LoginView()
         {
             InitializeComponent();
+        }
+
+        private void SwitchToAdminView(object sender, RoutedEventArgs e)
+        {
+            AdminView adminView = new AdminView();
+            adminView.Show();
+            this.Hide();
+        }
+
+        private void SwitchToUserView(object sender, RoutedEventArgs e)
+        {
+            UserView userView = new UserView();
+            userView.Show();
+            this.Hide();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -44,7 +63,10 @@ namespace tabulator.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            //we se to ogarnijcie rzeby dzialalo
+            string username = UsernameInput.Text;
+            PasswordBox passwordBox = PasswordInput;
+            SwitchToUserView(sender, e);
         }
     }
 }
