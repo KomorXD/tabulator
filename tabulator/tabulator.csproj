@@ -99,6 +99,9 @@
     <Compile Include="MVVM\Views\AdminViews\EditUserPopup.xaml.cs">
       <DependentUpon>EditUserPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml.cs">
+      <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -252,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\UserViews\AddRoomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

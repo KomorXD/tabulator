@@ -32,7 +32,12 @@ namespace tabulator.MVVM.Views.AdminViews
             UserDataGrid.ItemsSource = context.Users.ToList();
             dataGrid = UserDataGrid;
         }
-
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            int ID = (UserDataGrid.SelectedItem as User).Id;
+            EditUserPopup editUser = new EditUserPopup(ID);
+            editUser.ShowDialog();
+        }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             int ID = (UserDataGrid.SelectedItem as User).Id;
@@ -40,13 +45,6 @@ namespace tabulator.MVVM.Views.AdminViews
             context.Users.Remove(deleteUser);
             context.SaveChanges();
             UserDataGrid.ItemsSource = context.Users.ToList();
-        }
-
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            int ID = (UserDataGrid.SelectedItem as User).Id;
-            EditUserPopup editUser = new EditUserPopup(ID);
-            editUser.ShowDialog();
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
