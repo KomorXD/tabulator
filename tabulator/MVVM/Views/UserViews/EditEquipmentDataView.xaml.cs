@@ -53,5 +53,10 @@ namespace tabulator.MVVM.Views.UserViews
             var result = context.Equipment.Where(x => x.Name.Contains(SearchTextBox.Text) || x.RoomId.ToString().Contains(SearchTextBox.Text)).ToList();
             EquipmentDataGrid.ItemsSource = result;
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

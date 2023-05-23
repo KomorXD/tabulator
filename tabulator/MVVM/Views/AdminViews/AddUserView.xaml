@@ -68,6 +68,10 @@
                     Style="{StaticResource ButtonTheme}"/>
 
         </StackPanel>
-        
+        <Button Name="btnHelp"
+                Grid.Column="1"
+                Grid.Row="2"
+                Style="{StaticResource HelpButtonTheme}"
+                Click="btnHelp_Click"/>
     </Grid>
 </UserControl>

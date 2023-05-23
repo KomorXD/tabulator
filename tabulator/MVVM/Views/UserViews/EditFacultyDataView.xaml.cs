@@ -54,5 +54,10 @@ namespace tabulator.MVVM.Views.UserViews
             var result = context.Faculties.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Address.Contains(SearchTextBox.Text)).ToList();
             FacultiesDataGrid.ItemsSource = result;
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            helpPopup.IsOpen = !helpPopup.IsOpen;
+        }
     }
 }

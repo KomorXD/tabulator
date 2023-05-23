@@ -52,5 +52,10 @@ namespace tabulator.MVVM.Views.UserViews
             var result = context.Departments.Where(x => x.Name.Contains(SearchTextBox.Text) || x.FacultyId.ToString().Contains(SearchTextBox.Text)).ToList();
             DepartmentDataGrid.ItemsSource = result;
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

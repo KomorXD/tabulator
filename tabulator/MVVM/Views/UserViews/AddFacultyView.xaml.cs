@@ -18,5 +18,10 @@ namespace tabulator.MVVM.Views.UserViews
             string name = NameInput.Text;
             string address = AddressInput.Text;   
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

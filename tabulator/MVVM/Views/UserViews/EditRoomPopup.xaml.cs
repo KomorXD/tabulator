@@ -11,30 +11,55 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 
 namespace tabulator.MVVM.Views.UserViews
 {
     /// <summary>
-    /// Interaction logic for AddRoomView.xaml
+    /// Interaction logic for EditRoomPopup.xaml
     /// </summary>
-    public partial class AddRoomView : UserControl
+    public partial class EditRoomPopup : Window
     {
-        public AddRoomView()
+        DBContext context = DBContext.GetInstance();
+        int Id;
+
+        public EditRoomPopup(int RoomID)
         {
             InitializeComponent();
             RoomTypeDropdownSelectionChanged(null, null);
+            Id = RoomID;
+
+            var editRoom = (from m in context.Rooms where m.Id == RoomID select m).FirstOrDefault();
+            RoomNumberInput.Text = editRoom.Number;
         }
 
-        private void btnAddRoom_Click(object sender, RoutedEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            string roomNumber = RoomNumberInput.Text;
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (from m in context.Rooms where m.Id == Id select m).FirstOrDefault();
+            room.Number = RoomNumberInput.Text;
+            context.SaveChanges();
+            EditRoomDataView.dataGrid.ItemsSource = context.Rooms.ToList();
+            this.Close();
         }
 
         private void RoomTypeDropdownSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedRoomType = ((ComboBoxItem)RoomTypeDropdown.SelectedItem)?.Content?.ToString();
-            switch(selectedRoomType)
+            switch (selectedRoomType)
             {
                 case "Faculty":
                     RoomTypeText.Text = "Faculty";
@@ -54,11 +79,6 @@ namespace tabulator.MVVM.Views.UserViews
                     RoomTypeItemDropdown.SelectedIndex = 0;
                     break;
             }
-        }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

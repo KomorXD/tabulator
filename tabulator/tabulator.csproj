@@ -109,6 +109,9 @@
     <Compile Include="MVVM\Views\UserViews\EditFacultyPopup.xaml.cs">
       <DependentUpon>EditFacultyPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditRoomPopup.xaml.cs">
+      <DependentUpon>EditRoomPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -277,6 +280,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\Views\UserViews\EditRoomPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -326,6 +333,8 @@
     <Resource Include="Resources\Images\editdark.png" />
     <Resource Include="Resources\Images\deletelight.png" />
     <Resource Include="Resources\Images\editlight.png" />
+    <Resource Include="Resources\Images\helpicon.png" />
+    <Resource Include="Resources\Images\helpicon2.png" />
     <Content Include="_Data\EqRecordsDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
