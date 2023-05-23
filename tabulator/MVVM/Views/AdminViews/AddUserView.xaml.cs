@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using tabulator.Core;
 using tabulator.MVVM.Models;
 using tabulator.MVVM.Viewmodels.AdminVM;
 
@@ -34,32 +35,35 @@ namespace tabulator.MVVM.Views.AdminViews
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             User addUser = new User();
-            PasswordBox passwordBox = PasswordInput;
+
             addUser.Username = UsernameInput.Text;
             addUser.Name = NameInput.Text;
             addUser.Surname = SurnameInput.Text;
-            addUser.Password = "xdddd";
+            addUser.Salt = PasswordManager.GenerateSalt();
+            addUser.Password = PasswordManager.HashPassword(PasswordInput.Password, addUser.Salt);
 
-            ComboBoxItem selectedObject = FunctionDropdown.SelectedItem as ComboBoxItem;
-            if (selectedObject != null)
-            {
-                string selectedValue = selectedObject.ToString();
-                if(selectedValue == "System.Windows.Controls.ComboBoxItem: User") 
-                {
-                    addUser.FunctionId = UserFunction.USER_ROLE;
-                }
-                if (selectedValue == "System.Windows.Controls.ComboBoxItem: Admin")
-                {
-                    addUser.FunctionId = UserFunction.ADMIN_ROLE;
-                }
-            }
-            else
-            {
-                // No item is selected
-            }
+            string selectedRole = ((ComboBoxItem)FunctionDropdown.SelectedItem)?.Content?.ToString();
+            SelectRole(addUser, selectedRole);
 
             ViewModel.AddPerson(addUser);
             ClearTextBoxes();
+        }
+
+        private static void SelectRole(User addUser, string selectedRole)
+        {
+            switch (selectedRole)
+            {
+                case "User":
+                    addUser.FunctionId = UserFunction.USER_ROLE;
+                    break;
+                case "Admin":
+                    addUser.FunctionId = UserFunction.ADMIN_ROLE;
+                    break;
+
+                default:
+                    addUser.FunctionId = UserFunction.USER_ROLE;
+                    break;
+            }
         }
 
         void ClearTextBoxes()
