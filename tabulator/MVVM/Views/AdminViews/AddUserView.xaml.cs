@@ -40,17 +40,17 @@ namespace tabulator.MVVM.Views.AdminViews
             User addUser = new User();
             GetUserInfo(addUser);
 
-            if(ValidateUser(addUser))
+            if (ValidateUser(addUser))
             {
                 ViewModel.AddPerson(addUser);
             }
-            
+
             ClearTextBoxes();
         }
 
         private bool ValidateUser(User addUser)
         {
-            if(ManyTextBoxesEmpty())
+            if (ManyTextBoxesEmpty())
             {
                 SetWarning(msg: "Uzupelnij wszy pola");
                 return false;
@@ -83,7 +83,7 @@ namespace tabulator.MVVM.Views.AdminViews
             DBContext context = DBContext.GetInstance();
 
             bool isUsernameTaken = context.Users.Any(u => u.Username.Equals(addUser.Username));
-            if(isUsernameTaken)
+            if (isUsernameTaken)
             {
                 SetWarning(msg: "Username taken");
                 return false;
@@ -123,10 +123,10 @@ namespace tabulator.MVVM.Views.AdminViews
         bool ManyTextBoxesEmpty()
         {
             int textBoxEmptyCount = 0;
-            if(UsernameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
-            if(NameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
-            if(PasswordInput.Password.Equals(string.Empty)) textBoxEmptyCount++;
-            if(SurnameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
+            if (UsernameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
+            if (NameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
+            if (PasswordInput.Password.Equals(string.Empty)) textBoxEmptyCount++;
+            if (SurnameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
 
             if (textBoxEmptyCount > 1)
                 return true;
@@ -145,6 +145,11 @@ namespace tabulator.MVVM.Views.AdminViews
         void SetWarning(string msg)
         {
             errorPlaceholder.Text = msg;
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
