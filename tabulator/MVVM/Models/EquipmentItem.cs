@@ -13,6 +13,9 @@ namespace tabulator.MVVM.Models
         [Column]
         public string Name { get; set; }
 
+        [Column] 
+        public string Description { get; set; }
+
         [Column]
         public bool Available { get; set; }
 

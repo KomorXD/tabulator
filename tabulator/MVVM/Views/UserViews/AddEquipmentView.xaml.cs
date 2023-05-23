@@ -28,6 +28,7 @@ namespace tabulator.MVVM.Views.UserViews
             InitializeComponent();
             RoomDropdownSelection(null, null);
         }
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             string name =        NameInput.Text;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using tabulator.Core;
+using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 using tabulator.MVVM.Viewmodels.AdminVM;
 
@@ -28,38 +31,107 @@ namespace tabulator.MVVM.Views.AdminViews
         {
             InitializeComponent();
             ViewModel = new AddUserViewModel();
-
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            SetWarning(msg: string.Empty);
+
             User addUser = new User();
-            PasswordBox passwordBox = PasswordInput;
+            GetUserInfo(addUser);
+
+            if(ValidateUser(addUser))
+            {
+                ViewModel.AddPerson(addUser);
+            }
+            
+            ClearTextBoxes();
+        }
+
+        private bool ValidateUser(User addUser)
+        {
+            if(ManyTextBoxesEmpty())
+            {
+                SetWarning(msg: "Uzupelnij wszy pola");
+                return false;
+            }
+
+            if (UsernameInput.Text.Equals(string.Empty))
+            {
+                SetWarning(msg: "Pusty username");
+                return false;
+            }
+
+            if (PasswordInput.Password.Equals(string.Empty))
+            {
+                SetWarning(msg: "Pusty pass");
+                return false;
+            }
+
+            if (NameInput.Text.Equals(string.Empty))
+            {
+                SetWarning(msg: "Pusty name");
+                return false;
+            }
+
+            if (SurnameInput.Text.Equals(string.Empty))
+            {
+                SetWarning(msg: "Pusty sur");
+                return false;
+            }
+
+            DBContext context = DBContext.GetInstance();
+
+            bool isUsernameTaken = context.Users.Any(u => u.Username.Equals(addUser.Username));
+            if(isUsernameTaken)
+            {
+                SetWarning(msg: "Username taken");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void GetUserInfo(User addUser)
+        {
             addUser.Username = UsernameInput.Text;
             addUser.Name = NameInput.Text;
             addUser.Surname = SurnameInput.Text;
-            addUser.Password = "xdddd";
+            addUser.Salt = PasswordManager.GenerateSalt();
+            addUser.Password = PasswordManager.HashPassword(PasswordInput.Password, addUser.Salt);
+            string selectedRole = ((ComboBoxItem)FunctionDropdown.SelectedItem)?.Content?.ToString();
+            SelectRole(addUser, selectedRole);
+        }
 
-            ComboBoxItem selectedObject = FunctionDropdown.SelectedItem as ComboBoxItem;
-            if (selectedObject != null)
+        private void SelectRole(User addUser, string selectedRole)
+        {
+            switch (selectedRole)
             {
-                string selectedValue = selectedObject.ToString();
-                if(selectedValue == "System.Windows.Controls.ComboBoxItem: User") 
-                {
+                case "User":
                     addUser.FunctionId = UserFunction.USER_ROLE;
-                }
-                if (selectedValue == "System.Windows.Controls.ComboBoxItem: Admin")
-                {
+                    break;
+                case "Admin":
                     addUser.FunctionId = UserFunction.ADMIN_ROLE;
-                }
-            }
-            else
-            {
-                // No item is selected
-            }
+                    break;
 
-            ViewModel.AddPerson(addUser);
-            ClearTextBoxes();
+                default:
+                    addUser.FunctionId = UserFunction.USER_ROLE;
+                    break;
+            }
+        }
+
+        bool ManyTextBoxesEmpty()
+        {
+            int textBoxEmptyCount = 0;
+            if(UsernameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
+            if(NameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
+            if(PasswordInput.Password.Equals(string.Empty)) textBoxEmptyCount++;
+            if(SurnameInput.Text.Equals(string.Empty)) textBoxEmptyCount++;
+
+            if (textBoxEmptyCount > 1)
+                return true;
+            else
+                return false;
         }
 
         void ClearTextBoxes()
@@ -68,6 +140,11 @@ namespace tabulator.MVVM.Views.AdminViews
             NameInput.Clear();
             PasswordInput.Clear();
             SurnameInput.Clear();
+        }
+
+        void SetWarning(string msg)
+        {
+            errorPlaceholder.Text = msg;
         }
     }
 }

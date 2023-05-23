@@ -27,17 +27,6 @@
                 <adminView:EditUserDataView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type adminVM:EditUserPermissionsViewModel}">
-                <adminView:EditUserPermissionsView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type adminVM:RemoveUserViewModel}">
-                <adminView:RemoveUserView/>
-            </DataTemplate>
-            
-            
-            
-
             <DataTemplate DataType="{x:Type userVM:AddDepartmentViewModel}">
                 <userView:AddDepartmentView/>
             </DataTemplate>

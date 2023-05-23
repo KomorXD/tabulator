@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="AdminView" Height="550" Width="800"
+        Title="AdminView" Height="700" Width="1100"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -34,7 +34,7 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="600"/>
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.ColumnSpan="2"
@@ -44,10 +44,9 @@
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="3" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="TAB PROJEKT - Admin"
@@ -88,18 +87,10 @@
                                      IsChecked="True"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddUserViewCommand}"/>
-                        
+
                         <RadioButton Content="Edit user data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditUserDataViewCommand}"/>
-                        
-                        <RadioButton Content="Edit user permissions" 
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding EditUserPermissionsViewCommand}"/>
-
-                        <RadioButton Content="Remove user"
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding RemoveUserViewCommand}"/>
 
                     </StackPanel>
                     

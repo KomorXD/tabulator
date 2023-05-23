@@ -17,6 +17,9 @@ namespace tabulator.MVVM.Models {
         public string Password { get; set; }
 
         [Column]
+        public string Salt { get; set; }
+
+        [Column]
         public string Name { get; set; }
 
         [Column]

@@ -35,7 +35,9 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            int ID = (FacultiesDataGrid.SelectedItem as Faculty).Id;
+            EditFacultyPopup editFaculty = new EditFacultyPopup(ID);
+            editFaculty.ShowDialog();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
