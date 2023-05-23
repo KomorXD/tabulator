@@ -87,18 +87,10 @@
                                      IsChecked="True"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddUserViewCommand}"/>
-                        
+
                         <RadioButton Content="Edit user data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditUserDataViewCommand}"/>
-                        
-                        <RadioButton Content="Edit user permissions" 
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding EditUserPermissionsViewCommand}"/>
-
-                        <RadioButton Content="Remove user"
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding RemoveUserViewCommand}"/>
 
                     </StackPanel>
                     

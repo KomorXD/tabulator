@@ -12,14 +12,9 @@ namespace tabulator.MVVM.Viewmodels
     {
         public RelayCommand AddUserViewCommand { get; set; }
         public RelayCommand EditUserDataViewCommand { get; set; }
-        public RelayCommand EditUserPermissionsViewCommand { get; set; }
-        public RelayCommand RemoveUserViewCommand { get; set; }
-
 
         public AddUserViewModel AddUserVM { get; set; }
         public EditUserDataViewModel EditUserDataVM { get; set; }
-        public EditUserPermissionsViewModel EditUserPermissionsVM { get; set; }
-        public RemoveUserViewModel RemoveUserVM { get; set; }
 
         private object _currentView;
 
@@ -37,8 +32,6 @@ namespace tabulator.MVVM.Viewmodels
         {
             AddUserVM             = new AddUserViewModel();
             EditUserDataVM        = new EditUserDataViewModel();
-            EditUserPermissionsVM = new EditUserPermissionsViewModel();
-            RemoveUserVM          = new RemoveUserViewModel();
 
             CurrentView = AddUserVM;
 
@@ -50,16 +43,6 @@ namespace tabulator.MVVM.Viewmodels
             EditUserDataViewCommand = new RelayCommand(o =>
             {
                 CurrentView = EditUserDataVM;
-            });
-
-            EditUserPermissionsViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = EditUserPermissionsVM;
-            });
-
-            RemoveUserViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = RemoveUserVM;
             });
         }
     }
