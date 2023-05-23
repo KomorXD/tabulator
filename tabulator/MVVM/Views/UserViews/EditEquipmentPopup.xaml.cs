@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.DatabaseContext;
+using tabulator.MVVM.Models;
 
 namespace tabulator.MVVM.Views.UserViews
 {
@@ -19,9 +21,21 @@ namespace tabulator.MVVM.Views.UserViews
     /// </summary>
     public partial class EditEquipmentPopup : Window
     {
-        public EditEquipmentPopup(int iD)
+        DBContext context = DBContext.GetInstance();
+        int Id;
+
+        public EditEquipmentPopup(int EquipmentID)
         {
             InitializeComponent();
+            Id = EquipmentID;
+
+            var editEquipment = (from m in context.Equipment where m.Id == EquipmentID select m).FirstOrDefault();
+            NameInput.Text = editEquipment.Name;
+            DescriptionInput.Text = editEquipment.Description;
+
+            RoomDropdown.Items.Add(new ComboBoxItem() { Content = "Room Example 1" });
+            RoomDropdown.Items.Add(new ComboBoxItem() { Content = "Room Example 2" });
+            RoomDropdown.SelectedIndex = 0;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -31,17 +45,23 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            EquipmentItem equipment = (from m in context.Equipment where m.Id == Id select m).FirstOrDefault();
+            equipment.Name = NameInput.Text;
+            equipment.Description = DescriptionInput.Text;
 
+            // do ogarniecia przez tylny koniec xd
+
+            context.SaveChanges();
+            EditEquipmentDataView.dataGrid.ItemsSource = context.Equipment.ToList();
+            this.Close();
         }
     }
 }
