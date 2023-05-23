@@ -5,9 +5,71 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tabulator.MVVM.Views.AdminViews"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="DarkGreen">
+             d:DesignHeight="520" d:DesignWidth="600"
+             Background="#364156">
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBox Name="SearchTextBox"
+                 TextChanged="SearchTextBox_TextChanged"
+                 Style="{StaticResource SearchBarTheme}"/>
+        <Image Style="{StaticResource IconSearchStyle}"/>
+
+        <DataGrid x:Name="UserDataGrid"
+                  x:FieldModifier="public"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  Style="{DynamicResource DataGridStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  CellStyle="{DynamicResource DataGridCellStyle1}"
+                  RowStyle="{DynamicResource DataGridRowStyle1}" Margin="20,27,20,193">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Username"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Username}"/>
+                <DataGridTextColumn Header="Password"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Name"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Surname"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Surname}"/>
+
+                <DataGridTemplateColumn Header="Operations"
+                                        IsReadOnly="True"
+                                        Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="BtnEdit"
+                                                Cursor="Hand"
+                                                Style="{StaticResource EditButtonTheme}"
+                                                Click="BtnEdit_Click"/>
+                                <Button x:Name="BtnDelete"
+                                                Cursor="Hand"
+                                                Style="{StaticResource DeleteButtonTheme}"
+                                                Click="BtnDelete_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

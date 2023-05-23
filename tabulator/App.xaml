@@ -6,7 +6,7 @@
              xmlns:userVM="clr-namespace:tabulator.MVVM.Viewmodels.UserVM"
              xmlns:adminView="clr-namespace:tabulator.MVVM.Views.AdminViews"
              xmlns:userView="clr-namespace:tabulator.MVVM.Views.UserViews"
-             StartupUri="MVVM/Views/LoginView.xaml">
+             StartupUri="MVVM/Views/AdminView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,6 +15,8 @@
                 <ResourceDictionary Source="MVVM/Views/Themes/TextblockTheme.xaml"/>
                 <ResourceDictionary Source="MVVM/Views/Themes/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="MVVM/Views/Themes/ComboBoxTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/SearchBarTheme.xaml"/>
+                <ResourceDictionary Source="MVVM/Views/Themes/DataGridTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type adminVM:AddUserViewModel}">

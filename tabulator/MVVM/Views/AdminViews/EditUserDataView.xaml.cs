@@ -23,24 +23,36 @@ namespace tabulator.MVVM.Views.AdminViews
     /// </summary>
     public partial class EditUserDataView : UserControl
     {
+        DBContext context = DBContext.GetInstance();
+        public static DataGrid dataGrid;
+
         public EditUserDataView()
         {
             InitializeComponent();
+            UserDataGrid.ItemsSource = context.Users.ToList();
+            dataGrid = UserDataGrid;
+        }
 
-            DBContext context = DBContext.GetInstance();
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int ID = (UserDataGrid.SelectedItem as User).Id;
+            var deleteUser = context.Users.Where(m  => m.Id == ID).Single();
+            context.Users.Remove(deleteUser);
+            context.SaveChanges();
+            UserDataGrid.ItemsSource = context.Users.ToList();
+        }
 
-            //Employee employee = context.Employees.Find(18);
-            //Employee employee2 = new Employee
-            //{
-            //    Name = "Ziutek",
-            //    Surname = "Eluwa",
-            //    PESEL = "123456",
-            //    PhoneNumber = "111111"
-            //};
-            //context.Employees.Attach(employee);
-            //context.Employees.Remove(employee);
-            //context.Employees.Add(employee2);
-            //context.SaveChanges();
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            int ID = (UserDataGrid.SelectedItem as User).Id;
+            EditUserPopup editUser = new EditUserPopup(ID);
+            editUser.ShowDialog();
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var result = context.Users.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Surname.Contains(SearchTextBox.Text) || x.Username.Contains(SearchTextBox.Text)).ToList();
+            UserDataGrid.ItemsSource = result;
         }
     }
 }
