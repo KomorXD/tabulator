@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="AdminView" Height="380" Width="500"
+        Title="AdminView" Height="280" Width="700"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -30,13 +30,11 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0"
-                  Grid.ColumnSpan="2"
-                  Grid.Row="0">
+            <Grid Grid.Column="2">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
-                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition />
                     <ColumnDefinition Width="30" />
                 </Grid.ColumnDefinitions>
 
@@ -50,15 +48,19 @@
             <StackPanel Grid.Column="0"
                     Grid.Row="1">
                 <TextBlock Text="Name"
+                           Width="300"
                        Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="NameInput"                    
+                <TextBox x:Name="NameInput"  
+                         Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
             </StackPanel>
             <StackPanel Grid.Column="1"
                     Grid.Row="1">
                 <TextBlock Text="Address"
+                           Width="300"
                        Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="AddressInput"                    
+                <TextBox x:Name="AddressInput" 
+                         Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
             </StackPanel>
             <StackPanel Grid.Row="2"
