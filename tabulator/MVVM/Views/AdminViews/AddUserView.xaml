@@ -55,9 +55,14 @@
                 <ComboBoxItem>Admin</ComboBoxItem>
             </ComboBox>
 
+            <TextBlock Name="errorPlaceholder"
+                       Width="550"
+                       TextAlignment="Center"
+                       Style="{StaticResource TextblockTheme}"/>
+
 
             <Button x:Name="btnLogin"
-                    Margin="0,80,0,0"
+                    Margin="0,40,0,0"
                     Content="Add"
                     Click="btnAdd_Click"
                     Style="{StaticResource ButtonTheme}"/>
