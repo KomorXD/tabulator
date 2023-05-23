@@ -69,5 +69,10 @@ namespace tabulator.MVVM.Views.AdminViews
             PasswordInput.Clear();
             SurnameInput.Clear();
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

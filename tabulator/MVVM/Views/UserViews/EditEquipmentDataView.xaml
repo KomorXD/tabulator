@@ -82,5 +82,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Name="btnHelp"
+                Grid.Column="1"
+                Grid.Row="1"
+                Style="{StaticResource HelpButtonTheme}"
+                Click="btnHelp_Click"/>
     </Grid>
 </UserControl>

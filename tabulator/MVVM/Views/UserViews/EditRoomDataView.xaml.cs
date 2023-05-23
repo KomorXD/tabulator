@@ -50,5 +50,10 @@ namespace tabulator.MVVM.Views.UserViews
             var result = context.Rooms.Where(x => x.Number.ToString().Contains(SearchTextBox.Text)).ToList();
             RoomDataGrid.ItemsSource = result;
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

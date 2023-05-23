@@ -55,5 +55,10 @@ namespace tabulator.MVVM.Views.UserViews
                     break;
             }
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

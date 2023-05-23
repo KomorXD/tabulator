@@ -332,6 +332,8 @@
     <Resource Include="Resources\Images\editdark.png" />
     <Resource Include="Resources\Images\deletelight.png" />
     <Resource Include="Resources\Images\editlight.png" />
+    <Resource Include="Resources\Images\helpicon.png" />
+    <Resource Include="Resources\Images\helpicon2.png" />
     <Content Include="_Data\EqRecordsDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
