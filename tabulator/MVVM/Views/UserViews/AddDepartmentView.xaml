@@ -17,13 +17,13 @@
 
         <StackPanel Grid.Row="1">
             <TextBlock Text="Name"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"  
-                     Width="300"
+                     Width="400"
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Faculty"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox Name="FacultyDropdown"
                       Margin="0,20,0,0"
