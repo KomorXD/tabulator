@@ -55,8 +55,6 @@ namespace tabulator.MVVM.Views.UserViews
             {
                 FacultyDropdown.Items.Add(new ComboBoxItem() { Content = faculty.Name });
             }
-            FacultyDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 1" });
-            FacultyDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 2" });
             FacultyDropdown.SelectedIndex = 0;
         }
 
