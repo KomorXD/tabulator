@@ -34,7 +34,7 @@
                   Style="{DynamicResource DataGridStyle1}"
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
-                  RowStyle="{DynamicResource DataGridRowStyle1}" Margin="20,27,20,193">
+                  RowStyle="{DynamicResource DataGridRowStyle1}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                                     IsReadOnly="True"
@@ -46,25 +46,23 @@
                                     Binding="{Binding Description}"/>
                 <DataGridTextColumn Header="RoomID"
                                     IsReadOnly="True"
-                                    Width="*"
+                                    Width="70"
                                     Binding="{Binding RoomId}"/>
                 <DataGridTextColumn Header="Available"
                                     IsReadOnly="True"
-                                    Width="*"
+                                    Width="80"
                                     Binding="{Binding Available}"/>
                 <DataGridTextColumn Header="NotInUse"
                                     IsReadOnly="True"
-                                    Width="*"
+                                    Width="80"
                                     Binding="{Binding NotInUse}"/>
                 <DataGridTextColumn Header="Destroyed"
                                     IsReadOnly="True"
-                                    Width="*"
+                                    Width="85"                                   
                                     Binding="{Binding Destroyed}"/>
-
-
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"
-                                        Width="auto">
+                                        Width="90">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

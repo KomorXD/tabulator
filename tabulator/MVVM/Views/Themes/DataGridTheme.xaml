@@ -66,7 +66,7 @@
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="HeadersVisibility" Value="Column"/>
-        <Setter Property="Margin" Value="20,20,20,20"/>
+        <Setter Property="Margin" Value="20,20,20,70"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="SelectionUnit" Value="FullRow"/>
         <Setter Property="CanUserAddRows" Value="False"/>
@@ -139,7 +139,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#E2D7AC"/>
-        <Setter Property="Margin" Value="15 10 15 10"/>
+        <Setter Property="Margin" Value="10,10,0,10"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
@@ -156,8 +156,8 @@
     </Style>
     <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">
         <Setter Property="Background" Value="#313437"/>
-        <Setter Property="Margin" Value="0 2 0 0"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="13"/>
         <Setter Property="Foreground" Value="#ffffff"/>
         <Setter Property="Width" Value="auto"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -173,10 +173,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRow}">
                     <Border x:Name="DGR_Border"
-                            Padding="0 8"
+                            Padding="0 5"
                             Background="{TemplateBinding Background}"
-                            CornerRadius="5"
-                            BorderThickness="0"
+                            BorderThickness="0,1,0,0"
+                            BorderBrush="#11151c"
                             SnapsToDevicePixels="True">
                         <SelectiveScrollingGrid>
                             <SelectiveScrollingGrid.ColumnDefinitions>
@@ -204,11 +204,11 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#544E32"/>
+                <Setter Property="Background" Value="#212d40"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="#544E32"/>
+                <Setter Property="Background" Value="#212d40"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
             </Trigger>
             <MultiTrigger>

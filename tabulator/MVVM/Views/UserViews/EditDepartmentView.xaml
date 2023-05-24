@@ -34,7 +34,7 @@
                   Style="{DynamicResource DataGridStyle1}"
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
-                  RowStyle="{DynamicResource DataGridRowStyle1}" Margin="20,27,20,193">
+                  RowStyle="{DynamicResource DataGridRowStyle1}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                                     IsReadOnly="True"
@@ -47,7 +47,7 @@
 
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"
-                                        Width="auto">
+                                        Width="90">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
