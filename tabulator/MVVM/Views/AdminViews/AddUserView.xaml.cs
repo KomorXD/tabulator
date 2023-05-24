@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml.Linq;
 using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
@@ -52,31 +39,31 @@ namespace tabulator.MVVM.Views.AdminViews
         {
             if (ManyTextBoxesEmpty())
             {
-                SetWarning(msg: "Uzupelnij wszy pola");
+                SetWarning(msg: "Fill all fields.");
                 return false;
             }
 
             if (UsernameInput.Text.Equals(string.Empty))
             {
-                SetWarning(msg: "Pusty username");
+                SetWarning(msg: "Fill username field.");
                 return false;
             }
 
             if (PasswordInput.Password.Equals(string.Empty))
             {
-                SetWarning(msg: "Pusty pass");
+                SetWarning(msg: "Fill password field.");
                 return false;
             }
 
             if (NameInput.Text.Equals(string.Empty))
             {
-                SetWarning(msg: "Pusty name");
+                SetWarning(msg: "Fill name field.");
                 return false;
             }
 
             if (SurnameInput.Text.Equals(string.Empty))
             {
-                SetWarning(msg: "Pusty sur");
+                SetWarning(msg: "Fill surname field.");
                 return false;
             }
 
@@ -99,12 +86,13 @@ namespace tabulator.MVVM.Views.AdminViews
             addUser.Surname = SurnameInput.Text;
             addUser.Salt = PasswordManager.GenerateSalt();
             addUser.Password = PasswordManager.HashPassword(PasswordInput.Password, addUser.Salt);
-            string selectedRole = ((ComboBoxItem)FunctionDropdown.SelectedItem)?.Content?.ToString();
-            SelectRole(addUser, selectedRole);
+
+            SelectRole(addUser);
         }
 
-        private void SelectRole(User addUser, string selectedRole)
+        private void SelectRole(User addUser)
         {
+            string selectedRole = ((ComboBoxItem)FunctionDropdown.SelectedItem)?.Content?.ToString();
             switch (selectedRole)
             {
                 case "User":
