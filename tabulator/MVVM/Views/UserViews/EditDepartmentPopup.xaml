@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="UserView" Height="280" Width="600"
+        Title="UserView" Height="280" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -61,11 +61,12 @@
             <StackPanel Grid.Column="1"
                     Grid.Row="1">
                 <TextBlock Text="Faculty"
+                           Width="400"
                        Style="{StaticResource TextblockTheme}"/>
                 <ComboBox Name="FacultyDropdown"
                       Margin="0,20,0,0"
                       Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
+                      Width="400">
                 </ComboBox>
             </StackPanel>
             <StackPanel Grid.Row="2"

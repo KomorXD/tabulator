@@ -11,34 +11,31 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0"
-                    Grid.Row="1">
+        <StackPanel Grid.Row="1">
             <TextBlock Text="Name"
+                       Width="300"
                        Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="NameInput"                    
+            <TextBox x:Name="NameInput"  
+                     Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
-        </StackPanel>
-        <StackPanel Grid.Column="1"
-                    Grid.Row="1">
             <TextBlock Text="Faculty"
+                       Width="300"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox Name="FacultyDropdown"
                       Margin="0,20,0,0"
                       Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
+                      Width="400">
             </ComboBox>
         </StackPanel>
-        <StackPanel Grid.Row="2"
-                    Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="1">
             
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+
             <Button x:Name="btnAdd"
                     Margin="0,60,0,0"
                     Content="Add"
