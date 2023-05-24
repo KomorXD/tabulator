@@ -14,10 +14,14 @@ namespace tabulator.MVVM.Views.AdminViews
     public partial class AddUserView : UserControl
     {
         public AddUserViewModel ViewModel { get; set; }
+
+        private DBContext context;
+
         public AddUserView()
         {
             InitializeComponent();
             ViewModel = new AddUserViewModel();
+            context = DBContext.GetInstance();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -66,8 +70,6 @@ namespace tabulator.MVVM.Views.AdminViews
                 SetWarning(msg: "Fill surname field.");
                 return false;
             }
-
-            DBContext context = DBContext.GetInstance();
 
             bool isUsernameTaken = context.Users.Any(u => u.Username.Equals(addUser.Username));
             if (isUsernameTaken)
