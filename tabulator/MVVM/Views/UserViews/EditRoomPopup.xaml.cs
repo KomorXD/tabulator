@@ -23,14 +23,19 @@ namespace tabulator.MVVM.Views.UserViews
     {
         DBContext context = DBContext.GetInstance();
         int Id;
+        string selectedRoomType = "";
+        List<Department> departments;
+        List<Faculty> faculties;
 
         public EditRoomPopup(int RoomID)
         {
             InitializeComponent();
-            RoomTypeDropdownSelectionChanged(null, null);
             Id = RoomID;
+            faculties = context.Faculties.ToList();
+            departments = context.Departments.ToList();
 
             var editRoom = (from m in context.Rooms where m.Id == RoomID select m).FirstOrDefault();
+            RoomTypeDropdownSelectionChanged(null, null);
             RoomNumberInput.Text = editRoom.Number;
         }
 
@@ -51,6 +56,7 @@ namespace tabulator.MVVM.Views.UserViews
         {
             Room room = (from m in context.Rooms where m.Id == Id select m).FirstOrDefault();
             room.Number = RoomNumberInput.Text;
+            
             context.SaveChanges();
             EditRoomDataView.dataGrid.ItemsSource = context.Rooms.ToList();
             this.Close();
@@ -58,7 +64,7 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void RoomTypeDropdownSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedRoomType = ((ComboBoxItem)RoomTypeDropdown.SelectedItem)?.Content?.ToString();
+            selectedRoomType = ((ComboBoxItem)RoomTypeDropdown.SelectedItem)?.Content?.ToString();
             switch (selectedRoomType)
             {
                 case "Faculty":
