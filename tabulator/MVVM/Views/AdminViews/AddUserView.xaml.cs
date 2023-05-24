@@ -15,13 +15,12 @@ namespace tabulator.MVVM.Views.AdminViews
     {
         public AddUserViewModel ViewModel { get; set; }
 
-        private DBContext context;
+        private DBContext context = DBContext.GetInstance();
 
         public AddUserView()
         {
             InitializeComponent();
             ViewModel = new AddUserViewModel();
-            context = DBContext.GetInstance();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -33,7 +32,7 @@ namespace tabulator.MVVM.Views.AdminViews
 
             if (ValidateUser(addUser))
             {
-                ViewModel.AddPerson(addUser);
+                ViewModel.AddUser(addUser);
             }
 
             ClearTextBoxes();

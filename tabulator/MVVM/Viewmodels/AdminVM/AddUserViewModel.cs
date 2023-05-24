@@ -21,7 +21,7 @@ namespace tabulator.MVVM.Viewmodels.AdminVM
             Users = new ObservableCollection<User>(context.Users);
         }
 
-        public void AddPerson(User user)
+        public void AddUser(User user)
         {
             DBContext context = DBContext.GetInstance();
             Users.Add(user);
