@@ -40,10 +40,10 @@
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Username}"/>
-                <DataGridTextColumn Header="Password"
+                <!--<DataGridTextColumn Header="Password"
                                     IsReadOnly="True"
                                     Width="*"
-                                    Binding="{Binding Password}"/>
+                                    Binding="{Binding Password}"/>-->
                 <DataGridTextColumn Header="Name"
                                     IsReadOnly="True"
                                     Width="*"

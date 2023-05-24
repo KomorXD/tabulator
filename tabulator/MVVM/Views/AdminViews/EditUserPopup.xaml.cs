@@ -33,7 +33,7 @@ namespace tabulator.MVVM.Views.AdminViews
             UsernameInput.Text = editUser.Username;
             NameInput.Text = editUser.Name;
             SurnameInput.Text = editUser.Surname;
-            PasswordInput.Text = editUser.Password;
+            //PasswordInput.Text = editUser.Password;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
