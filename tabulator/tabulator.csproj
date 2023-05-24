@@ -83,6 +83,7 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\DBContext.cs" />
     <Compile Include="Core\ObservableObject.cs" />
+    <Compile Include="Core\PasswordManager.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MVVM\Models\Department.cs" />
     <Compile Include="MVVM\Models\DepartmentRooms.cs" />
