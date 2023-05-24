@@ -97,6 +97,9 @@
     <Compile Include="MVVM\Models\UserFunction.cs" />
     <Compile Include="MVVM\Models\User.cs" />
     <Compile Include="MVVM\Models\Room.cs" />
+    <Compile Include="MVVM\Views\AdminViews\ChangePasswordPopup.xaml.cs">
+      <DependentUpon>ChangePasswordPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Views\AdminViews\EditUserPopup.xaml.cs">
       <DependentUpon>EditUserPopup.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\AdminViews\ChangePasswordPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
