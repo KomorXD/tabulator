@@ -12,12 +12,113 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Employee name"
+                       Width="300"
+                       Style="{StaticResource TextblockTheme}"/>
+            <TextBox x:Name="NameInput"  
+                     Width="300"
+                     Style="{StaticResource InputTextboxTheme}" />
+            <TextBlock Text="Employee surname"
+                       Width="300"
+                       Style="{StaticResource TextblockTheme}"/>
+            <TextBox x:Name="SurnameInput"  
+                     Width="300"
+                     Style="{StaticResource InputTextboxTheme}" />
+            <TextBlock Text="Room number"
+                       Width="300"
+                       Style="{StaticResource TextblockTheme}"/>
+            <TextBox x:Name="RoomInput"  
+                     Width="300"
+                     Style="{StaticResource InputTextboxTheme}" />
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1">
+            <TextBlock Text="Faculty"
+                       Width="300"
+                       Style="{StaticResource TextblockTheme}"/>
+            <ComboBox Name="FacultyDropdown"
+                      Margin="0,7,0,0"                      
+                      Style="{StaticResource ComboBoxTheme}"
+                      Width="300"/>
+            <TextBlock Text="Department"
+                       Width="300"
+                       Style="{StaticResource TextblockTheme}"/>
+            <ComboBox Name="DepartmentDropdown"
+                      Margin="0,7,0,0"                      
+                      Style="{StaticResource ComboBoxTheme}"
+                      Width="300"/>
+            <TextBlock Text="Equipment item"
+                       Width="300"
+                       Style="{StaticResource TextblockTheme}"/>
+            <TextBox x:Name="EquipmentInput"  
+                     Width="300"
+                     Style="{StaticResource InputTextboxTheme}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2">
+            <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Available"
+                               Width="300"
+                               Margin="0"
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               Style="{StaticResource TextblockTheme}"/>
+                    <ToggleButton Grid.Column="0"
+                                  Grid.Row="1"
+                                  Style="{StaticResource ToggleButtonTheme}"/>
+                    <TextBlock Text="Not in use"
+                               Width="300"   
+                               Margin="0"
+                               Grid.Column="1"   
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               Style="{StaticResource TextblockTheme}"/>
+                    <ToggleButton Grid.Column="1"
+                                  Grid.Row="1"                                 
+                                  Style="{StaticResource ToggleButtonTheme}"/>
+                    <TextBlock Text="Destroyed"
+                               Width="300"  
+                               Margin="0"
+                               Grid.Column="2"  
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               Style="{StaticResource TextblockTheme}"/>
+                    <ToggleButton Grid.Column="2"
+                                  Grid.Row="1"
+                                  Style="{StaticResource ToggleButtonTheme}"/>
+
+                </Grid>
+            </StackPanel>
+            <TextBlock Name="RecordsText"
+                       Width="300"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Style="{StaticResource TextblockTheme}"/>
+            <Button x:Name="btnGenerate"
+                    Margin="0,40,0,0"
+                    Content="Generate"
+                    Click="btnGenerate_Click"
+                    Style="{StaticResource ButtonTheme}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -19,9 +19,22 @@ namespace tabulator.MVVM.Views.UserViews
     /// </summary>
     public partial class ReportGeneratorView : UserControl
     {
+        int recordsFound = 0;
+
         public ReportGeneratorView()
         {
             InitializeComponent();
+            UpdateText();
+        }
+
+        private void btnGenerate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateText()
+        {
+            RecordsText.Text = "Records found: " + recordsFound.ToString();
         }
     }
 }
