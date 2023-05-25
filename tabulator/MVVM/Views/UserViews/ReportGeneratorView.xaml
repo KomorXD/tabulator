@@ -22,45 +22,46 @@
 
         <StackPanel Grid.Row="1">
             <TextBlock Text="Employee name"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"  
-                     Width="300"
+                     Width="400"
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Employee surname"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="SurnameInput"  
-                     Width="300"
+                     Width="400"
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Room number"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="RoomInput"  
-                     Width="300"
+                     Width="400"
                      Style="{StaticResource InputTextboxTheme}" />
         </StackPanel>
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
             <TextBlock Text="Faculty"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox Name="FacultyDropdown"
                       Margin="0,7,0,0"                      
                       Style="{StaticResource ComboBoxTheme}"
-                      Width="300"/>
+                      Width="400"
+                      SelectionChanged="FacultyDropdown_SelectionChanged"/>
             <TextBlock Text="Department"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox Name="DepartmentDropdown"
                       Margin="0,7,0,0"                      
                       Style="{StaticResource ComboBoxTheme}"
-                      Width="300"/>
+                      Width="400"/>
             <TextBlock Text="Equipment item"
-                       Width="300"
+                       Width="400"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="EquipmentInput"  
-                     Width="300"
+                     Width="400"
                      Style="{StaticResource InputTextboxTheme}" />
         </StackPanel>
         <StackPanel Grid.Row="2"
@@ -113,12 +114,18 @@
                        TextAlignment="Center"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
+                       Margin="0,50,0,0"
                        Style="{StaticResource TextblockTheme}"/>
             <Button x:Name="btnGenerate"
-                    Margin="0,40,0,0"
+                    Margin="0,30,0,0"
                     Content="Generate"
                     Click="btnGenerate_Click"
                     Style="{StaticResource ButtonTheme}"/>
         </StackPanel>
+        <Button Name="btnHelp"
+                Grid.Column="1"
+                Grid.Row="2"
+                Style="{StaticResource HelpButtonTheme}"
+                Click="btnHelp_Click"/>
     </Grid>
 </UserControl>
