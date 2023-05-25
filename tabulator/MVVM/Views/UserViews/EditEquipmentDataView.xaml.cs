@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 
@@ -28,15 +17,27 @@ namespace tabulator.MVVM.Views.UserViews
         public EditEquipmentDataView()
         {
             InitializeComponent();
-            EquipmentDataGrid.ItemsSource = context.Equipment.ToList();
+            EquipmentDataGrid.ItemsSource = context.Equipment.Select(eq => new
+            {
+                eq.Id,
+                eq.Name,
+                eq.Description,
+                RoomNumber = eq.Room.Number,
+                eq.Available,
+                eq.NotInUse,
+                eq.Destroyed
+            }).ToList();
             dataGrid = EquipmentDataGrid;
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (EquipmentDataGrid.SelectedItem as EquipmentItem).Id;
-            EditEquipmentPopup editDepartment = new EditEquipmentPopup(ID);
-            editDepartment.ShowDialog();
+            if (EquipmentDataGrid.SelectedItem is null)
+                return;
+            var selectedItem = (dynamic)EquipmentDataGrid.SelectedItem;
+            int id = selectedItem.Id;
+            EditEquipmentPopup editDepartment = new EditEquipmentPopup(id);
+            editDepartment.ShowDialog();           
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

@@ -44,10 +44,10 @@
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="RoomID"
+                <DataGridTextColumn Header="Room number"
                                     IsReadOnly="True"
                                     Width="70"
-                                    Binding="{Binding RoomId}"/>
+                                    Binding="{Binding RoomNumber}"/>
                 <DataGridTextColumn Header="Available"
                                     IsReadOnly="True"
                                     Width="80"
