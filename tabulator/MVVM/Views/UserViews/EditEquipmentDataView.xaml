@@ -38,15 +38,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                                     IsReadOnly="True"
-                                    Width="170"
+                                    Width="180"
                                     Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Description"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="Room number"
+                <DataGridTextColumn Header="Room"
                                     IsReadOnly="True"
-                                    Width="110"
+                                    Width="80"
                                     Binding="{Binding RoomNumber}"/>
                 <DataGridTextColumn Header="Available"
                                     IsReadOnly="True"
