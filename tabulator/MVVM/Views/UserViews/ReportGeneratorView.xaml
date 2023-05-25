@@ -17,51 +17,51 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="550"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="1">
             <TextBlock Text="Employee name"
-                       Width="400"
+                       Width="300"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"  
-                     Width="400"
+                     Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Employee surname"
-                       Width="400"
+                       Width="300"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="SurnameInput"  
-                     Width="400"
+                     Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Room number"
-                       Width="400"
+                       Width="300"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="RoomInput"  
-                     Width="400"
+                     Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
         </StackPanel>
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
             <TextBlock Text="Faculty"
-                       Width="400"
+                       Width="500"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox Name="FacultyDropdown"
                       Margin="0,7,0,0"                      
                       Style="{StaticResource ComboBoxTheme}"
-                      Width="400"
+                      Width="500"
                       SelectionChanged="FacultyDropdown_SelectionChanged"/>
             <TextBlock Text="Department"
-                       Width="400"
+                       Width="500"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox Name="DepartmentDropdown"
                       Margin="0,7,0,0"                      
                       Style="{StaticResource ComboBoxTheme}"
-                      Width="400"/>
+                      Width="500"/>
             <TextBlock Text="Equipment item"
-                       Width="400"
+                       Width="500"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="EquipmentInput"  
-                     Width="400"
+                     Width="500"
                      Style="{StaticResource InputTextboxTheme}" />
         </StackPanel>
         <StackPanel Grid.Row="2"
