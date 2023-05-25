@@ -97,6 +97,7 @@
     <Compile Include="MVVM\Models\UserFunction.cs" />
     <Compile Include="MVVM\Models\User.cs" />
     <Compile Include="MVVM\Models\Room.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\GenerateReportViewModel.cs" />
     <Compile Include="MVVM\Views\AdminViews\ChangePasswordPopup.xaml.cs">
       <DependentUpon>ChangePasswordPopup.xaml</DependentUpon>
     </Compile>
@@ -114,6 +115,9 @@
     </Compile>
     <Compile Include="MVVM\Views\UserViews\EditRoomPopup.xaml.cs">
       <DependentUpon>EditRoomPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\ReportGeneratorView.xaml.cs">
+      <DependentUpon>ReportGeneratorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -292,6 +296,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\ReportGeneratorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

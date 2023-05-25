@@ -120,6 +120,10 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditFacultyDataCommand}"/>
 
+                        <RadioButton Content="Generate report"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding GenerateReportDataCommand}"/>
+
                     </StackPanel>
 
                 </Border>
