@@ -26,19 +26,22 @@
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="NameInput"  
                      Width="300"
-                     Style="{StaticResource InputTextboxTheme}" />
+                     Style="{StaticResource InputTextboxTheme}" 
+                     TextChanged="NameInput_TextChanged"/>
             <TextBlock Text="Employee surname"
                        Width="300"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="SurnameInput"  
                      Width="300"
-                     Style="{StaticResource InputTextboxTheme}" />
+                     Style="{StaticResource InputTextboxTheme}"
+                     TextChanged="SurnameInput_TextChanged"/>
             <TextBlock Text="Room number"
                        Width="300"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="RoomInput"  
                      Width="300"
-                     Style="{StaticResource InputTextboxTheme}" />
+                     Style="{StaticResource InputTextboxTheme}"
+                     TextChanged="RoomInput_TextChanged"/>
         </StackPanel>
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
@@ -56,13 +59,15 @@
             <ComboBox Name="DepartmentDropdown"
                       Margin="0,7,0,0"                      
                       Style="{StaticResource ComboBoxTheme}"
-                      Width="500"/>
+                      Width="500"
+                      SelectionChanged="DepartmentDropdown_SelectionChanged_1"/>
             <TextBlock Text="Equipment item"
                        Width="500"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="EquipmentInput"  
                      Width="500"
-                     Style="{StaticResource InputTextboxTheme}" />
+                     Style="{StaticResource InputTextboxTheme}" 
+                     TextChanged="EquipmentInput_TextChanged"/>
         </StackPanel>
         <StackPanel Grid.Row="2"
                     Grid.ColumnSpan="2">
@@ -83,9 +88,12 @@
                                VerticalAlignment="Center"
                                TextAlignment="Center"
                                Style="{StaticResource TextblockTheme}"/>
-                    <ToggleButton Grid.Column="0"
+                    <ToggleButton Name="Available"
+                                  Grid.Column="0"
                                   Grid.Row="1"
-                                  Style="{StaticResource ToggleButtonTheme}"/>
+                                  Style="{StaticResource ToggleButtonTheme}"
+                                  Checked="Available_Checked"
+                                  Unchecked="Available_Unchecked"/>
                     <TextBlock Text="Not in use"
                                Width="300"   
                                Margin="0"
@@ -93,9 +101,12 @@
                                VerticalAlignment="Center"
                                TextAlignment="Center"
                                Style="{StaticResource TextblockTheme}"/>
-                    <ToggleButton Grid.Column="1"
+                    <ToggleButton Name="NotInUse"
+                                  Grid.Column="1"
                                   Grid.Row="1"                                 
-                                  Style="{StaticResource ToggleButtonTheme}"/>
+                                  Style="{StaticResource ToggleButtonTheme}"
+                                  Checked="NotInUse_Checked"
+                                  Unchecked="NotInUse_Unchecked"/>
                     <TextBlock Text="Destroyed"
                                Width="300"  
                                Margin="0"
@@ -103,9 +114,12 @@
                                VerticalAlignment="Center"
                                TextAlignment="Center"
                                Style="{StaticResource TextblockTheme}"/>
-                    <ToggleButton Grid.Column="2"
+                    <ToggleButton Name="Destroyed"
+                                  Grid.Column="2"
                                   Grid.Row="1"
-                                  Style="{StaticResource ToggleButtonTheme}"/>
+                                  Style="{StaticResource ToggleButtonTheme}"
+                                  Checked="Destroyed_Checked"
+                                  Unchecked="Destroyed_Unchecked"/>
 
                 </Grid>
             </StackPanel>

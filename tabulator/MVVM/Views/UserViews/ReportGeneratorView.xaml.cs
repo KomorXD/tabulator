@@ -28,30 +28,17 @@ namespace tabulator.MVVM.Views.UserViews
         List<Faculty> _facultyList;
         int _selectedFaculty;
         List<Department> _departmentList;
-        int recordsFound = 0;
+        int _recordsFound = 0;
+        bool _available;
+        bool _notInUse;
+        bool _destroyed;
 
         public ReportGeneratorView()
         {
             InitializeComponent();
+            Available.IsChecked = true;
             ViewModel = new AddDepartmentViewModel();            
             AddDataToDropdowns();
-
-            UpdateText();
-        }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            Department department = new Department();
-            department.Name = NameInput.Text;
-            department.Faculty = _facultyList.ElementAt(FacultyDropdown.SelectedIndex);
-            ViewModel.AddDepartment(department);
-            ClearTextBoxes();
-        }
-
-        private void ClearTextBoxes()
-        {
-            NameInput.Text = string.Empty;
-            FacultyDropdown.SelectedIndex = 0;
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -62,6 +49,12 @@ namespace tabulator.MVVM.Views.UserViews
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void UpdateRecordsFoundText()
+        {
+            _recordsFound = context.Equipment.Where(eq => eq.Name.Contains(EquipmentInput.Text) && eq.Room.Number.Contains(RoomInput.Text) && eq.Available.Equals(_available) && eq.Destroyed.Equals(_destroyed) && eq.NotInUse.Equals(_notInUse)).ToList().Count;
+            RecordsText.Text = "Records found: " + _recordsFound.ToString();
         }
 
         private void AddDataToDropdowns()
@@ -92,13 +85,65 @@ namespace tabulator.MVVM.Views.UserViews
             }
             DepartmentDropdown.SelectedIndex = 0;
         }
+
         private void FacultyDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AddDataToDropdowns();
+            UpdateRecordsFoundText();
         }
-        private void UpdateText()
+        private void DepartmentDropdown_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            RecordsText.Text = "Records found: " + recordsFound.ToString();
+            UpdateRecordsFoundText();
+        }
+        private void NameInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateRecordsFoundText();
+        }
+        private void SurnameInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateRecordsFoundText();
+        }
+        private void RoomInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateRecordsFoundText();
+        }
+        private void DepartmentDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateRecordsFoundText();
+        }
+        private void EquipmentInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateRecordsFoundText();
+        }
+        private void Available_Checked(object sender, RoutedEventArgs e)
+        {
+            _available = true;
+            UpdateRecordsFoundText();
+        }
+        private void Available_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _available = false; 
+            UpdateRecordsFoundText();
+        }
+        private void NotInUse_Checked(object sender, RoutedEventArgs e)
+        {
+            _notInUse = true;
+            UpdateRecordsFoundText();
+        }
+        private void NotInUse_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _notInUse = false;
+            UpdateRecordsFoundText();
+        }
+        private void Destroyed_Checked(object sender, RoutedEventArgs e)
+        {
+            _destroyed = true;
+            UpdateRecordsFoundText();
+        }
+        private void Destroyed_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _destroyed = false;
+            UpdateRecordsFoundText();
         }
     }
 }
