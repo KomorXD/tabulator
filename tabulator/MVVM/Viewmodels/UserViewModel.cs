@@ -19,17 +19,19 @@ namespace tabulator.MVVM.Viewmodels
         public RelayCommand EditFacultyDataCommand { get; set; }
         public RelayCommand AddDepartmentCommand { get; set; }
         public RelayCommand EditDepartmentDataCommand { get; set; }
+        public RelayCommand GenerateReportDataCommand { get; set; }
 
 
-        public EmployeeAssignmentViewModel EmployeeAssignmentVM { get; set; }
-        public AddEquipmentViewModel       AddEquipmentVM { get; set; }
-        public EditEquipmentDataViewModel  EditEquipmentDataVM { get; set; }
-        public AddRoomViewModel            AddRoomVM { get; set; }
-        public EditRoomDataViewModel       EditRoomDataVM { get; set; }
-        public AddFacultyViewModel         AddFacultyVM { get; set; }
-        public EditFacultyDataViewModel    EditFacultyDataVM { get; set; }
-        public AddDepartmentViewModel      AddDepartmentVM { get; set; }
-        public EditDepartmentDataViewModel EditDepartmentDataVM { get; set; }
+        public EmployeeAssignmentViewModel  EmployeeAssignmentVM { get; set; }
+        public AddEquipmentViewModel        AddEquipmentVM { get; set; }
+        public EditEquipmentDataViewModel   EditEquipmentDataVM { get; set; }
+        public AddRoomViewModel             AddRoomVM { get; set; }
+        public EditRoomDataViewModel        EditRoomDataVM { get; set; }
+        public AddFacultyViewModel          AddFacultyVM { get; set; }
+        public EditFacultyDataViewModel     EditFacultyDataVM { get; set; }
+        public AddDepartmentViewModel       AddDepartmentVM { get; set; }
+        public EditDepartmentDataViewModel  EditDepartmentDataVM { get; set; }
+        public GenerateReportViewModel      GenerateReportVM { get; set; }
 
         private object _currentView;
 
@@ -45,15 +47,16 @@ namespace tabulator.MVVM.Viewmodels
 
         public UserViewModel()
         {
-            EmployeeAssignmentVM = new EmployeeAssignmentViewModel();
-            AddEquipmentVM =       new AddEquipmentViewModel();
-            EditEquipmentDataVM =  new EditEquipmentDataViewModel();
-            AddRoomVM =            new AddRoomViewModel();
-            EditRoomDataVM =       new EditRoomDataViewModel();
-            AddFacultyVM =         new AddFacultyViewModel();
-            EditFacultyDataVM =    new EditFacultyDataViewModel();
-            AddDepartmentVM =      new AddDepartmentViewModel();
-            EditDepartmentDataVM = new EditDepartmentDataViewModel();
+            EmployeeAssignmentVM =  new EmployeeAssignmentViewModel();
+            AddEquipmentVM =        new AddEquipmentViewModel();
+            EditEquipmentDataVM =   new EditEquipmentDataViewModel();
+            AddRoomVM =             new AddRoomViewModel();
+            EditRoomDataVM =        new EditRoomDataViewModel();
+            AddFacultyVM =          new AddFacultyViewModel();
+            EditFacultyDataVM =     new EditFacultyDataViewModel();
+            AddDepartmentVM =       new AddDepartmentViewModel();
+            EditDepartmentDataVM =  new EditDepartmentDataViewModel();
+            GenerateReportVM =      new GenerateReportViewModel();
 
             CurrentView = EmployeeAssignmentVM;
 
@@ -100,6 +103,11 @@ namespace tabulator.MVVM.Viewmodels
             EditDepartmentDataCommand = new RelayCommand(o =>
             {
                 CurrentView = EditDepartmentDataVM;
+            });
+
+            GenerateReportDataCommand = new RelayCommand(o =>
+            {
+                CurrentView = GenerateReportVM;
             });
         }
     }

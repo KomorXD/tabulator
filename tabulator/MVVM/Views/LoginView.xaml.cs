@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -65,33 +66,54 @@ namespace tabulator.MVVM.Views
             Application.Current.Shutdown();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private CancellationTokenSource cancellationTokenSource;
+
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+            }
+
+            cancellationTokenSource = new CancellationTokenSource();
+
             string username = UsernameInput.Text;
             User foundUser = context.Users.FirstOrDefault(u => u.Username == username);
 
-            if (foundUser is null)
+            try
             {
-                //warning
-                return;
-            }
+                if (foundUser is null)
+                {
+                    errorText.Text = "No user found!";
+                    errorText.Visibility = Visibility.Visible;
+                    await Task.Delay(3000, cancellationTokenSource.Token);
+                    DisableErrorMsg();
+                    return;
+                }
 
-            if (PasswordManager.VerifyPassword(PasswordInput.Password, foundUser.Password, foundUser.Salt))
-            {
-                if(foundUser.FunctionId == UserFunction.USER_ROLE)
+                if (PasswordManager.VerifyPassword(PasswordInput.Password, foundUser.Password, foundUser.Salt))
                 {
-                    SwitchToUserView(sender, e);
+                    if (foundUser.FunctionId == UserFunction.USER_ROLE)
+                    {
+                        SwitchToUserView(sender, e);
+                    }
+                    else if (foundUser.FunctionId == UserFunction.ADMIN_ROLE)
+                    {
+                        SwitchToAdminView(sender, e);
+                    }
                 }
-                else if(foundUser.FunctionId == UserFunction.ADMIN_ROLE)
+                else
                 {
-                    SwitchToAdminView(sender, e);
+                    errorText.Text = "Wrong password!";
+                    errorText.Visibility = Visibility.Visible;
+                    await Task.Delay(3000, cancellationTokenSource.Token);
+                    DisableErrorMsg();
                 }
-            }
-            else
-            {
-                //Warning
-            }
-           
+            }catch (Exception ex) { }
+        }
+        private void DisableErrorMsg()
+        {
+            errorText.Visibility = Visibility.Hidden;
         }
     }
 }
