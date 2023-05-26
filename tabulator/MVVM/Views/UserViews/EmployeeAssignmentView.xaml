@@ -11,8 +11,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="200"/>
             <RowDefinition />
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -20,48 +20,107 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0"
-                    Grid.Row="1">
-            <TextBlock Text="Username"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="UsernameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="Name"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="NameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
-        </StackPanel>
-        <StackPanel Grid.Column="1"
-                    Grid.Row="1">
-            <TextBlock Text="Password"
-                       Style="{StaticResource TextblockTheme}"/>
-            <PasswordBox x:Name="PasswordInput"                    
-                     Style="{StaticResource PasswordboxTheme}" />
-            <TextBlock Text="Surname"
-                       Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="SurnameInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
+        <TextBox Name="EquipmentSearchTextBox"
+                 Margin="0,0,200,0"
+                 TextChanged="EquipmentSearchTextBox_TextChanged"
+                 Style="{StaticResource SearchBarTheme}"
+                 Grid.Row="1"
+                 VerticalAlignment="Top"/>
+        <Image Style="{StaticResource IconSearchStyle}"
+               Margin="0,0,370,0"
+               Grid.Row="1"
+               VerticalAlignment="Top"/>
 
-        </StackPanel>
-        <StackPanel Grid.Row="2"
-                    Grid.ColumnSpan="2">
-            <TextBlock Text="Function"
-                       Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="FunctionDropdown"
-                      Margin="0,20,0,0"
-                      Style="{StaticResource ComboBoxTheme}"
-                      Width="200">
-                <ComboBoxItem IsSelected="True">User</ComboBoxItem>
-                <ComboBoxItem>Admin</ComboBoxItem>
-            </ComboBox>
+        <DataGrid x:Name="EqDataGrid"
+                  x:FieldModifier="public"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Margin="20,50,20,20"
+                  Style="{DynamicResource DataGridStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  CellStyle="{DynamicResource DataGridCellStyle1}"
+                  RowStyle="{DynamicResource DataGridRowStyle1}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Item name"
+                                    IsReadOnly="True"
+                                    Width="200"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Room number"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding RoomNumber}"/>
 
+                <DataGridTemplateColumn Header="Assign"
+                                        IsReadOnly="True"
+                                        Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnAddEQ"
+                                    Cursor="Hand"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource EditButtonTheme}"
+                                    Click="BtnAddEQ_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
-            <Button x:Name="btnLogin"
-                    Margin="0,80,0,0"
-                    Content="Add"
-                    Style="{StaticResource ButtonTheme}"/>
+        <TextBox Name="EmployeeSearchTextBox"
+                 Margin="0,0,200,0"
+                 TextChanged="EmployeeSearchTextBox_TextChanged"
+                 Style="{StaticResource SearchBarTheme}"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 VerticalAlignment="Top"/>
+        <Image Style="{StaticResource IconSearchStyle}"
+               Margin="0,0,370,0"
+               Grid.Row="1"
+               Grid.Column="1"
+               VerticalAlignment="Top"/>
 
-        </StackPanel>
+        <DataGrid x:Name="EmplDataGrid"
+                  x:FieldModifier="public"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  Margin="20,50,20,20"
+                  Style="{DynamicResource DataGridStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  CellStyle="{DynamicResource DataGridCellStyle1}"
+                  RowStyle="{DynamicResource DataGridRowStyle1}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Employee name"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Employee surname"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding Surname}"/>
+
+                <DataGridTemplateColumn Header="Assign"
+                                        IsReadOnly="True"                                        
+                                        Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnAddEmpl"
+                                    Cursor="Hand"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource EditButtonTheme}"
+                                    Click="BtnAddEmpl_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="btnAssign"
+                Margin="0,0,0,0"
+                Content="Add"
+                Grid.ColumnSpan="2"
+                Grid.Row="2"
+                Click="btnAssign_Click"
+                Style="{StaticResource ButtonTheme}"/>
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
