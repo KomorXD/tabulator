@@ -119,11 +119,6 @@
     <Compile Include="MVVM\Views\UserViews\ReportGeneratorView.xaml.cs">
       <DependentUpon>ReportGeneratorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\Viewmodels\AdminVM\AddUserViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\AdminViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\AdminVM\EditUserDataViewModel.cs" />
@@ -178,6 +173,11 @@
     </Compile>
     <Compile Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml.cs">
       <DependentUpon>EmployeeAssignmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

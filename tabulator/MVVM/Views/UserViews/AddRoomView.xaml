@@ -28,7 +28,7 @@
             <TextBlock Name="RoomTypeText"
                        Text="Faculty"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox Name="RoomTypeItemDropdown"
+            <ComboBox Name="TypeNameDropdown"
                       Margin="0,20,0,0"
                       Style="{StaticResource ComboBoxTheme}"      
                       Width="200">

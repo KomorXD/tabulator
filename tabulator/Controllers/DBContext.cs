@@ -7,7 +7,7 @@ namespace tabulator.DatabaseContext
     {
         static public DBContext INSTANCE = null;
 
-        private DBContext(): base(Properties.Settings.Default.db_connect_str)
+        private DBContext() : base(Properties.Settings.Default.db_connect_str)
         {
 
         }
@@ -19,6 +19,8 @@ namespace tabulator.DatabaseContext
         public DbSet<EquipmentItem> Equipment { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserFunction> UserFunctions { get; set; }
+        public DbSet<FacultyRoom> FacultyRooms { get; set; }
+        public DbSet<DepartmentRoom> DepartmentRooms { get; set; }
 
         static public DBContext GetInstance()
         {
@@ -28,7 +30,6 @@ namespace tabulator.DatabaseContext
             }
 
             return INSTANCE;
-
         }
     }
 }
