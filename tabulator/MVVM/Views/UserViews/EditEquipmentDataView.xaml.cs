@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using tabulator.DatabaseContext;
@@ -17,17 +18,7 @@ namespace tabulator.MVVM.Views.UserViews
         public EditEquipmentDataView()
         {
             InitializeComponent();
-            EquipmentDataGrid.ItemsSource = context.Equipment.Select(eq => new
-            {
-                eq.Id,
-                eq.Name,
-                eq.Description,
-                RoomNumber = eq.Room.Number,
-                eq.Available,
-                eq.NotInUse,
-                eq.Destroyed
-            }).ToList();
-            dataGrid = EquipmentDataGrid;
+            AddEquipment(context.Equipment.ToList());
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -52,12 +43,27 @@ namespace tabulator.MVVM.Views.UserViews
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = context.Equipment.Where(x => x.Name.Contains(SearchTextBox.Text) || x.RoomId.ToString().Contains(SearchTextBox.Text)).ToList();
-            EquipmentDataGrid.ItemsSource = result;
+            AddEquipment(result);
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AddEquipment(List<EquipmentItem> eqList)
+        {
+            EquipmentDataGrid.ItemsSource = eqList.Select(eq => new
+            {
+                eq.Id,
+                eq.Name,
+                eq.Description,
+                RoomNumber = eq.Room.Number,
+                eq.Available,
+                eq.NotInUse,
+                eq.Destroyed
+            }).ToList();
+            dataGrid = EquipmentDataGrid;
         }
     }
 }
