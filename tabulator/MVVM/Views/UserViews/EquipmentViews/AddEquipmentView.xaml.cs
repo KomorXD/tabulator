@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,8 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
-
+using tabulator.Core;
+using tabulator.DatabaseContext;
 
 namespace tabulator.MVVM.Views.UserViews
 {
@@ -22,29 +23,20 @@ namespace tabulator.MVVM.Views.UserViews
     /// </summary>
     public partial class AddEquipmentView : UserControl
     {
-      
+        DBContext context = DBContext.GetInstance();
+
         public AddEquipmentView()
         {
             InitializeComponent();
-            RoomDropdownSelection(null, null);
+            AvailableInput_SelectionChanged(AvailableInput, null);
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            string name =        NameInput.Text;
-            string description = DescriptionInput.Text;
-            bool isAvailable =   StringToBool(AvailableInput.Text);
-            bool isInUse =       StringToBool(NotInUseInput.Text);
-            bool isDestroyed =   StringToBool(DestroyedInput.Text);
-            string selectedRoom = ((ComboBoxItem)RoomDropdown.SelectedItem)?.Content?.ToString();
+            
         }
 
-        private void RoomDropdownSelection(object sender, SelectionChangedEventArgs e)
-        {
-            RoomDropdown.Items.Add(new ComboBoxItem() { Content = "Room Example 1" });
-            RoomDropdown.Items.Add(new ComboBoxItem() { Content = "Room Example 2" });
-            RoomDropdown.SelectedIndex = 0;
-        }
         private bool StringToBool(string str)
         {
             if (str == "True") return true;
@@ -54,6 +46,29 @@ namespace tabulator.MVVM.Views.UserViews
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AvailableInput_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var available = ((ComboBoxItem)AvailableInput.SelectedItem)?.Content?.ToString();
+            switch (available)
+            {
+                case "True":
+                    NotInUseInput.Visibility = Visibility.Hidden;
+                    DestroyedInput.Visibility = Visibility.Hidden;
+                    notinuseText.Visibility = Visibility.Hidden;
+                    destroyedText.Visibility = Visibility.Hidden;
+                    break;
+
+                case "False":
+                    NotInUseInput.Visibility= Visibility.Visible;
+                    destroyedText.Visibility= Visibility.Visible;
+                    DestroyedInput.Visibility= Visibility.Visible;
+                    notinuseText.Visibility= Visibility.Visible;
+                    NotInUseInput.SelectedIndex= 0;
+                    DestroyedInput.SelectedIndex= 1;
+                    break;
+            }
         }
     }
 }
