@@ -61,6 +61,7 @@ namespace tabulator.MVVM.Views.UserViews
 
             context.SaveChanges();
             EditEquipmentDataView editEquipmentDataView = new EditEquipmentDataView();
+            this.Close();
         }
     }
 }
