@@ -19,7 +19,7 @@ namespace tabulator.MVVM.Views.UserViews
         public EditEquipmentDataView()
         {
             InitializeComponent();
-            AddEquipment(context.Equipment.ToList());
+            ShowDataGrid(context.Equipment.ToList());
             equipmentItems = context.Equipment.ToList();
         }
 
@@ -35,17 +35,19 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (EquipmentDataGrid.SelectedItem as EquipmentItem).Id;
-            var deleteEquipment = context.Equipment.Where(m => m.Id == ID).Single();
+
+            //int ID = (EquipmentDataGrid.SelectedItem as EquipmentItem).Id;
+            var deleteEquipment = equipmentItems.ElementAt(EquipmentDataGrid.SelectedIndex); //context.Equipment.Where(m => m.Id == ID).Single();
             context.Equipment.Remove(deleteEquipment);
+            equipmentItems.RemoveAt(EquipmentDataGrid.SelectedIndex);
             context.SaveChanges();
-            AddEquipment(context.Equipment.ToList());
+            ShowDataGrid(context.Equipment.ToList());
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = context.Equipment.Where(x => x.Name.Contains(SearchTextBox.Text) || x.RoomId.ToString().Contains(SearchTextBox.Text)).ToList();
-            AddEquipment(result);
+            ShowDataGrid(result);
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -53,7 +55,7 @@ namespace tabulator.MVVM.Views.UserViews
 
         }
 
-        public void AddEquipment(List<EquipmentItem> eqList)
+        public void ShowDataGrid(List<EquipmentItem> eqList)
         {
             EquipmentDataGrid.ItemsSource = eqList.Select(eq => new
             {
