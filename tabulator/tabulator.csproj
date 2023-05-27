@@ -367,8 +367,8 @@
     <Resource Include="Resources\Images\editlight.png" />
     <Resource Include="Resources\Images\helpicon.png" />
     <Resource Include="Resources\Images\helpicon2.png" />
-    <Resource Include="Resources\Images\addicon.jpg" />
-    <Resource Include="Resources\Images\addicon — kopia.jpg" />
+    <Resource Include="Resources\Images\adddark.png" />
+    <Resource Include="Resources\Images\addlight.png" />
     <Content Include="_Data\EqRecordsDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
