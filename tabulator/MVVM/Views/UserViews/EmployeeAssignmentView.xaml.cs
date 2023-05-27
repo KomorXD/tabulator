@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,6 +23,8 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EmployeeAssignmentView : UserControl
     {
         DBContext context = DBContext.GetInstance();
+        ToggleButton eqBtn;
+        ToggleButton emplBtn;
 
         public EmployeeAssignmentView()
         {
@@ -43,16 +46,35 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void BtnAddEQ_Click(object sender, RoutedEventArgs e)
         {
-
+            if (eqBtn != null)
+                eqBtn.IsChecked = false;
+            if(eqBtn == (ToggleButton)sender)
+            {
+                eqBtn.IsChecked = false;
+                return;
+            }
+            eqBtn = (ToggleButton)sender;
+            eqBtn.IsChecked = true;
         }
 
         private void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
         {
-
+            if (emplBtn != null)
+                emplBtn.IsChecked = false;
+            if (emplBtn == (ToggleButton)sender)
+            {
+                emplBtn.IsChecked = false;
+                return;
+            }
+            emplBtn = (ToggleButton)sender;
+            emplBtn.IsChecked = true;
         }
 
         private void btnAssign_Click(object sender, RoutedEventArgs e)
         {
+            if (eqBtn == null || emplBtn == null)
+                return;
+
 
         }
 

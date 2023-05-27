@@ -55,11 +55,11 @@
                                         Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnAddEQ"
-                                    Cursor="Hand"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource EditButtonTheme}"
-                                    Click="BtnAddEQ_Click"/>
+                            <ToggleButton x:Name="BtnAddEQ"
+                                          VerticalAlignment="Center"
+                                          Style="{StaticResource AddButtonTheme}"
+                                          Click="BtnAddEQ_Click"/>
+                            
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -103,10 +103,10 @@
                                         Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnAddEmpl"
+                            <ToggleButton x:Name="BtnAddEmpl"
                                     Cursor="Hand"
                                     VerticalAlignment="Center"
-                                    Style="{StaticResource EditButtonTheme}"
+                                    Style="{StaticResource AddButtonTheme}"
                                     Click="BtnAddEmpl_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
