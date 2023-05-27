@@ -30,7 +30,8 @@ namespace tabulator.MVVM.Views.UserViews
             var selectedItem = (dynamic)EquipmentDataGrid.SelectedItem;
             int id = selectedItem.Id;
             EditEquipmentPopup editDepartment = new EditEquipmentPopup(id);
-            editDepartment.ShowDialog();           
+            editDepartment.ShowDialog();
+            ShowDataGrid(context.Equipment.ToList());
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

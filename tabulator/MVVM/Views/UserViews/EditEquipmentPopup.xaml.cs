@@ -61,8 +61,6 @@ namespace tabulator.MVVM.Views.UserViews
 
             context.SaveChanges();
             EditEquipmentDataView editEquipmentDataView = new EditEquipmentDataView();
-            editEquipmentDataView.ShowDataGrid(context.Equipment.ToList());
-            this.Close();
         }
     }
 }
