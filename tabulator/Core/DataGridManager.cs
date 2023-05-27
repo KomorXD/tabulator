@@ -68,6 +68,7 @@ namespace tabulator.Core
 
             dataGridToShow.ItemsSource = roomList.Select(room => new
             {
+                ID = room.room.Id,
                 RoomName = room.room.Number,
                 FacultyName = room.facultyName,
                 DepartmentName = room.departmentName

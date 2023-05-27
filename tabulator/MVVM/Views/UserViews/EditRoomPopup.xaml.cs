@@ -22,21 +22,21 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EditRoomPopup : Window
     {
         DBContext context = DBContext.GetInstance();
-        int Id;
         string selectedRoomType = "";
         List<Department> departments;
         List<Faculty> faculties;
 
-        public EditRoomPopup(int RoomID)
+        Room _roomToEdit;
+
+        public EditRoomPopup(Room roomToEdit)
         {
             InitializeComponent();
-            Id = RoomID;
+            _roomToEdit = roomToEdit;
             faculties = context.Faculties.ToList();
             departments = context.Departments.ToList();
 
-            var editRoom = (from m in context.Rooms where m.Id == RoomID select m).FirstOrDefault();
             RoomTypeDropdownSelectionChanged(null, null);
-            RoomNumberInput.Text = editRoom.Number;
+            RoomNumberInput.Text = _roomToEdit.Number;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -54,11 +54,9 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Room room = (from m in context.Rooms where m.Id == Id select m).FirstOrDefault();
-            room.Number = RoomNumberInput.Text;
-            
+            _roomToEdit.Number = RoomNumberInput.Text;
+         
             context.SaveChanges();
-            EditRoomDataView.dataGrid.ItemsSource = context.Rooms.ToList();
             this.Close();
         }
 

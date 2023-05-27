@@ -33,7 +33,6 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EditRoomDataView : UserControl
     {
         DBContext context = DBContext.GetInstance();
-        public static DataGrid dataGrid;
         List<Room> rooms;
         List<FacultyRoom> facultyRooms;
         List<DepartmentRoom> departmentRooms;
@@ -50,9 +49,11 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (RoomDataGrid.SelectedItem as Room).Id;
-            EditRoomPopup editRoom = new EditRoomPopup(ID);
+            Room tempRoom = rooms.Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
+            EditRoomPopup editRoom = new EditRoomPopup(tempRoom);
             editRoom.ShowDialog();
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, rooms, facultyRooms, departmentRooms);
+           //int ID = (RoomDataGrid.SelectedItem as RoomDataGridStruct).Id;
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
