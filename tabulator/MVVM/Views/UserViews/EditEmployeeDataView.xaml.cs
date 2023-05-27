@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -47,8 +48,10 @@ namespace tabulator.MVVM.Views.UserViews
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var result = context.Employees.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Surname.ToString().Contains(SearchTextBox.Text) || x.PESEL.ToString().Contains(SearchTextBox.Text) || x.PhoneNumber.ToString().Contains(SearchTextBox.Text)).ToList();
+        {           
+            List<Employee> result = context.Employees.ToList();
+            if(!SearchTextBox.Text.Equals(string.Empty))
+                result = context.Employees.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Surname.ToLower().ToString().Contains(SearchTextBox.Text.ToLower()) || x.PESEL.ToLower().ToString().Contains(SearchTextBox.Text.ToLower()) || x.PhoneNumber.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
             AddDataToDataGrid(result);
         }
 
