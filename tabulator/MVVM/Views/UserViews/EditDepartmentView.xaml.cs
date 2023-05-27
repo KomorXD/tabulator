@@ -53,7 +53,7 @@ namespace tabulator.MVVM.Views.UserViews
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = context.Departments.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Faculty.Name.ToString().Contains(SearchTextBox.Text)).ToList();
+            var result = context.Departments.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Faculty.Name.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
             ShowDataGrid(result);
         }
 
