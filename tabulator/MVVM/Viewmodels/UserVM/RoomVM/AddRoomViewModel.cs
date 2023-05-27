@@ -29,7 +29,7 @@ namespace tabulator.MVVM.Viewmodels.UserVM
             Rooms.Add(room);
             context.Rooms.Add(room);
             context.SaveChanges();
-        }
+        }     
 
         public void AddFacultyRoom(Room room, Faculty faculty)
         {

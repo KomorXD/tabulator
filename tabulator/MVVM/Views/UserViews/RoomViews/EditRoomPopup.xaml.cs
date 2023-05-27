@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
+using tabulator.MVVM.Viewmodels.UserVM;
 
 namespace tabulator.MVVM.Views.UserViews
 {
@@ -23,8 +24,8 @@ namespace tabulator.MVVM.Views.UserViews
     {
         DBContext context = DBContext.GetInstance();
         string selectedRoomType = "";
-        List<Department> departments;
-        List<Faculty> faculties;
+        List<Department> _departmentList;
+        List<Faculty> _facultyList;
 
         Room _roomToEdit;
 
@@ -32,8 +33,8 @@ namespace tabulator.MVVM.Views.UserViews
         {
             InitializeComponent();
             _roomToEdit = roomToEdit;
-            faculties = context.Faculties.ToList();
-            departments = context.Departments.ToList();
+            _facultyList = context.Faculties.ToList();
+            _departmentList = context.Departments.ToList();
 
             RoomTypeDropdownSelectionChanged(null, null);
             RoomNumberInput.Text = _roomToEdit.Number;
@@ -55,8 +56,7 @@ namespace tabulator.MVVM.Views.UserViews
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             _roomToEdit.Number = RoomNumberInput.Text;
-         
-            context.SaveChanges();
+
             this.Close();
         }
 
@@ -68,18 +68,19 @@ namespace tabulator.MVVM.Views.UserViews
                 case "Faculty":
                     RoomTypeText.Text = "Faculty";
                     RoomTypeItemDropdown.Items.Clear();
-                    //zastapic uzupelniaime danych z bazy danych xd
-                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 1" });
-                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Faculty Example 2" });
+                    foreach (Faculty faculty in _facultyList)
+                    {
+                        RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = faculty.Name });
+                    }
                     RoomTypeItemDropdown.SelectedIndex = 0;
                     break;
-
                 case "Department":
                     RoomTypeText.Text = "Department";
                     RoomTypeItemDropdown.Items.Clear();
-                    //zastapic uzupelniaime danych z bazy danych xd
-                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Department Example 1" });
-                    RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = "Department Example 2" });
+                    foreach(Department department in _departmentList)
+                    {
+                        RoomTypeItemDropdown.Items.Add(new ComboBoxItem() { Content = department.Name });
+                    }
                     RoomTypeItemDropdown.SelectedIndex = 0;
                     break;
             }

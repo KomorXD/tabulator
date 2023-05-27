@@ -90,7 +90,6 @@ namespace tabulator.MVVM.Views.UserViews
 
             item.Available = false;
 
-
             EquipmentCaretakers equipmentCaretakers = new EquipmentCaretakers();
             equipmentCaretakers.Item = item;
             equipmentCaretakers.Employee = employee;
