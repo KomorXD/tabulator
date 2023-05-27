@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 
@@ -33,9 +34,12 @@ namespace tabulator.MVVM.Views.UserViews
             NameInput.Text = editEquipment.Name;
             DescriptionInput.Text = editEquipment.Description;
 
-            RoomDropdown.Items.Add(new ComboBoxItem() { Content = "Room Example 1" });
-            RoomDropdown.Items.Add(new ComboBoxItem() { Content = "Room Example 2" });
-            RoomDropdown.SelectedIndex = 0;
+            if (editEquipment.Available)
+                AvailableInput.SelectedIndex = 0;
+            else AvailableInput.SelectedIndex = 1;
+
+            AvailableInput_SelectionChanged(AvailableInput, null);
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -62,6 +66,29 @@ namespace tabulator.MVVM.Views.UserViews
             context.SaveChanges();
             EditEquipmentDataView editEquipmentDataView = new EditEquipmentDataView();
             this.Close();
+        }
+
+        private void AvailableInput_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var available = ((ComboBoxItem)AvailableInput.SelectedItem)?.Content?.ToString();
+            switch (available)
+            {
+                case "True":
+                    NotInUseInput.Visibility = Visibility.Hidden;
+                    DestroyedInput.Visibility = Visibility.Hidden;
+                    notinuseText.Visibility = Visibility.Hidden;
+                    destroyedText.Visibility = Visibility.Hidden;
+                    break;
+
+                case "False":
+                    NotInUseInput.Visibility = Visibility.Visible;
+                    destroyedText.Visibility = Visibility.Visible;
+                    DestroyedInput.Visibility = Visibility.Visible;
+                    notinuseText.Visibility = Visibility.Visible;
+                    NotInUseInput.SelectedIndex = 0;
+                    DestroyedInput.SelectedIndex = 1;
+                    break;
+            }
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="AdminView" Height="480" Width="700"
+        Title="AdminView" Height="580" Width="700"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -21,8 +21,9 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="300"/>
+                <RowDefinition Height="200"/>
                 <RowDefinition />
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -45,71 +46,94 @@
                     Style="{StaticResource CloseButtonTheme}"
                     Click="btnClose_Click" />
             </Grid>
-            
+
+
             <StackPanel Grid.Column="0"
                     Grid.Row="1">
                 <TextBlock Text="Name"
                        Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="NameInput"                    
+                <TextBox x:Name="NameInput" 
+                     Margin="0"
+
                      Style="{StaticResource InputTextboxTheme}" />
                 <TextBlock Text="Description"
-                       Margin="0, 35, 0, 0"
+                       Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="DescriptionInput"                    
+                <TextBox x:Name="DescriptionInput"
+                     Margin="0"
                      Style="{StaticResource InputTextboxTheme}" />
-                <TextBlock Text="RoomId"
-                       Margin="0,32,0,0"
-                       Style="{StaticResource TextblockTheme}"/>
-                <ComboBox x:Name="RoomDropdown"     
-                       Width="200"
-                        Margin="0,10,0,0"
-                     Style="{StaticResource ComboBoxTheme}" />
-            </StackPanel>
-            <StackPanel Grid.Column="1"
-                    Grid.Row="1">
                 <TextBlock Text="Available"
                        Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
-
                 <ComboBox x:Name="AvailableInput"
-                        Width="200"
-                        Margin="0,10,0,0"
-                        Style="{StaticResource ComboBoxTheme}">
-                    <ComboBoxItem IsSelected="True">True</ComboBoxItem>
+                      Width="200"
+                      Margin="0,10,0,0"
+                      Style="{StaticResource ComboBoxTheme}"
+                      SelectionChanged="AvailableInput_SelectionChanged">
+                    <ComboBoxItem>True</ComboBoxItem>
                     <ComboBoxItem>False</ComboBoxItem>
                 </ComboBox>
-                <TextBlock Text="Not in use"
-                       Style="{StaticResource TextblockTheme}"/>
-                <ComboBox x:Name="NotInUseInput" 
-                        Width="200"
-                        Margin="0,10,0,0"
-                        Style="{StaticResource ComboBoxTheme}">
-                    <ComboBoxItem>True</ComboBoxItem>
-                    <ComboBoxItem IsSelected="True">False</ComboBoxItem>
-                </ComboBox>
-                <TextBlock Text="Destroyed"
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                    Grid.Row="1">
+                <TextBlock Name="destroyedText" 
+                       Text="Destroyed"
+                       Margin="0,10,0,0"
                        Style="{StaticResource TextblockTheme}"/>
                 <ComboBox x:Name="DestroyedInput" 
                         Width="200"
                         Margin="0,10,0,0"
                         Style="{StaticResource ComboBoxTheme}">
                     <ComboBoxItem>True</ComboBoxItem>
-                    <ComboBoxItem IsSelected="True">False</ComboBoxItem>
+                    <ComboBoxItem>False</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Name="notinuseText"
+                       Text="Not in use"
+                       Margin="0,53,0,0"
+                       Style="{StaticResource TextblockTheme}"/>
+                <ComboBox x:Name="NotInUseInput" 
+                        Width="200"
+                        Margin="0,10,0,0"
+                        Style="{StaticResource ComboBoxTheme}">
+                    <ComboBoxItem>True</ComboBoxItem>
+                    <ComboBoxItem>False</ComboBoxItem>
                 </ComboBox>
 
+
             </StackPanel>
-            <StackPanel Grid.Row="2"
-                    Grid.ColumnSpan="2">
 
-
-                <Button x:Name="btnEdit"
-                    Margin="0,30,0,0"
+            <DataGrid x:Name="RoomDataGrid"
+                  x:FieldModifier="public"
+                  Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  Margin="20,20,20,20"
+                  Style="{DynamicResource DataGridStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  CellStyle="{DynamicResource DataGridCellStyle1}"
+                  RowStyle="{DynamicResource DataGridRowStyle1}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="RoomName"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding RoomName}"/>
+                    <DataGridTextColumn Header="FacultyName"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding FacultyName}"/>
+                    <DataGridTextColumn Header="DepartmentName"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding DepartmentName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="btnEdit"
                     Content="Edit"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
                     Click="btnEdit_Click"
                     Style="{StaticResource ButtonTheme}"/>
-
-            </StackPanel>
 
         </Grid>
     </Border>
