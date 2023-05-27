@@ -28,6 +28,8 @@ namespace tabulator.MVVM.Views.UserViews
         ToggleButton emplBtn;
         List<Employee> employees;
         List<EquipmentItem> equipmentItems;
+        EquipmentItem item;
+        Employee employee;
 
         public EmployeeAssignmentView()
         {
@@ -64,6 +66,7 @@ namespace tabulator.MVVM.Views.UserViews
             }
             eqBtn = (ToggleButton)sender;
             eqBtn.IsChecked = true;
+            item = context.Equipment.ToList().Where(eq => eq.Id == (((dynamic)EqDataGrid.SelectedItem).ID)).FirstOrDefault();
         }
 
         private void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
@@ -77,14 +80,14 @@ namespace tabulator.MVVM.Views.UserViews
             }
             emplBtn = (ToggleButton)sender;
             emplBtn.IsChecked = true;
+            employee = context.Employees.ToList().Where(emp => emp.Id == (((dynamic)EmplDataGrid.SelectedItem).ID)).FirstOrDefault();
         }
 
         private void btnAssign_Click(object sender, RoutedEventArgs e)
         {
             if (eqBtn == null || emplBtn == null)
                 return;
-            EquipmentItem item = context.Equipment.ToList().Where(eq => eq.Id == (((dynamic)EqDataGrid.SelectedItem).ID)).FirstOrDefault();
-            Employee employee = context.Employees.ToList().Where(emp => emp.Id == (((dynamic)EmplDataGrid.SelectedItem).ID)).FirstOrDefault();
+
             item.Available = false;
 
 
