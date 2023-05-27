@@ -36,18 +36,18 @@
                   CellStyle="{DynamicResource DataGridCellStyle1}"
                   RowStyle="{DynamicResource DataGridRowStyle1}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Number"
+                <DataGridTextColumn Header="RoomName"
                                     IsReadOnly="True"
                                     Width="*"
-                                    Binding="{Binding Number}"/>
-                <!--<DataGridTextColumn Header="Room type"
+                                    Binding="{Binding RoomName}"/>
+                <DataGridTextColumn Header="FacultyName"
                                     IsReadOnly="True"
                                     Width="*"
-                                    Binding="{Binding DepartmentRooms}"/>
-                <DataGridTextColumn Header="Location"
+                                    Binding="{Binding FacultyName}"/>
+                <DataGridTextColumn Header="DepartmentName"
                                     IsReadOnly="True"
                                     Width="*"
-                                    Binding="{Binding FacultyRooms}"/>-->
+                                    Binding="{Binding DepartmentName}"/>
 
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"
