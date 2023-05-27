@@ -49,7 +49,9 @@ namespace tabulator.MVVM.Views.AdminViews
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = context.Users.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Surname.Contains(SearchTextBox.Text) || x.Username.Contains(SearchTextBox.Text)).ToList();
+            List<User> result = context.Users.ToList();
+            if(!SearchTextBox.Text.Equals(string.Empty))
+                result = context.Users.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Surname.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Username.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
             UserDataGrid.ItemsSource = result;
         }
 
