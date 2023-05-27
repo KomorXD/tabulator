@@ -66,7 +66,6 @@ namespace tabulator.MVVM.Views.UserViews
             }
             department.Faculty = _facultyList.ElementAt(selectedRole);
             context.SaveChanges();
-            EditDepartmentView.dataGrid.ItemsSource = context.Departments.ToList();
             this.Close();
         }
     }

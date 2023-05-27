@@ -24,38 +24,52 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EditDepartmentView : UserControl
     {
         DBContext context = DBContext.GetInstance();
-        public static DataGrid dataGrid;
+        private List<Department> departments;
+
         public EditDepartmentView()
         {
             InitializeComponent();
-            DepartmentDataGrid.ItemsSource = context.Departments.ToList();
-            dataGrid = DepartmentDataGrid;
+            ShowDataGrid(context.Departments.ToList());
+            departments = context.Departments.ToList();
         }
             
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (DepartmentDataGrid.SelectedItem as Department).Id;
-            EditDepartmentPopup editDepartment = new EditDepartmentPopup(ID);
+            var selectedItem = (dynamic)DepartmentDataGrid.SelectedItem;
+            int id = selectedItem.Id;
+            EditDepartmentPopup editDepartment = new EditDepartmentPopup(id);
             editDepartment.ShowDialog();
+            ShowDataGrid(context.Departments.ToList());
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (DepartmentDataGrid.SelectedItem as Department).Id;
-            var deleteDepartment = context.Departments.Where(m => m.Id == ID).Single();
+            var selectedItem = (dynamic)DepartmentDataGrid.SelectedItem;
+            int id = selectedItem.Id;
+            var deleteDepartment = context.Departments.Where(m => m.Id == id).Single();
             context.Departments.Remove(deleteDepartment);
             context.SaveChanges();
-            DepartmentDataGrid.ItemsSource = context.Departments.ToList();
+            ShowDataGrid(context.Departments.ToList());
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = context.Departments.Where(x => x.Name.Contains(SearchTextBox.Text) || x.FacultyId.ToString().Contains(SearchTextBox.Text)).ToList();
-            DepartmentDataGrid.ItemsSource = result;
+            ShowDataGrid(result);
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ShowDataGrid(List<Department> departmentList)
+        {
+            DepartmentDataGrid.ItemsSource = departmentList.Select(dep => new
+            {
+                dep.Id,
+                dep.Name,
+                FacultyName = dep.Faculty.Name
+            }).ToList();
         }
     }
 }
