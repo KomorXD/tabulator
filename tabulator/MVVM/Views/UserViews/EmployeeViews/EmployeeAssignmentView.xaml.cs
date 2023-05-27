@@ -83,13 +83,13 @@ namespace tabulator.MVVM.Views.UserViews
         {
             if (eqBtn == null || emplBtn == null)
                 return;
+            EquipmentItem item = context.Equipment.ToList().Where(eq => eq.Id == (((dynamic)EqDataGrid.SelectedItem).ID)).FirstOrDefault();
+            Employee employee = context.Employees.ToList().Where(emp => emp.Id == (((dynamic)EmplDataGrid.SelectedItem).ID)).FirstOrDefault();
+            item.Available = false;
 
-            EquipmentItem equipment = equipmentItems.ElementAt(EqDataGrid.SelectedIndex);
-            equipment.Available = false;
-            Employee employee = employees.ElementAt(EqDataGrid.SelectedIndex);
 
             EquipmentCaretakers equipmentCaretakers = new EquipmentCaretakers();
-            equipmentCaretakers.Item = equipment;
+            equipmentCaretakers.Item = item;
             equipmentCaretakers.Employee = employee;
             context.EquipmentCaretakers.Add(equipmentCaretakers);
             context.SaveChanges();

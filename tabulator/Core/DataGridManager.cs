@@ -113,7 +113,7 @@ namespace tabulator.Core
         {
             dataGridToShow.ItemsSource = eqList.Select(eq => new
             {
-                eq.Id,
+                ID = eq.Id,
                 eq.Name,
                 RoomNumber = eq.Room.Number,
                 eq.Available
@@ -123,6 +123,7 @@ namespace tabulator.Core
         {
             dataGridToShow.ItemsSource = emplList.Select(empl => new
             {
+                ID = empl.Id,
                 empl.Name,
                 empl.Surname
             }).ToList();
