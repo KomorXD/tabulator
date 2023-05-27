@@ -6,6 +6,15 @@ namespace tabulator.DatabaseContext
     internal class DBContext : DbContext
     {
         static public DBContext INSTANCE = null;
+        static public DBContext GetInstance()
+        {
+            if (INSTANCE == null)
+            {
+                INSTANCE = new DBContext();
+            }
+
+            return INSTANCE;
+        }
 
         private DBContext() : base(Properties.Settings.Default.db_connect_str)
         {
@@ -22,14 +31,6 @@ namespace tabulator.DatabaseContext
         public DbSet<FacultyRoom> FacultyRooms { get; set; }
         public DbSet<DepartmentRoom> DepartmentRooms { get; set; }
 
-        static public DBContext GetInstance()
-        {
-            if(INSTANCE == null)
-            {
-                INSTANCE = new DBContext();
-            }
-
-            return INSTANCE;
-        }
+       
     }
 }

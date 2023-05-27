@@ -54,7 +54,6 @@ namespace tabulator.MVVM.Views.UserViews
             faculty.Name = NameInput.Text;
             faculty.Address = AddressInput.Text;
             context.SaveChanges();
-            EditFacultyDataView.dataGrid.ItemsSource = context.Faculties.ToList();
             this.Close();
         }
     }

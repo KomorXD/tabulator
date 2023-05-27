@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 
@@ -39,13 +40,13 @@ namespace tabulator.MVVM.Views.UserViews
         private void EquipmentSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = context.Equipment.Where(x => x.Name.Contains(EquipmentSearchTextBox.Text) || x.Room.Number.ToString().Contains(EquipmentSearchTextBox.Text)).ToList();
-            AddEquipment(result);
+            DataGridManager.GetInstance().ShowShortEquipmentDataGrid(EqDataGrid, result);
         }
 
         private void EmployeeSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = context.Employees.Where(x => x.Name.Contains(EmployeeSearchTextBox.Text) || x.Surname.Contains(EmployeeSearchTextBox.Text)).ToList();
-            AddEmployees(result);
+            DataGridManager.GetInstance().ShowShortEmployeeDataGrid(EmplDataGrid, result);
         }
 
         private void BtnAddEQ_Click(object sender, RoutedEventArgs e)
@@ -90,26 +91,8 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void AddDataToDataGrids()
         {
-            AddEquipment(context.Equipment.ToList());
-            AddEmployees(context.Employees.ToList());
-        }
-        private void AddEquipment(List<EquipmentItem> eqList)
-        {
-            EqDataGrid.ItemsSource = eqList.Select(eq => new
-            {
-                eq.Id,
-                eq.Name,
-                RoomNumber = eq.Room.Number,    
-                eq.Available
-            }).Where(eq => eq.Available.Equals(true)).ToList();
-        }
-        private void AddEmployees(List<Employee> emplList)
-        {
-            EmplDataGrid.ItemsSource = emplList.Select(empl => new
-            {
-                empl.Name,
-                empl.Surname
-            }).ToList();
+            DataGridManager.GetInstance().ShowShortEquipmentDataGrid(EqDataGrid, context.Equipment.ToList());
+            DataGridManager.GetInstance().ShowShortEmployeeDataGrid(EmplDataGrid, context.Employees.ToList());
         }
     }
 }

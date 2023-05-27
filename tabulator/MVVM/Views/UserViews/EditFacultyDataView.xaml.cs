@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 using tabulator.MVVM.Views.AdminViews;
@@ -24,13 +25,10 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EditFacultyDataView : UserControl
     {
         DBContext context = DBContext.GetInstance();
-        public static DataGrid dataGrid;
-
         public EditFacultyDataView()
         {
             InitializeComponent();
-            FacultiesDataGrid.ItemsSource = context.Faculties.ToList();
-            dataGrid = FacultiesDataGrid;
+            DataGridManager.GetInstance().ShowFacultiesDataGrid(FacultiesDataGrid, context.Faculties.ToList());
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -38,6 +36,7 @@ namespace tabulator.MVVM.Views.UserViews
             int ID = (FacultiesDataGrid.SelectedItem as Faculty).Id;
             EditFacultyPopup editFaculty = new EditFacultyPopup(ID);
             editFaculty.ShowDialog();
+            DataGridManager.GetInstance().ShowFacultiesDataGrid(FacultiesDataGrid, context.Faculties.ToList());
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -46,13 +45,13 @@ namespace tabulator.MVVM.Views.UserViews
             var deleteFaculty = context.Faculties.Where(m => m.Id == ID).Single();
             context.Faculties.Remove(deleteFaculty);
             context.SaveChanges();
-            FacultiesDataGrid.ItemsSource = context.Faculties.ToList();
+            DataGridManager.GetInstance().ShowFacultiesDataGrid(FacultiesDataGrid, context.Faculties.ToList());
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = context.Faculties.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Address.Contains(SearchTextBox.Text)).ToList();
-            FacultiesDataGrid.ItemsSource = result;
+            DataGridManager.GetInstance().ShowFacultiesDataGrid(FacultiesDataGrid, result);
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)

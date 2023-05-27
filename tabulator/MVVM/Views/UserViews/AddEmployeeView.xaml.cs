@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 
@@ -25,18 +26,13 @@ namespace tabulator.MVVM.Views.UserViews
     {
         DBContext context = DBContext.GetInstance();
         public static DataGrid dataGrid;
-        List<Room> rooms;
-        List<FacultyRoom> facultyRooms;
-        List<DepartmentRoom> departmentRooms;
 
         public AddEmployeeView()
         {
             InitializeComponent();
-            rooms = context.Rooms.ToList();
-            facultyRooms = context.FacultyRooms.ToList();
-            departmentRooms = context.DepartmentRooms.ToList();
-            
-            ShowDataGrid();
+
+            dataGrid = RoomDataGrid;
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -49,59 +45,5 @@ namespace tabulator.MVVM.Views.UserViews
 
         }
 
-        private void ShowDataGrid()
-        {
-            List<RoomDataGridStruct> roomList = new List<RoomDataGridStruct>();
-            foreach (FacultyRoom facultyRoom in facultyRooms)
-            {
-                RoomDataGridStruct temp;
-                temp.room = facultyRoom.Room;
-                temp.facultyName = facultyRoom.Faculty.Name;
-                temp.departmentName = "-";
-                roomList.Add(temp);
-            }
-
-            foreach (DepartmentRoom depatmentRoom in departmentRooms)
-            {
-                RoomDataGridStruct temp;
-                temp.room = depatmentRoom.Room;
-                temp.departmentName = depatmentRoom.Department.Name;
-                temp.facultyName = "-";
-                roomList.Add(temp);
-            }
-
-            List<RoomDataGridStruct> roomsWithoutAssigment = new List<RoomDataGridStruct>();
-
-            foreach (Room room in rooms)
-            {
-                foreach (RoomDataGridStruct addedRoom in roomList)
-                {
-                    if (!room.Equals(addedRoom.room))
-                    {
-                        RoomDataGridStruct temp;
-                        temp.room = room;
-                        temp.facultyName = "-";
-                        temp.departmentName = "-";
-                        roomsWithoutAssigment.Add(temp);
-                        break;
-                    }
-                }
-            }
-
-            foreach (RoomDataGridStruct item in roomsWithoutAssigment)
-            {
-                roomList.Add(item);
-            }
-
-            RoomDataGrid.ItemsSource = roomList.Select(room => new
-            {
-                RoomName = room.room.Number,
-                FacultyName = room.facultyName,
-                DepartmentName = room.departmentName
-
-            }).ToList();
-
-            dataGrid = RoomDataGrid;
-        }
     }
 }
