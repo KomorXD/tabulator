@@ -84,8 +84,16 @@ namespace tabulator.MVVM.Views.UserViews
             if (eqBtn == null || emplBtn == null)
                 return;
 
-            var equipment = equipmentItems.ElementAt(EqDataGrid.SelectedIndex);
-            var employee = employees.ElementAt(EqDataGrid.SelectedIndex);            
+            EquipmentItem equipment = equipmentItems.ElementAt(EqDataGrid.SelectedIndex);
+            equipment.Available = false;
+            Employee employee = employees.ElementAt(EqDataGrid.SelectedIndex);
+
+            EquipmentCaretakers equipmentCaretakers = new EquipmentCaretakers();
+            equipmentCaretakers.Item = equipment;
+            equipmentCaretakers.Employee = employee;
+            context.EquipmentCaretakers.Add(equipmentCaretakers);
+            context.SaveChanges();
+            AddDataToDataGrids();
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -95,6 +103,8 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void AddDataToDataGrids()
         {
+            employees = context.Employees.ToList();
+            equipmentItems = context.Equipment.ToList();
             DataGridManager.GetInstance().ShowShortEquipmentDataGrid(EqDataGrid, context.Equipment.ToList());
             DataGridManager.GetInstance().ShowShortEmployeeDataGrid(EmplDataGrid, context.Employees.ToList());
         }
