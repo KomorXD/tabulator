@@ -60,7 +60,8 @@ namespace tabulator.MVVM.Views.UserViews
             // do ogarniecia przez tylny koniec xd
 
             context.SaveChanges();
-            EditEquipmentDataView.dataGrid.ItemsSource = context.Equipment.ToList();
+            EditEquipmentDataView editEquipmentDataView = new EditEquipmentDataView();
+            editEquipmentDataView.AddEquipment(context.Equipment.ToList());
             this.Close();
         }
     }

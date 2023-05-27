@@ -13,12 +13,14 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EditEquipmentDataView : UserControl
     {
         DBContext context = DBContext.GetInstance();
+        private List<EquipmentItem> equipmentItems;
         public static DataGrid dataGrid;
 
         public EditEquipmentDataView()
         {
             InitializeComponent();
             AddEquipment(context.Equipment.ToList());
+            equipmentItems = context.Equipment.ToList();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -37,7 +39,7 @@ namespace tabulator.MVVM.Views.UserViews
             var deleteEquipment = context.Equipment.Where(m => m.Id == ID).Single();
             context.Equipment.Remove(deleteEquipment);
             context.SaveChanges();
-            EquipmentDataGrid.ItemsSource = context.Equipment.ToList();
+            AddEquipment(context.Equipment.ToList());
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -51,7 +53,7 @@ namespace tabulator.MVVM.Views.UserViews
 
         }
 
-        private void AddEquipment(List<EquipmentItem> eqList)
+        public void AddEquipment(List<EquipmentItem> eqList)
         {
             EquipmentDataGrid.ItemsSource = eqList.Select(eq => new
             {
