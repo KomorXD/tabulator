@@ -65,9 +65,10 @@ namespace tabulator.MVVM.Views.UserViews
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = context.Rooms.Where(x => x.Number.ToString().Contains(SearchTextBox.Text)).ToList();
-            RoomDataGrid.ItemsSource = result;
-            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, rooms, facultyRooms, departmentRooms);
+            List<Room> roomsTemp = context.Rooms.ToList().Where(r => r.Number.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
+            List<FacultyRoom> facultyRoomsTemp = context.FacultyRooms.ToList().Where(f => f.Room.Number.ToLower().Contains(SearchTextBox.Text.ToLower()) || f.Faculty.Name.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
+            List<DepartmentRoom> departmentRoomsTemp = context.DepartmentRooms.ToList().Where(d => d.Room.Number.ToLower().Contains(SearchTextBox.Text.ToLower()) || d.Department.Name.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, roomsTemp, facultyRoomsTemp, departmentRoomsTemp);
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)

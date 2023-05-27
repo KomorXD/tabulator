@@ -63,6 +63,7 @@
                   Grid.Row="2"
                   Grid.Column="0"
                   Grid.ColumnSpan="2"
+                  Margin="20,20,20,20"
                   Style="{DynamicResource DataGridStyle1}"
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
