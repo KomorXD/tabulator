@@ -26,7 +26,7 @@
         <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"/>
 
-        <DataGrid x:Name="DepartmentDataGrid"
+        <DataGrid x:Name="EmployeeDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="0"
@@ -40,10 +40,18 @@
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Faculty ID"
+                <DataGridTextColumn Header="Surname"
                                     IsReadOnly="True"
                                     Width="*"
-                                    Binding="{Binding FacultyId}"/>
+                                    Binding="{Binding Surname}"/>
+                <DataGridTextColumn Header="Pesel"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding PESEL}"/>
+                <DataGridTextColumn Header="Phone number"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding PhoneNumber}"/>
 
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"
