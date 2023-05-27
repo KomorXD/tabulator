@@ -25,11 +25,15 @@ namespace tabulator.MVVM.Views.UserViews
         DBContext context = DBContext.GetInstance();
         ToggleButton eqBtn;
         ToggleButton emplBtn;
+        List<Employee> employees;
+        List<EquipmentItem> equipmentItems;
 
         public EmployeeAssignmentView()
         {
             InitializeComponent();
             AddDataToDataGrids();
+            employees = context.Employees.ToList();
+            equipmentItems = context.Equipment.ToList();
         }
 
         private void EquipmentSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -75,7 +79,8 @@ namespace tabulator.MVVM.Views.UserViews
             if (eqBtn == null || emplBtn == null)
                 return;
 
-
+            var equipment = equipmentItems.ElementAt(EqDataGrid.SelectedIndex);
+            var employee = employees.ElementAt(EqDataGrid.SelectedIndex);            
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
