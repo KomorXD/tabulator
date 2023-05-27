@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -50,7 +51,9 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = context.Faculties.Where(x => x.Name.Contains(SearchTextBox.Text) || x.Address.Contains(SearchTextBox.Text)).ToList();
+            List<Faculty> result = context.Faculties.ToList();
+            if(!SearchTextBox.Text.Equals(string.Empty))
+                result = context.Faculties.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Address.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
             DataGridManager.GetInstance().ShowFacultiesDataGrid(FacultiesDataGrid, result);
         }
 
