@@ -63,9 +63,18 @@
                 <userView:EmployeeAssignmentView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type userVM:EditEmployeeDataViewModel}">
+                <userView:EditEmployeeDataView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userVM:AddEmployeeViewModel}">
+                <userView:AddEmployeeView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type userVM:GenerateReportViewModel}">
                 <userView:ReportGeneratorView/>
             </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

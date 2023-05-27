@@ -120,6 +120,14 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditFacultyDataCommand}"/>
 
+                        <RadioButton Content="Add employee"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding AddEmployeeDataCommand}"/>
+
+                        <RadioButton Content="Edit employee data"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EditEmployeeDataCommand}"/>
+
                         <RadioButton Content="Generate report"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding GenerateReportDataCommand}"/>

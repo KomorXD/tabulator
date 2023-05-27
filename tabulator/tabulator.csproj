@@ -97,6 +97,8 @@
     <Compile Include="MVVM\Models\UserFunction.cs" />
     <Compile Include="MVVM\Models\User.cs" />
     <Compile Include="MVVM\Models\Room.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\AddEmployeeViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EditEmployeeDataViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\UserVM\GenerateReportViewModel.cs" />
     <Compile Include="MVVM\Views\AdminViews\ChangePasswordPopup.xaml.cs">
       <DependentUpon>ChangePasswordPopup.xaml</DependentUpon>
@@ -104,8 +106,14 @@
     <Compile Include="MVVM\Views\AdminViews\EditUserPopup.xaml.cs">
       <DependentUpon>EditUserPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Views\UserViews\AddEmployeeView.xaml.cs">
+      <DependentUpon>AddEmployeeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml.cs">
       <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EditEmployeeDataView.xaml.cs">
+      <DependentUpon>EditEmployeeDataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Views\UserViews\EditEquipmentPopup.xaml.cs">
       <DependentUpon>EditEquipmentPopup.xaml</DependentUpon>
@@ -251,6 +259,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\Views\UserViews\AddEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Views\UserViews\AddEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -268,6 +280,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\Views\UserViews\EditDepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EditEmployeeDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
