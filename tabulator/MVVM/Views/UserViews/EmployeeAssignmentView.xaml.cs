@@ -39,13 +39,17 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void EquipmentSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = context.Equipment.Where(x => x.Name.Contains(EquipmentSearchTextBox.Text) || x.Room.Number.ToString().Contains(EquipmentSearchTextBox.Text)).ToList();
+            List<EquipmentItem> result = context.Equipment.ToList();
+            if(!EquipmentSearchTextBox.Text.Equals(string.Empty))
+                result = context.Equipment.Where(x => x.Name.ToLower().Contains(EquipmentSearchTextBox.Text.ToLower()) || x.Room.Number.ToLower().Contains(EquipmentSearchTextBox.Text.ToLower())).ToList();
             DataGridManager.GetInstance().ShowShortEquipmentDataGrid(EqDataGrid, result);
         }
 
         private void EmployeeSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = context.Employees.Where(x => x.Name.Contains(EmployeeSearchTextBox.Text) || x.Surname.Contains(EmployeeSearchTextBox.Text)).ToList();
+            List<Employee> result = context.Employees.ToList();
+            if(!EmployeeSearchTextBox.Text.Equals(string.Empty))
+                result = context.Employees.Where(x => x.Name.ToLower().Contains(EmployeeSearchTextBox.Text.ToLower()) || x.Surname.ToLower().Contains(EmployeeSearchTextBox.Text.ToLower())).ToList();
             DataGridManager.GetInstance().ShowShortEmployeeDataGrid(EmplDataGrid, result);
         }
 
