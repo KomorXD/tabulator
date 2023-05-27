@@ -33,36 +33,26 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EditRoomDataView : UserControl
     {
         DBContext context = DBContext.GetInstance();
-        List<Room> rooms;
-        List<FacultyRoom> facultyRooms;
-        List<DepartmentRoom> departmentRooms;
         public EditRoomDataView()
         {
             InitializeComponent();
-
-            rooms = context.Rooms.ToList();
-            facultyRooms = context.FacultyRooms.ToList();
-            departmentRooms = context.DepartmentRooms.ToList();
-
-            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, rooms, facultyRooms, departmentRooms);
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid);
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Room tempRoom = rooms.Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
+            Room tempRoom = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
             EditRoomPopup editRoom = new EditRoomPopup(tempRoom);
             editRoom.ShowDialog();
-            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, rooms, facultyRooms, departmentRooms);
-           //int ID = (RoomDataGrid.SelectedItem as RoomDataGridStruct).Id;
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int ID = (RoomDataGrid.SelectedItem as Room).Id;
-            var deleteRoom = context.Rooms.Where(m => m.Id == ID).Single();
-            context.Rooms.Remove(deleteRoom);
+            Room tempRoom = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
+            context.Rooms.Remove(tempRoom);
             context.SaveChanges();
-            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, rooms, facultyRooms, departmentRooms);
+            DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid);
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

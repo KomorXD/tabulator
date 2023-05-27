@@ -22,6 +22,11 @@ namespace tabulator.Core
             return INSTANCE;
         }
 
+        public void ShowRoomsDataGrid(DataGrid dataGridToShow)
+        {
+            ShowRoomsDataGrid(dataGridToShow, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
+        }
+
         public void ShowRoomsDataGrid(DataGrid dataGridToShow, List<Room> rooms, List<FacultyRoom> facultyRooms, List<DepartmentRoom> departmentRooms)
         {
             List<RoomDataGridStruct> roomList = new List<RoomDataGridStruct>();
@@ -47,17 +52,24 @@ namespace tabulator.Core
 
             foreach (Room room in rooms)
             {
+                bool foundInAddedRooms = false;
                 foreach (RoomDataGridStruct addedRoom in roomList)
                 {
-                    if (!room.Equals(addedRoom.room))
+                    if (room.Id == addedRoom.room.Id)
                     {
-                        RoomDataGridStruct temp;
-                        temp.room = room;
-                        temp.facultyName = "-";
-                        temp.departmentName = "-";
-                        roomsWithoutAssigment.Add(temp);
+                        foundInAddedRooms = true;
                         break;
                     }
+                }
+
+                if (!foundInAddedRooms)
+                {
+                    RoomDataGridStruct temp;
+                    temp.room = room;
+                    temp.facultyName = "-";
+                    temp.departmentName = "-";
+                    roomsWithoutAssigment.Add(temp);
+                    break;
                 }
             }
 
