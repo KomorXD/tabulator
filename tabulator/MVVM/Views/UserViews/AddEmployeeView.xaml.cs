@@ -32,6 +32,10 @@ namespace tabulator.MVVM.Views.UserViews
         public AddEmployeeView()
         {
             InitializeComponent();
+            rooms = context.Rooms.ToList();
+            facultyRooms = context.FacultyRooms.ToList();
+            departmentRooms = context.DepartmentRooms.ToList();
+            
             ShowDataGrid();
         }
 
@@ -47,14 +51,11 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void ShowDataGrid()
         {
-            rooms = context.Rooms.ToList();
             List<RoomDataGridStruct> roomList = new List<RoomDataGridStruct>();
-            facultyRooms = context.FacultyRooms.ToList();
-            departmentRooms = context.DepartmentRooms.ToList();
             foreach (FacultyRoom facultyRoom in facultyRooms)
             {
                 RoomDataGridStruct temp;
-                temp.roomName = facultyRoom.Room.Number;
+                temp.room = facultyRoom.Room;
                 temp.facultyName = facultyRoom.Faculty.Name;
                 temp.departmentName = "-";
                 roomList.Add(temp);
@@ -63,19 +64,44 @@ namespace tabulator.MVVM.Views.UserViews
             foreach (DepartmentRoom depatmentRoom in departmentRooms)
             {
                 RoomDataGridStruct temp;
-                temp.roomName = depatmentRoom.Room.Number;
+                temp.room = depatmentRoom.Room;
                 temp.departmentName = depatmentRoom.Department.Name;
                 temp.facultyName = "-";
                 roomList.Add(temp);
             }
 
+            List<RoomDataGridStruct> roomsWithoutAssigment = new List<RoomDataGridStruct>();
+
+            foreach (Room room in rooms)
+            {
+                foreach (RoomDataGridStruct addedRoom in roomList)
+                {
+                    if (!room.Equals(addedRoom.room))
+                    {
+                        RoomDataGridStruct temp;
+                        temp.room = room;
+                        temp.facultyName = "-";
+                        temp.departmentName = "-";
+                        roomsWithoutAssigment.Add(temp);
+                        break;
+                    }
+                }
+            }
+
+            foreach (RoomDataGridStruct item in roomsWithoutAssigment)
+            {
+                roomList.Add(item);
+            }
+
             RoomDataGrid.ItemsSource = roomList.Select(room => new
             {
-                RoomName = room.roomName,
+                RoomName = room.room.Number,
                 FacultyName = room.facultyName,
                 DepartmentName = room.departmentName
 
             }).ToList();
+
+            dataGrid = RoomDataGrid;
         }
     }
 }
