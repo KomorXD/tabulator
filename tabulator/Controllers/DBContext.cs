@@ -30,7 +30,7 @@ namespace tabulator.DatabaseContext
         public DbSet<UserFunction> UserFunctions { get; set; }
         public DbSet<FacultyRoom> FacultyRooms { get; set; }
         public DbSet<DepartmentRoom> DepartmentRooms { get; set; }
-
+        public DbSet<EquipmentCaretakers> EquipmentCaretakers { get; set; }
        
     }
 }
