@@ -37,9 +37,7 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-
-            //int ID = (EquipmentDataGrid.SelectedItem as EquipmentItem).Id;
-            var deleteEquipment = equipmentItems.ElementAt(EquipmentDataGrid.SelectedIndex); //context.Equipment.Where(m => m.Id == ID).Single();
+            var deleteEquipment = equipmentItems.ElementAt(EquipmentDataGrid.SelectedIndex);
             context.Equipment.Remove(deleteEquipment);
             equipmentItems.RemoveAt(EquipmentDataGrid.SelectedIndex);
             context.SaveChanges();
@@ -48,7 +46,11 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = context.Equipment.Where(x => x.Name.Contains(SearchTextBox.Text) || x.RoomId.ToString().Contains(SearchTextBox.Text)).ToList();
+            List<EquipmentItem> result = context.Equipment.ToList();
+            if(!SearchTextBox.Text.Equals(string.Empty))
+            {
+                result = context.Equipment.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Room.Number.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
+            }
             DataGridManager.GetInstance().ShowEquipmentDataGrid(EquipmentDataGrid, result);
         }
         
