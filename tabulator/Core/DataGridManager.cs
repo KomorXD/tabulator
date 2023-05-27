@@ -66,6 +66,8 @@ namespace tabulator.Core
                 roomList.Add(item);
             }
 
+            roomList.Sort((r1, r2) => r1.room.Number.CompareTo(r2.room.Number));
+
             dataGridToShow.ItemsSource = roomList.Select(room => new
             {
                 RoomName = room.room.Number,
