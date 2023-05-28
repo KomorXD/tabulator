@@ -74,8 +74,8 @@ namespace tabulator.MVVM.Views.UserViews
             if(SurnameInput.Text.Equals(string.Empty)) return false;
             if(PeselInput.Text.Equals(string.Empty)) return false;
             //if(PhoneNumberInput.Text.Equals(string.Empty)) return false;
-            if(RoleDropdown.SelectedIndex == -1) return false;
-            if (RoomDataGrid.SelectedIndex == -1) return false;
+            //if(RoleDropdown.SelectedIndex == -1) return false;
+            //if (RoomDataGrid.SelectedIndex == -1) return false;
 
             return true;
         }
