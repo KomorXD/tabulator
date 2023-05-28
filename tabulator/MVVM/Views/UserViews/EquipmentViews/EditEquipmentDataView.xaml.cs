@@ -28,9 +28,8 @@ namespace tabulator.MVVM.Views.UserViews
         {
             if (EquipmentDataGrid.SelectedItem is null)
                 return;
-            var selectedItem = (dynamic)EquipmentDataGrid.SelectedItem;
-            int id = selectedItem.Id;
-            EditEquipmentPopup editDepartment = new EditEquipmentPopup(id);
+            EquipmentItem tempEq = context.Equipment.ToList().Where(eq => eq.Id == (((dynamic)EquipmentDataGrid.SelectedItem).ID)).FirstOrDefault();
+            EditEquipmentPopup editDepartment = new EditEquipmentPopup(tempEq);
             editDepartment.ShowDialog();
             DataGridManager.GetInstance().ShowEquipmentDataGrid(EquipmentDataGrid, equipmentItems);
         }

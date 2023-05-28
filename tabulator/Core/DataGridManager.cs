@@ -93,7 +93,7 @@ namespace tabulator.Core
         {
             dataGridToShow.ItemsSource = equipment.Select(eq => new
             {
-                eq.Id,
+                ID = eq.Id,
                 eq.Name,
                 eq.Description,
                 RoomNumber = eq.Room.Number,
