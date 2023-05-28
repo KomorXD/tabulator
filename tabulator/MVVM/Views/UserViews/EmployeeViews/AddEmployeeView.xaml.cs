@@ -25,13 +25,11 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class AddEmployeeView : UserControl
     {
         DBContext context = DBContext.GetInstance();
-        public static DataGrid dataGrid;
 
         public AddEmployeeView()
         {
             InitializeComponent();
 
-            dataGrid = RoomDataGrid;
             DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
         }
 
@@ -42,8 +40,44 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            if(!AllInputsFilled())
+            {
+                //Warning
+                return;
+            }
 
+            Employee temp = new Employee();
+            PopulateTempEquipment(temp);
+
+            context.Employees.Add(temp);
+            context.SaveChanges();
+            ClearAllFields();
         }
 
+        private void ClearAllFields()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PopulateTempEquipment(Employee temp)
+        {
+            temp.Name = NameInput.Text;
+            temp.Surname = SurnameInput.Text;
+            temp.PESEL = PeselInput.Text;
+            temp.PhoneNumber = PhoneNumberInput.Text;
+            temp.Room = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
+        }
+
+        bool AllInputsFilled()
+        {
+            if(NameInput.Text.Equals(string.Empty)) return false;
+            if(SurnameInput.Text.Equals(string.Empty)) return false;
+            if(PeselInput.Text.Equals(string.Empty)) return false;
+            //if(PhoneNumberInput.Text.Equals(string.Empty)) return false;
+            if(RoleDropdown.SelectedIndex == -1) return false;
+            if (RoomDataGrid.SelectedIndex == -1) return false;
+
+            return true;
+        }
     }
 }
