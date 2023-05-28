@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
+using tabulator.MVVM.Views.UserViews.EmployeeViews;
 
 namespace tabulator.MVVM.Views.UserViews
 {
@@ -35,7 +36,12 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (EmployeeDataGrid.SelectedItem is null)
+                return;
+            Employee tempEmpl = context.Employees.ToList().Where(empl => empl.Id == (((dynamic)EmployeeDataGrid.SelectedItem).Id)).FirstOrDefault();
+            AddemployeePopup editDepartment = new AddemployeePopup(tempEmpl);
+            editDepartment.ShowDialog();
+            DataGridManager.GetInstance().ShowEmployeeDataGrid(EmployeeDataGrid, context.Employees.ToList());
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

@@ -132,6 +132,7 @@ namespace tabulator.Core
         {
             dataGridToShow.ItemsSource = employees.Select(empl => new
             {
+                empl.Id,
                 empl.Name,
                 empl.Surname,
                 empl.PESEL,
