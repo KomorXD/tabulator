@@ -55,11 +55,12 @@
                                     Binding="{Binding EmployeeSurname}"/>
                 <DataGridTemplateColumn Header="Unassign"
                                         IsReadOnly="True"
-                                        Width="90">
+                                        Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="BtnDelete"
                                     VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
                                     Style="{StaticResource DeleteButtonTheme}"
                                     Click="BtnDelete_Click"   />
                         </DataTemplate>

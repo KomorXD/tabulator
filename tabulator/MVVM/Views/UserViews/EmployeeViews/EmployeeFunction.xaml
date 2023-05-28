@@ -55,11 +55,12 @@
                                     Binding="{Binding Department}"/>
                 <DataGridTemplateColumn Header="Edit"
                                         IsReadOnly="True"
-                                        Width="90">
+                                        Width="70">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="BtnEdit"
                                     VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
                                     Style="{StaticResource EditButtonTheme}"
                                     Click="BtnEdit_Click"/>
                         </DataTemplate>
