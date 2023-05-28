@@ -96,6 +96,9 @@ namespace tabulator.MVVM.Views.UserViews
             context.EquipmentCaretakers.Add(equipmentCaretakers);
             context.SaveChanges();
             AddDataToDataGrids();
+
+            eqBtn = null; 
+            emplBtn = null;
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
