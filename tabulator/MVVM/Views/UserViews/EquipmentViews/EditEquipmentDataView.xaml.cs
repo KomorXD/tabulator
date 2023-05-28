@@ -52,11 +52,5 @@ namespace tabulator.MVVM.Views.UserViews
             }
             DataGridManager.GetInstance().ShowEquipmentDataGrid(EquipmentDataGrid, result);
         }
-        
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
     }
 }

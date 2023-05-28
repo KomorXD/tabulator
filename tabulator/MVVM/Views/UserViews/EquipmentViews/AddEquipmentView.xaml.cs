@@ -75,11 +75,6 @@ namespace tabulator.MVVM.Views.UserViews
             }
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         bool AllFieldsAreFilled()
         {
             if (NameInput.Text.Equals(string.Empty)) return false; 

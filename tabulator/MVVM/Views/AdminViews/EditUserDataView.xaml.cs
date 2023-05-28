@@ -54,10 +54,5 @@ namespace tabulator.MVVM.Views.AdminViews
                 result = context.Users.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Surname.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Username.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
             UserDataGrid.ItemsSource = result;
         }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

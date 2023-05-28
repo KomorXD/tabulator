@@ -135,10 +135,5 @@ namespace tabulator.MVVM.Views.AdminViews
         {
             errorPlaceholder.Text = msg;
         }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

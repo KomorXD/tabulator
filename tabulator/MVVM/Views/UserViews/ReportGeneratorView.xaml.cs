@@ -41,11 +41,6 @@ namespace tabulator.MVVM.Views.UserViews
             AddDataToDropdowns();
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
 

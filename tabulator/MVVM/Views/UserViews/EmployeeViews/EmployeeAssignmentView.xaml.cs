@@ -101,11 +101,6 @@ namespace tabulator.MVVM.Views.UserViews
             emplBtn = null;
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void AddDataToDataGrids()
         {
             employees = context.Employees.ToList();

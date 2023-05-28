@@ -61,10 +61,5 @@ namespace tabulator.MVVM.Views.UserViews
             List<DepartmentRoom> departmentRoomsTemp = context.DepartmentRooms.ToList().Where(d => d.Room.Number.ToLower().Contains(SearchTextBox.Text.ToLower()) || d.Department.Name.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
             DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, roomsTemp, facultyRoomsTemp, departmentRoomsTemp);
         }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
