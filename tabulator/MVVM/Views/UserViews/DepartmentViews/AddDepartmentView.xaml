@@ -47,7 +47,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Content="sperma z huja"
+                Content="sperma z hujasperma z hujasperma z hujasperma z hujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z huja"
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

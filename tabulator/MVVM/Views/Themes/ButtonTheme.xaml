@@ -152,10 +152,11 @@
                             Background="{StaticResource helpdark}">
                         </Border>
                         <Popup x:Name="popupHelp" IsOpen="{Binding IsPopupOpen, Mode=TwoWay}"
-                               PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               StaysOpen="False">
+                               Placement="Left"
+                               VerticalOffset="-100"
+                               PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                             <TextBlock x:Name="popupText" Background="White" Foreground="Black" Padding="10"
-                                       Text="{TemplateBinding Property=Content}"/>
+                                       Text="{TemplateBinding Property=Content}" TextWrapping="Wrap" MaxWidth="600"/>
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
