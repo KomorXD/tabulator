@@ -31,6 +31,8 @@ namespace tabulator.DatabaseContext
         public DbSet<FacultyRoom> FacultyRooms { get; set; }
         public DbSet<DepartmentRoom> DepartmentRooms { get; set; }
         public DbSet<EquipmentCaretakers> EquipmentCaretakers { get; set; }
+        public DbSet<FacultyTechEmployee> FacultyTechEmployee { get; set; }
+        public DbSet<DepartmentTechEmployee> DepartmentTechEmployee { get; set; }
        
     }
 }

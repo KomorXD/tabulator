@@ -58,19 +58,25 @@
                      Margin="0"
                      Width="300"
                      Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="sperma"
+            <TextBlock Text="Role"
                        Margin="0,8,0,0"
                        Width="300"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox x:Name="sperma"     
+            <ComboBox x:Name="RoleDropdown"     
                       Width="300"
                       Margin="0,8,0,0"
-                      Style="{StaticResource ComboBoxTheme}" />
-            <TextBlock Text="spermq"
+                      Style="{StaticResource ComboBoxTheme}"
+                      SelectionChanged="OnDropDownChanged">
+                <ComboBoxItem IsSelected="True">Employee</ComboBoxItem>
+                <ComboBoxItem>Faculty technician</ComboBoxItem>
+                <ComboBoxItem>Department technician</ComboBoxItem>
+            </ComboBox>
+            <TextBlock x:Name="ItemTypeText"
+                       Text="Type"
                        Margin="0,8,0,0"
                        Width="300"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox x:Name="spermq"     
+            <ComboBox x:Name="ItemTypeDropdown"     
                       Width="300"
                       Margin="0,10,0,0"
                       Style="{StaticResource ComboBoxTheme}" />
