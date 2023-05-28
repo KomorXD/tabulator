@@ -26,11 +26,6 @@ namespace tabulator.MVVM.Views.UserViews
             ClearTextBoxes();
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ClearTextBoxes()
         {
             NameInput.Text = string.Empty;

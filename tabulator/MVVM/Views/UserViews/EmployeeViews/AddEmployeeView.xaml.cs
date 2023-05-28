@@ -30,11 +30,6 @@ namespace tabulator.MVVM.Views.UserViews
             DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             if(!AllInputsFilled())

@@ -123,15 +123,13 @@
                     Click="btnAdd_Click"
                     Style="{StaticResource ButtonTheme}"/>
         </StackPanel>
-        
+
 
 
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="3"
                 Content="opierdol mi fjuta kurwo"
-                Style="{StaticResource HelpButtonTheme}"
-                Click="btnHelp_Click"/>
-
+                Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

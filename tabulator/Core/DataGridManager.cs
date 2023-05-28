@@ -145,6 +145,7 @@ namespace tabulator.Core
         {
             dataGridToShow.ItemsSource = caretakers.Select(cr => new
             {
+                Item = cr.Item,
                 ItemName = cr.Item.Name,
                 RoomNumber = cr.Item.Room.Number,
                 EmployeeName = cr.Employee.Name,

@@ -63,11 +63,6 @@ namespace tabulator.MVVM.Views.UserViews
             DataGridManager.GetInstance().ShowEmployeeDataGrid(EmployeeDataGrid, context.Employees.ToList());
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {           
             List<Employee> result = context.Employees.ToList();

@@ -26,6 +26,7 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
         string selectedOption;
         List<Faculty> _facultyList;
         List<Department> _departmentList;
+        Employee _employee;
 
         public AddemployeePopup(Employee employee)
         {
@@ -33,9 +34,10 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
             ChangeCheckboxApperance();
             _facultyList = context.Faculties.ToList();
             _departmentList = context.Departments.ToList();
+            _employee = employee;
 
             DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
-            AddData(employee);
+            AddData();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -58,7 +60,55 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            if (!AllInputsGood())
+            {
+                errorText.Text = "Fill all fields!";
+                return;
+            }
+            PopulateTempEquipment();
+            context.SaveChanges();
+
+            selectedOption = ((ComboBoxItem)RoleDropdown.SelectedItem)?.Content?.ToString();
+            switch (selectedOption)
+            {
+                case "Faculty technician":
+                    FacultyTechEmployee techFacultyEmployee = new FacultyTechEmployee();
+                    techFacultyEmployee.Employee = _employee;
+                    techFacultyEmployee.Faculty = context.Faculties.ToList().Where(faculty => faculty.Name == ((dynamic)((ComboBoxItem)ItemTypeDropdown.SelectedItem)?.Content?.ToString())).FirstOrDefault();
+                    context.FacultyTechEmployee.Add(techFacultyEmployee);
+                    context.SaveChanges();
+
+                    break;
+                case "Department technician":
+                    DepartmentTechEmployee techDepartmentEmployee = new DepartmentTechEmployee();
+                    techDepartmentEmployee.Employee = _employee;
+                    techDepartmentEmployee.Department = context.Departments.ToList().Where(department => department.Name == ((dynamic)((ComboBoxItem)ItemTypeDropdown.SelectedItem)?.Content?.ToString())).FirstOrDefault();
+                    context.DepartmentTechEmployee.Add(techDepartmentEmployee);
+                    context.SaveChanges();
+                    break;
+            }
+
             this.Close();
+        }
+
+        bool AllInputsGood()
+        {
+            if (NameInput.Text.Equals(string.Empty)) return false;
+            if (SurnameInput.Text.Equals(string.Empty)) return false;
+            if (PeselInput.Text.Equals(string.Empty)) return false;
+            if (RoleDropdown.SelectedIndex == -1) return false;
+            if (RoomDataGrid.SelectedIndex == -1) return false;
+
+            return true;
+        }
+
+        private void PopulateTempEquipment()
+        {
+            _employee.Name = NameInput.Text;
+            _employee.Surname = SurnameInput.Text;
+            _employee.PESEL = PeselInput.Text;
+            _employee.PhoneNumber = PhoneNumberInput.Text;
+            _employee.Room = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
         }
 
         private void ChangeCheckboxApperance()
@@ -112,12 +162,12 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
             }
         }
 
-        private void AddData(Employee employee)
+        private void AddData()
         {
-            NameInput.Text = employee.Name;
-            SurnameInput.Text = employee.Surname;
-            PeselInput.Text = employee.PESEL;
-            PhoneNumberInput.Text = employee.PhoneNumber;
+            NameInput.Text = _employee.Name;
+            SurnameInput.Text = _employee.Surname;
+            PeselInput.Text = _employee.PESEL;
+            PhoneNumberInput.Text = _employee.PhoneNumber;
         }
     }
 }

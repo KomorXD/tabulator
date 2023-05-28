@@ -56,10 +56,5 @@ namespace tabulator.MVVM.Views.UserViews
                 result = context.Faculties.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Address.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
             DataGridManager.GetInstance().ShowFacultiesDataGrid(FacultiesDataGrid, result);
         }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-            helpPopup.IsOpen = !helpPopup.IsOpen;
-        }
     }
 }

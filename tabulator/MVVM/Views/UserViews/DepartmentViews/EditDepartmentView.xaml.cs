@@ -59,11 +59,6 @@ namespace tabulator.MVVM.Views.UserViews
             ShowDataGrid(result);
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ShowDataGrid(List<Department> departmentList)
         {
             DepartmentDataGrid.ItemsSource = departmentList.Select(dep => new
