@@ -126,22 +126,28 @@
 
                 </Grid>
             </StackPanel>
-            <TextBlock Name="RecordsText"
+
+            <StackPanel >
+                <TextBlock Name="RecordsText"
                        Width="300"
                        TextAlignment="Center"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Margin="0,50,0,0"
                        Style="{StaticResource TextblockTheme}"/>
-            <Button x:Name="btnGenerate"
-                    Margin="0,30,0,0"
-                    Content="Generate"
-                    Click="btnGenerate_Click"
-                    Style="{StaticResource ButtonTheme}"/>
-            <Button x:Name="btnReset"
-                Content="Reset filters"
-                Click="OnResetFiltersClicked"
-                Style="{StaticResource ButtonTheme}"/>
+                <Button x:Name="btnGenerate"
+                        Margin="0,30,0,0"
+                        Content="Generate"
+                        Click="btnGenerate_Click"
+                        Style="{StaticResource ButtonTheme}"/>
+                <Button x:Name="btnReset"
+                        Margin="0,30,0,0"
+                        Content="Reset filters"
+                        Click="OnResetFiltersClicked"
+                        Style="{StaticResource ButtonTheme}"/>
+            </StackPanel>
+            
+
         </StackPanel>
         <Button Name="btnHelp"
                 Grid.Column="1"
