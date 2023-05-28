@@ -52,7 +52,10 @@
                       Margin="0,7,0,0"                      
                       Style="{StaticResource ComboBoxTheme}"
                       Width="500"
-                      SelectionChanged="FacultyDropdown_SelectionChanged"/>
+                      SelectionChanged="FacultyDropdown_SelectionChanged">
+                
+                
+            </ComboBox>
             <TextBlock Text="Department"
                        Width="500"
                        Style="{StaticResource TextblockTheme}"/>
@@ -60,7 +63,7 @@
                       Margin="0,7,0,0"                      
                       Style="{StaticResource ComboBoxTheme}"
                       Width="500"
-                      SelectionChanged="DepartmentDropdown_SelectionChanged_1"/>
+                      SelectionChanged="DepartmentDropdown_SelectionChanged"/>
             <TextBlock Text="Equipment item"
                        Width="500"
                        Style="{StaticResource TextblockTheme}"/>
@@ -135,6 +138,10 @@
                     Content="Generate"
                     Click="btnGenerate_Click"
                     Style="{StaticResource ButtonTheme}"/>
+            <Button x:Name="btnReset"
+                Content="Reset filters"
+                Click="OnResetFiltersClicked"
+                Style="{StaticResource ButtonTheme}"/>
         </StackPanel>
         <Button Name="btnHelp"
                 Grid.Column="1"

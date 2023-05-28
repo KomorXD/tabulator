@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 using tabulator.MVVM.Viewmodels.UserVM;
@@ -26,19 +27,28 @@ namespace tabulator.MVVM.Views.UserViews
         public AddDepartmentViewModel ViewModel { get; set; }
         DBContext context = DBContext.GetInstance();
         List<Faculty> _facultyList;
-        int _selectedFaculty;
+        Faculty _selectedFaculty;
+        Department _selectedDepartment;
         List<Department> _departmentList;
-        int _recordsFound = 0;
-        bool _available;
-        bool _notInUse;
-        bool _destroyed;
+        List<EquipmentItem> _recordsFoundList;
+        int _recordsFoundCount = 0;
+
+
+        bool _facultyStopSearch = true;
+        bool _departmentStopSearch = true;
+
+        
+        bool _available = true;
+        bool _notInUse = false;
+        bool _destroyed = false;
 
         public ReportGeneratorView()
         {
             InitializeComponent();
             Available.IsChecked = true;
-            ViewModel = new AddDepartmentViewModel();            
-            AddDataToDropdowns();
+            _facultyList = context.Faculties.ToList();
+            ViewModel = new AddDepartmentViewModel();
+            FillFacultyDropBoxes();
         }
 
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
@@ -48,47 +58,161 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void UpdateRecordsFoundText()
         {
-            _recordsFound = context.Equipment.Where(eq => eq.Name.Contains(EquipmentInput.Text) && eq.Room.Number.Contains(RoomInput.Text) && eq.Available.Equals(_available) && eq.Destroyed.Equals(_destroyed) && eq.NotInUse.Equals(_notInUse)).ToList().Count;
-            RecordsText.Text = "Records found: " + _recordsFound.ToString();
+            List<EquipmentItem> allEquipment = context.Equipment.ToList();
+            //EquipmentItem eq = allEquipment.ElementAt(0);
+            //int warunek = 0;
+            //if (eq.Available.Equals(_available)) warunek++;
+            //if (eq.Destroyed.Equals(_destroyed)) warunek++;
+            //if (eq.NotInUse.Equals(_notInUse)) warunek++;
+            //if (InFacultyEquipmentSearch(eq)) warunek++;
+            //if (InDepartmentEquipmentSearch(eq)) warunek++;
+            //if (CaretakernNameEquipmentSearch(eq, NameInput.Text)) warunek++;
+            //if (CaretakernSurnameEquipmentSearch(eq, SurnameInput.Text)) warunek++;
+            //if (NameEquipmentSearch(eq, EquipmentInput.Text)) warunek++;
+            //if (RoomEquipmentSearch(eq, RoomInput.Text)) warunek++;
+            _recordsFoundList = allEquipment
+                .Where(eq => eq.Available.Equals(_available) &&
+                             eq.Destroyed.Equals(_destroyed) &&
+                             eq.NotInUse.Equals(_notInUse) &&
+                             InFacultyEquipmentSearch(eq) &&
+                             InDepartmentEquipmentSearch(eq) &&
+                             CaretakernNameEquipmentSearch(eq, NameInput.Text) &&
+                             CaretakernSurnameEquipmentSearch(eq, SurnameInput.Text) &&
+                             NameEquipmentSearch(eq, EquipmentInput.Text) &&
+                             RoomEquipmentSearch(eq, RoomInput.Text))
+                .ToList();
+            _recordsFoundCount = _recordsFoundList.Count;
+            RecordsText.Text = "Records found: " + _recordsFoundCount.ToString();
         }
 
-        private void AddDataToDropdowns()
+        bool InFacultyEquipmentSearch(EquipmentItem eq)
         {
-            if (_facultyList == null)
+            //Dodać przeszukanie wszytskich departmentów w danym fakultecie
+
+            //Wyłączyć szukanie jeżeli wybrany jest jakis department
+
+            if (FacultyDropdown.SelectedIndex <= 0) return true;
+
+            foreach (FacultyRoom facultyRoom in context.FacultyRooms)
             {
-                _facultyList = context.Faculties.ToList();
-                FacultyDropdownSelection(null, null);
+                if(eq.Room == facultyRoom.Room && _selectedFaculty == facultyRoom.Faculty)
+                {
+                    return true;
+                }
             }
-            _selectedFaculty = _facultyList[FacultyDropdown.SelectedIndex].Id;
-            _departmentList = context.Departments.Where(de => de.FacultyId == _selectedFaculty).ToList();
-            DepartmentDropDownSelection(null, null);
+
+            return false;
         }
-        private void FacultyDropdownSelection(object sender, SelectionChangedEventArgs e)
+        bool InDepartmentEquipmentSearch(EquipmentItem eq)
         {
-            foreach (Faculty faculty in _facultyList)
+            if (DepartmentDropdown.SelectedIndex <= 0) return true;
+
+            foreach (DepartmentRoom departmentRoom in context.DepartmentRooms)
             {
-                FacultyDropdown.Items.Add(new ComboBoxItem() { Content = faculty.Name });
+                if (eq.Room == departmentRoom.Room && _selectedDepartment == departmentRoom.Department)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        bool CaretakernNameEquipmentSearch(EquipmentItem eq, string name)
+        {
+            if (name.Equals(string.Empty)) return true;
+
+            foreach (EquipmentCaretakers equipmentCaretakers in context.EquipmentCaretakers)
+            {
+                if(eq == equipmentCaretakers.Item && equipmentCaretakers.Employee.Name.Contains(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        bool CaretakernSurnameEquipmentSearch(EquipmentItem eq, string surname)
+        {
+            if (surname.Equals(string.Empty)) return true;
+
+            foreach (EquipmentCaretakers equipmentCaretakers in context.EquipmentCaretakers)
+            {
+                if (eq == equipmentCaretakers.Item && equipmentCaretakers.Employee.Surname.Contains(surname))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        bool NameEquipmentSearch(EquipmentItem eq, string name)
+        {
+            if(name.Equals(string.Empty)) return true;
+
+            if (eq.Name.Contains(name))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        bool RoomEquipmentSearch(EquipmentItem eq, string number)
+        {
+            if (number.Equals(string.Empty)) return true;
+
+            if (eq.Room.Number.Contains(number))
+                return true;
+
+            return false;
+        }
+
+        void FillFacultyDropBoxes()
+        {
+            FacultyDropdown.Items.Clear();
+            FacultyDropdown.Items.Add(new ComboBoxItem() { Content = "None" });
+            for (int i = 0; i < _facultyList.Count; i++)
+            {
+                FacultyDropdown.Items.Add(new ComboBoxItem() { Content = _facultyList.ElementAt(i).Name });
             }
             FacultyDropdown.SelectedIndex = 0;
-        }
-        private void DepartmentDropDownSelection(object sender, SelectionChangedEventArgs e)
-        {
-            DepartmentDropdown.Items.Clear();
-            foreach (Department department in _departmentList)
-            {
-                DepartmentDropdown.Items.Add(new ComboBoxItem() { Content = department.Name });
-            }
-            DepartmentDropdown.SelectedIndex = 0;
         }
 
         private void FacultyDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AddDataToDropdowns();
             UpdateRecordsFoundText();
+            FillDepartmentDropBox();
         }
-        private void DepartmentDropdown_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void FillDepartmentDropBox()
+        {         
+            DepartmentDropdown.Items.Clear();
+            DepartmentDropdown.Items.Add(new ComboBoxItem() { Content = "None" });
+            DepartmentDropdown.SelectedIndex = 0;
+
+            if (FacultyDropdown.SelectedIndex <= 0) return;
+
+            Faculty tempFaculty = context.Faculties.ToList().Where(faculty => faculty.Name == ((dynamic)((ComboBoxItem)FacultyDropdown.SelectedItem)?.Content?.ToString())).FirstOrDefault();
+            if (tempFaculty is null)
+                return;
+            _selectedFaculty = tempFaculty;
+
+            List<Department> tempDepartmentList = context.Departments.Where(de => de.Faculty.Id.Equals(tempFaculty.Id)).ToList();
+            for (int i = 0; i < tempDepartmentList.Count; i++)
+            {
+                DepartmentDropdown.Items.Add(new ComboBoxItem() { Content = tempDepartmentList.ElementAt(i).Name });
+            }
+        }
+
+        private void DepartmentDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateRecordsFoundText();
+
+            Department tempDepartment = context.Departments.ToList().Where(department => department.Name == ((dynamic)((ComboBoxItem)DepartmentDropdown.SelectedItem)?.Content?.ToString())).FirstOrDefault();
+            if (tempDepartment is null)
+                return;
+            _selectedDepartment = tempDepartment;
         }
         private void NameInput_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -99,10 +223,6 @@ namespace tabulator.MVVM.Views.UserViews
             UpdateRecordsFoundText();
         }
         private void RoomInput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateRecordsFoundText();
-        }
-        private void DepartmentDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateRecordsFoundText();
         }
@@ -139,6 +259,10 @@ namespace tabulator.MVVM.Views.UserViews
         {
             _destroyed = false;
             UpdateRecordsFoundText();
+        }
+        private void OnResetFiltersClicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
