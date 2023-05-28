@@ -69,7 +69,6 @@ namespace tabulator.Core
                     temp.facultyName = "-";
                     temp.departmentName = "-";
                     roomsWithoutAssigment.Add(temp);
-                    break;
                 }
             }
 

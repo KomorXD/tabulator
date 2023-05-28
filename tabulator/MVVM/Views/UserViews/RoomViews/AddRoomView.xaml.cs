@@ -15,6 +15,7 @@ namespace tabulator.MVVM.Views.UserViews
     {
         public AddRoomViewModel ViewModel { get; set; }
 
+
         DBContext context = DBContext.GetInstance();
         List<Faculty> _facultyList;
         List<Department> _departmentList;

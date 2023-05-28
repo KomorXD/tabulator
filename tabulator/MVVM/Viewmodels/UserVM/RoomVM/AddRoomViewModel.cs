@@ -29,7 +29,56 @@ namespace tabulator.MVVM.Viewmodels.UserVM
             Rooms.Add(room);
             context.Rooms.Add(room);
             context.SaveChanges();
-        }     
+        }
+
+        public void ChangeToDepartmentRoom(Room room, Department department)
+        {
+            RemoveRoomFromFacultiesAndDepartments(room);
+            DepartmentRoom temp = new DepartmentRoom();
+            temp.Department = department;
+            temp.Room = room;
+
+            DepartmentRooms.Add(temp);
+            context.DepartmentRooms.Add(temp);
+            context.SaveChanges();
+        }
+
+        public void ChangeToFacultyRoom(Room room, Faculty faculty)
+        {
+            RemoveRoomFromFacultiesAndDepartments(room);
+            FacultyRoom temp = new FacultyRoom();
+            temp.Faculty = faculty;
+            temp.Room = room;
+
+            FacultyRooms.Add(temp);
+            context.FacultyRooms.Add(temp);
+            context.SaveChanges();
+        }
+
+        private void RemoveRoomFromFacultiesAndDepartments(Room room)
+        {
+            foreach (DepartmentRoom d in DepartmentRooms)
+            {
+                if (d.Room == room)
+                {
+                    DepartmentRooms.Remove(d);
+                    context.DepartmentRooms.Remove(d);
+                    context.SaveChanges();
+                    break;
+                }
+            }
+
+            foreach (FacultyRoom f in FacultyRooms)
+            {
+                if (f.Room == room)
+                {
+                    FacultyRooms.Remove(f);
+                    context.FacultyRooms.Remove(f);
+                    context.SaveChanges();
+                    break;
+                }
+            }
+        }
 
         public void AddFacultyRoom(Room room, Faculty faculty)
         {

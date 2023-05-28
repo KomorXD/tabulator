@@ -26,7 +26,7 @@ namespace tabulator.MVVM.Views.UserViews
         string selectedRoomType = "";
         List<Department> _departmentList;
         List<Faculty> _facultyList;
-
+        public AddRoomViewModel ViewModel { get; set; }
         Room _roomToEdit;
 
         public EditRoomPopup(Room roomToEdit)
@@ -35,6 +35,7 @@ namespace tabulator.MVVM.Views.UserViews
             _roomToEdit = roomToEdit;
             _facultyList = context.Faculties.ToList();
             _departmentList = context.Departments.ToList();
+            ViewModel = new AddRoomViewModel();
 
             RoomTypeDropdownSelectionChanged(null, null);
             RoomNumberInput.Text = _roomToEdit.Number;
@@ -56,7 +57,24 @@ namespace tabulator.MVVM.Views.UserViews
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             _roomToEdit.Number = RoomNumberInput.Text;
+            switch(selectedRoomType)
+            {
+                case "Faculty":
+                    {
+                        Faculty tempFaculty = context.Faculties.ToList().Where(faculty => faculty.Name == (((dynamic)((ComboBoxItem)RoomTypeItemDropdown.SelectedItem)?.Content?.ToString()))).FirstOrDefault();
+                        ViewModel.ChangeToFacultyRoom(_roomToEdit, tempFaculty);
 
+                        break;
+                    }
+                case "Department":
+                    {
+                        Department tempDepartment = context.Departments.ToList().Where(department => department.Name == (((dynamic)((ComboBoxItem)RoomTypeItemDropdown.SelectedItem)?.Content?.ToString()))).FirstOrDefault();
+                        ViewModel.ChangeToDepartmentRoom(_roomToEdit, tempDepartment);
+
+                        break;
+                    }
+            }
+            context.SaveChanges();
             this.Close();
         }
 
