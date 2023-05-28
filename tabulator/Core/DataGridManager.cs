@@ -128,5 +128,15 @@ namespace tabulator.Core
             }).ToList();
         }
 
+        public void ShowAssaignmentDataGrdi(DataGrid dataGridToShow, List<EquipmentCaretakers> caretakers)
+        {
+            dataGridToShow.ItemsSource = caretakers.Select(cr => new
+            {
+                ItemName = cr.Item.Name,
+                RoomNumber = cr.Item.Room.Number,
+                EmployeeName = cr.Employee.Name,
+                EmployeeSurname = cr.Employee.Surname
+            });
+        }
     }
 }

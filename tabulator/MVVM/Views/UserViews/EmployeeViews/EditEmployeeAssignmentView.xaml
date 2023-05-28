@@ -27,7 +27,7 @@
         <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"/>
 
-        <DataGrid x:Name="EqDataGrid"
+        <DataGrid x:Name="AssaignmentDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="0"
@@ -39,23 +39,29 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Item name"
                                     IsReadOnly="True"
-                                    Width="200"
-                                    Binding="{Binding Name}"/>
+                                    Width="*"
+                                    Binding="{Binding ItemName}"/>
                 <DataGridTextColumn Header="Room number"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding RoomNumber}"/>
-
-                <DataGridTemplateColumn Header="Assign"
+                <DataGridTextColumn Header="Employee name"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding EmployeeName}"/>
+                <DataGridTextColumn Header="Employee surname"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding EmployeeSurname}"/>
+                <DataGridTemplateColumn Header="Unassign"
                                         IsReadOnly="True"
-                                        Width="60">
+                                        Width="90">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <!--<ToggleButton x:Name="BtnAddEQ"
-                                          VerticalAlignment="Center"
-                                          Style="{StaticResource AddButtonTheme}"
-                                          Click="BtnAddEQ_Click"/>-->
-
+                            <Button x:Name="BtnDelete"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource DeleteButtonTheme}"
+                                    Click="BtnDelete_Click"   />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
