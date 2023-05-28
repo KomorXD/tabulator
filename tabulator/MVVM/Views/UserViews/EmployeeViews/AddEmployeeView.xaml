@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="350"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -52,18 +52,18 @@
                     Grid.Column="1">
             <TextBlock Text="Phone number"
                        Margin="0,10,0,0"
-                       Width="300"
+                       Width="500"
                        Style="{StaticResource TextblockTheme}"/>
             <TextBox x:Name="PhoneNumberInput"
                      Margin="0"
-                     Width="300"
+                     Width="500"
                      Style="{StaticResource InputTextboxTheme}" />
             <TextBlock Text="Role"
                        Margin="0,8,0,0"
-                       Width="300"
+                       Width="500"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox x:Name="RoleDropdown"     
-                      Width="300"
+                      Width="500"
                       Margin="0,8,0,0"
                       Style="{StaticResource ComboBoxTheme}"
                       SelectionChanged="OnDropDownChanged">
@@ -74,10 +74,10 @@
             <TextBlock x:Name="ItemTypeText"
                        Text="Type"
                        Margin="0,8,0,0"
-                       Width="300"
+                       Width="500"
                        Style="{StaticResource TextblockTheme}"/>
             <ComboBox x:Name="ItemTypeDropdown"     
-                      Width="300"
+                      Width="500"
                       Margin="0,10,0,0"
                       Style="{StaticResource ComboBoxTheme}" />
 
