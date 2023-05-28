@@ -35,6 +35,7 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
             _departmentList = context.Departments.ToList();
 
             DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
+            AddData(employee);
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -52,12 +53,12 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
 
         private void RoleDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ChangeCheckboxApperance();
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void ChangeCheckboxApperance()
@@ -109,6 +110,14 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
                     }
                     break;
             }
+        }
+
+        private void AddData(Employee employee)
+        {
+            NameInput.Text = employee.Name;
+            SurnameInput.Text = employee.Surname;
+            PeselInput.Text = employee.PESEL;
+            PhoneNumberInput.Text = employee.PhoneNumber;
         }
     }
 }

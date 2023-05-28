@@ -55,7 +55,7 @@
                 <TextBox x:Name="NameInput"
                      Margin="0, 10, 0, 0"  
                      Width="300"
-                     Style="{StaticResource InputTextboxTheme}" />
+                     Style="{StaticResource InputTextboxTheme}"/>
                 <TextBlock Text="Surname"
                        Margin="0, 10, 0, 0"
                        Width="300"
