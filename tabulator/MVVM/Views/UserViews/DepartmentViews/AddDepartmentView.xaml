@@ -32,14 +32,14 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            
+
         </StackPanel>
         <StackPanel Grid.Row="2">
 
             <Button x:Name="btnAdd"
                     Margin="0,60,0,0"
                     Content="Add"
-                    Click="btnAdd_Click"
+                    Click="btnAdd_Click"                   
                     Style="{StaticResource ButtonTheme}"/>
 
         </StackPanel>
@@ -47,8 +47,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Style="{StaticResource HelpButtonTheme}"
-                Click="btnHelp_Click"/>
-
+                Content="sperma z huja"
+                Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

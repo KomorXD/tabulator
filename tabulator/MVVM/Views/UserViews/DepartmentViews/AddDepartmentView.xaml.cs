@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -25,6 +26,7 @@ namespace tabulator.MVVM.Views.UserViews
         public AddDepartmentViewModel ViewModel { get; set; }
         DBContext context = DBContext.GetInstance();
         List<Faculty> _facultyList;
+
         public AddDepartmentView()
         {
             InitializeComponent();
@@ -40,7 +42,7 @@ namespace tabulator.MVVM.Views.UserViews
             department.Name = NameInput.Text;
             department.Faculty = _facultyList.ElementAt(FacultyDropdown.SelectedIndex);
             ViewModel.AddDepartment(department);
-            ClearTextBoxes();
+            ClearTextBoxes();           
         }
 
         private void ClearTextBoxes()
@@ -56,11 +58,6 @@ namespace tabulator.MVVM.Views.UserViews
                 FacultyDropdown.Items.Add(new ComboBoxItem() { Content = faculty.Name });
             }
             FacultyDropdown.SelectedIndex = 0;
-        }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
