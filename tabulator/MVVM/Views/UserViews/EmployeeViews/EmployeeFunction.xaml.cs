@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,8 +67,30 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
             var selectedItem = (dynamic)FunctionsDataGrid.SelectedItem;
             int id = selectedItem.Id;
             Employee employee = context.Employees.FirstOrDefault(x => x.Id == id);
-            EmployeeFunctionPopup editEmployee = new EmployeeFunctionPopup(employee);
-            editEmployee.ShowDialog();
+
+            //xddd
+            string f = selectedItem.Faculty;
+            string d = selectedItem.Department;
+            if(f == null)
+            {
+                if(d == null)
+                {
+                    EmployeeFunctionPopup editEmployee = new EmployeeFunctionPopup(employee, EmployeeFunc.None);
+                    editEmployee.ShowDialog();
+                }
+                else
+                {
+                    EmployeeFunctionPopup editEmployee = new EmployeeFunctionPopup(employee, EmployeeFunc.Department);
+                    editEmployee.ShowDialog();
+                }
+            }
+            else
+            {
+                EmployeeFunctionPopup editEmployee = new EmployeeFunctionPopup(employee, EmployeeFunc.Faculty);
+                editEmployee.ShowDialog();
+            }
+
+            
             DataGridManager.GetInstance().ShowEmployeeFunction(FunctionsDataGrid, context.FacultyTechEmployee.ToList(), context.DepartmentTechEmployee.ToList(), context.Employees.ToList());
         }
     }
