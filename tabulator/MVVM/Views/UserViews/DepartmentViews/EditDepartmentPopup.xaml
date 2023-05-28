@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="UserView" Height="280" Width="800"
+        Title="UserView" Height="340" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -72,6 +72,12 @@
             <StackPanel Grid.Row="2"
                     Grid.ColumnSpan="2">
 
+                <TextBlock x:Name="errorText"
+                   TextAlignment="Center"
+                   Width="600"     
+                   Foreground="Red"                                   
+                   Style="{StaticResource TextblockTheme}"/>
+                
                 <Button x:Name="btnEdit"
                     Content="Edit"
                     Click="btnEdit_Click"

@@ -37,8 +37,16 @@
                       Style="{StaticResource ComboBoxTheme}"      
                       Width="400">
             </ComboBox>
+
+            <TextBlock x:Name="errorText"
+                       TextAlignment="Center"
+                       Width="600"     
+                       Margin="0,50,0,0"
+                       Foreground="Red"                                   
+                       Style="{StaticResource TextblockTheme}"/>
+
             <Button x:Name="btnAddRoom"
-                    Margin="0,50,0,0"
+                    Margin="0,30,0,0"
                     Content="Add"
                     Click="btnAddRoom_Click"
                     Style="{StaticResource ButtonTheme}"/>
