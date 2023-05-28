@@ -46,7 +46,21 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (EmployeeDataGrid.SelectedItem is null)
+                return;
+            Employee deleteEmployee = context.Employees.ToList().Where(empl => empl.Id == (((dynamic)EmployeeDataGrid.SelectedItem).Id)).FirstOrDefault();
+            List<EquipmentCaretakers> equipmentCaretakers = context.EquipmentCaretakers
+                .Where(caretaker => caretaker.EmployeeId == deleteEmployee.Id).ToList();
 
+            foreach(EquipmentCaretakers c in equipmentCaretakers)
+            {
+                c.Item.Available = true;
+                context.EquipmentCaretakers.Remove(c);
+            }
+
+            context.Employees.Remove(deleteEmployee);
+            context.SaveChanges();
+            DataGridManager.GetInstance().ShowEmployeeDataGrid(EmployeeDataGrid, context.Employees.ToList());
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
