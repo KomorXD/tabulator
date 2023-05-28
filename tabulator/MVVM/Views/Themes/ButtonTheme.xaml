@@ -148,15 +148,21 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
                         <Border x:Name="border"
-                            BorderThickness="0"
-                            Background="{StaticResource helpdark}">
+                                BorderThickness="0"
+                                Background="{StaticResource helpdark}">
                         </Border>
-                        <Popup x:Name="popupHelp" IsOpen="{Binding IsPopupOpen, Mode=TwoWay}"
+                        <Popup x:Name="popupHelp" IsOpen="{Binding IsPopupOpen, Mode=TwoWay}"                               
                                Placement="Left"
                                VerticalOffset="-100"
                                PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
-                            <TextBlock x:Name="popupText" Background="White" Foreground="Black" Padding="10"
-                                       Text="{TemplateBinding Property=Content}" TextWrapping="Wrap" MaxWidth="600"/>
+                            <Border Background="#212d40"
+                                    BorderBrush="#17202e"
+                                    BorderThickness="2">
+                                <TextBlock x:Name="popupText" Padding="10" Foreground="LightGray" FontSize="13"
+                                           TextAlignment="Justify"
+                                           Text="{TemplateBinding Property=Content}" TextWrapping="Wrap" MaxWidth="600"/>
+                            </Border>
+                            
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
