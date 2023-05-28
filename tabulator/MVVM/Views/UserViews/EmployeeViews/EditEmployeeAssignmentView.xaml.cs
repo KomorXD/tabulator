@@ -39,14 +39,16 @@ namespace tabulator.MVVM.Views.UserViews
             DataGridManager.GetInstance().ShowAssaignmentDataGrdi(AssaignmentDataGrid, result);
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (AssaignmentDataGrid.SelectedItem is null)
+                return;
+            EquipmentCaretakers deleteCaretaker = context.EquipmentCaretakers.ToList().Where(car => car.Item == (((dynamic)AssaignmentDataGrid.SelectedItem).Item)).FirstOrDefault();
+            deleteCaretaker.Item.Available = true;
 
+            context.EquipmentCaretakers.Remove(deleteCaretaker);
+            context.SaveChanges();
+            DataGridManager.GetInstance().ShowAssaignmentDataGrdi(AssaignmentDataGrid, context.EquipmentCaretakers.ToList());
         }
     }
 }

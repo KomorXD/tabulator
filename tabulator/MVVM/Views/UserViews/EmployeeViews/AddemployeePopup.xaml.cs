@@ -58,7 +58,59 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            if (!AllInputsFilled())
+            {
+                errorText.Text = "Fill all fields!";
+                return;
+            }
+
+            Employee temp = new Employee();
+            PopulateTempEquipment(temp);
+
+            context.Employees.Add(temp);
+            context.SaveChanges();
+
+            selectedOption = ((ComboBoxItem)RoleDropdown.SelectedItem)?.Content?.ToString();
+            switch (selectedOption)
+            {
+                case "Faculty technician":
+                    FacultyTechEmployee techFacultyEmployee = new FacultyTechEmployee();
+                    techFacultyEmployee.Employee = temp;
+                    techFacultyEmployee.Faculty = context.Faculties.ToList().Where(faculty => faculty.Name == ((dynamic)((ComboBoxItem)ItemTypeDropdown.SelectedItem)?.Content?.ToString())).FirstOrDefault();
+                    context.FacultyTechEmployee.Add(techFacultyEmployee);
+                    context.SaveChanges();
+
+                    break;
+                case "Department technician":
+                    DepartmentTechEmployee techDepartmentEmployee = new DepartmentTechEmployee();
+                    techDepartmentEmployee.Employee = temp;
+                    techDepartmentEmployee.Department = context.Departments.ToList().Where(department => department.Name == ((dynamic)((ComboBoxItem)ItemTypeDropdown.SelectedItem)?.Content?.ToString())).FirstOrDefault();
+                    context.DepartmentTechEmployee.Add(techDepartmentEmployee);
+                    context.SaveChanges();
+                    break;
+            }
+
             this.Close();
+        }
+
+        bool AllInputsFilled()
+        {
+            if (NameInput.Text.Equals(string.Empty)) return false;
+            if (SurnameInput.Text.Equals(string.Empty)) return false;
+            if (PeselInput.Text.Equals(string.Empty)) return false;
+            if (RoleDropdown.SelectedIndex == -1) return false;
+            if (RoomDataGrid.SelectedIndex == -1) return false;
+
+            return true;
+        }
+
+        private void PopulateTempEquipment(Employee temp)
+        {
+            temp.Name = NameInput.Text;
+            temp.Surname = SurnameInput.Text;
+            temp.PESEL = PeselInput.Text;
+            temp.PhoneNumber = PhoneNumberInput.Text;
+            temp.Room = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
         }
 
         private void ChangeCheckboxApperance()
