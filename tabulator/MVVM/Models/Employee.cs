@@ -22,6 +22,9 @@ namespace tabulator.MVVM.Models
         [Column]
         public string PhoneNumber { get; set; }
 
+        [Column]
+        public int RoomId { get; set; }
+
         [ForeignKey("EmployeeId")]
         public virtual ICollection<DepartmentTechEmployee> DepartmentTechEmployees { get; set; }
 
