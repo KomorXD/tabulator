@@ -52,7 +52,10 @@
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding PhoneNumber}"/>
-
+                <DataGridTextColumn Header="Room number"
+                                    IsReadOnly="True"
+                                    Width="*"
+                                    Binding="{Binding RoomNumber}"/>
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"
                                         Width="90">

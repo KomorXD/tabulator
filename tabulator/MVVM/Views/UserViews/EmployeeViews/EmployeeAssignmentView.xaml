@@ -23,11 +23,9 @@
         <TextBox Name="EquipmentSearchTextBox"
                  Margin="0,0,200,0"
                  TextChanged="EquipmentSearchTextBox_TextChanged"
-                 Style="{StaticResource SearchBarTheme}"
-                 VerticalAlignment="Top"/>
+                 Style="{StaticResource SearchBarTheme}"/>
         <Image Style="{StaticResource IconSearchStyle}"
-               Margin="0,0,370,0"
-               VerticalAlignment="Top"/>
+               Margin="0,0,370,0"/>
 
         <DataGrid x:Name="EqDataGrid"
                   x:FieldModifier="public"
@@ -68,12 +66,10 @@
                  Margin="0,0,200,0"
                  TextChanged="EmployeeSearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"
-                 Grid.Column="1"
-                 VerticalAlignment="Top"/>
+                 Grid.Column="1"/>
         <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"
-               Grid.Column="1"
-               VerticalAlignment="Top"/>
+               Grid.Column="1"/>
 
         <DataGrid x:Name="EmplDataGrid"
                   x:FieldModifier="public"

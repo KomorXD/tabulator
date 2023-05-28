@@ -128,6 +128,18 @@ namespace tabulator.Core
             }).ToList();
         }
 
+        public void ShowEmployeeDataGrid(DataGrid dataGridToShow, List<Employee> employees)
+        {
+            dataGridToShow.ItemsSource = employees.Select(empl => new
+            {
+                empl.Name,
+                empl.Surname,
+                empl.PESEL,
+                empl.PhoneNumber,
+                RoomNumber = empl.Room.Number
+            }).ToList();
+        }
+
         public void ShowAssaignmentDataGrdi(DataGrid dataGridToShow, List<EquipmentCaretakers> caretakers)
         {
             dataGridToShow.ItemsSource = caretakers.Select(cr => new

@@ -25,6 +25,7 @@ namespace tabulator.MVVM.Models
         [ForeignKey("Room")]
         public int RoomId { get; set; }
 
+        [InverseProperty("Employees")]
         public virtual Room Room { get; set; }
 
         [ForeignKey("EmployeeId")]

@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 
@@ -29,7 +30,7 @@ namespace tabulator.MVVM.Views.UserViews
         public EditEmployeeDataView()
         {
             InitializeComponent();
-            AddDataToDataGrid(context.Employees.ToList());
+            DataGridManager.GetInstance().ShowEmployeeDataGrid(EmployeeDataGrid, context.Employees.ToList());
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -52,18 +53,8 @@ namespace tabulator.MVVM.Views.UserViews
             List<Employee> result = context.Employees.ToList();
             if(!SearchTextBox.Text.Equals(string.Empty))
                 result = context.Employees.Where(x => x.Name.ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Surname.ToLower().ToString().Contains(SearchTextBox.Text.ToLower()) || x.PESEL.ToLower().ToString().Contains(SearchTextBox.Text.ToLower()) || x.PhoneNumber.ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
-            AddDataToDataGrid(result);
+            DataGridManager.GetInstance().ShowEmployeeDataGrid(EmployeeDataGrid, result);
         }
 
-        private void AddDataToDataGrid(List<Employee> emplList)
-        {
-            EmployeeDataGrid.ItemsSource = emplList.Select(empl => new
-            {
-                empl.Name,
-                empl.Surname,
-                empl.PESEL,
-                empl.PhoneNumber
-            }).ToList();
-        }
     }
 }
