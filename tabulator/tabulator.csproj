@@ -127,6 +127,9 @@
     <Compile Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunction.xaml.cs">
       <DependentUpon>EmployeeFunction.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunctionPopup.xaml.cs">
+      <DependentUpon>EmployeeFunctionPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Views\UserViews\EquipmentViews\EditEquipmentPopup.xaml.cs">
       <DependentUpon>EditEquipmentPopup.xaml</DependentUpon>
     </Compile>
@@ -284,6 +287,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunctionPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
