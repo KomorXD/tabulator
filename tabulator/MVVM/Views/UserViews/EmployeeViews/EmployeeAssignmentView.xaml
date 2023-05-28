@@ -24,18 +24,16 @@
                  Margin="0,0,200,0"
                  TextChanged="EquipmentSearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"
-                 Grid.Row="1"
                  VerticalAlignment="Top"/>
         <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"
-               Grid.Row="1"
                VerticalAlignment="Top"/>
 
         <DataGrid x:Name="EqDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="0"
-                  Margin="20,50,20,20"
+                  Margin="20,20,20,20"
                   Style="{DynamicResource DataGridStyle1}"
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
@@ -70,12 +68,10 @@
                  Margin="0,0,200,0"
                  TextChanged="EmployeeSearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"
-                 Grid.Row="1"
                  Grid.Column="1"
                  VerticalAlignment="Top"/>
         <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"
-               Grid.Row="1"
                Grid.Column="1"
                VerticalAlignment="Top"/>
 
@@ -83,7 +79,7 @@
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="1"
-                  Margin="20,50,20,20"
+                  Margin="20,20,20,20"
                   Style="{DynamicResource DataGridStyle1}"
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"

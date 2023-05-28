@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:tabulator"
              xmlns:adminVM="clr-namespace:tabulator.MVVM.Viewmodels.AdminVM"
              xmlns:userVM="clr-namespace:tabulator.MVVM.Viewmodels.UserVM"
+             xmlns:userXD="clr-namespace:tabulator.MVVM.Viewmodels.UserVM.EmployeeVM"
              xmlns:adminView="clr-namespace:tabulator.MVVM.Views.AdminViews"
              xmlns:userView="clr-namespace:tabulator.MVVM.Views.UserViews"
              StartupUri="MVVM/Views/UserView.xaml">
@@ -74,7 +75,11 @@
             <DataTemplate DataType="{x:Type userVM:GenerateReportViewModel}">
                 <userView:ReportGeneratorView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type userXD:EditEmployeeAssignmentViewModel}">
+                <userView:EditEmployeeAssignmentView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

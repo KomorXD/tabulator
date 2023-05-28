@@ -88,6 +88,10 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EmployeeAssignmentCommand}"/>
 
+                        <RadioButton Content="Edit assignment"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EditEmployeeAssignmentCommand}"/>
+
                         <RadioButton Content="Add equipment" 
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddEquipmentCommand}"/>

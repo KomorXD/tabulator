@@ -99,6 +99,7 @@
     <Compile Include="MVVM\Models\User.cs" />
     <Compile Include="MVVM\Models\Room.cs" />
     <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\AddEmployeeViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\EditEmployeeAssignmentViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\EditEmployeeDataViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\UserVM\GenerateReportViewModel.cs" />
     <Compile Include="MVVM\Views\AdminViews\ChangePasswordPopup.xaml.cs">
@@ -112,6 +113,9 @@
     </Compile>
     <Compile Include="MVVM\Views\UserViews\DepartmentViews\EditDepartmentPopup.xaml.cs">
       <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\EditEmployeeAssignmentView.xaml.cs">
+      <DependentUpon>EditEmployeeAssignmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Views\UserViews\EmployeeViews\EditEmployeeDataView.xaml.cs">
       <DependentUpon>EditEmployeeDataView.xaml</DependentUpon>
@@ -261,6 +265,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\UserViews\EmployeeViews\AddEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\EditEmployeeAssignmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
