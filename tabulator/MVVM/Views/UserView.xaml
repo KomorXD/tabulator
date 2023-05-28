@@ -132,6 +132,10 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditEmployeeDataCommand}"/>
 
+                        <RadioButton Content="Employee functions"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EmployeeFunctionDataCommand}"/>
+
                         <RadioButton Content="Generate report"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding GenerateReportDataCommand}"/>

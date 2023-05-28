@@ -24,6 +24,7 @@ namespace tabulator.MVVM.Viewmodels
         public RelayCommand GenerateReportDataCommand { get; set; }
         public RelayCommand EditEmployeeDataCommand { get; set; }
         public RelayCommand AddEmployeeDataCommand { get; set; }
+        public RelayCommand EmployeeFunctionDataCommand { get; set; }
 
 
         public EmployeeAssignmentViewModel      EmployeeAssignmentVM { get; set; }
@@ -39,6 +40,7 @@ namespace tabulator.MVVM.Viewmodels
         public GenerateReportViewModel          GenerateReportVM { get; set; }
         public EditEmployeeDataViewModel        EditEmployeeVM { get; set; }
         public AddEmployeeViewModel             AddEmployeeVM { get; set; }
+        public EmployeeFunctionViewModel        EmployeeFunctionVM { get; set; }
 
         private object _currentView;
 
@@ -67,6 +69,7 @@ namespace tabulator.MVVM.Viewmodels
             GenerateReportVM =          new GenerateReportViewModel();
             EditEmployeeVM =            new EditEmployeeDataViewModel();
             AddEmployeeVM =             new AddEmployeeViewModel();
+            EmployeeFunctionVM =        new EmployeeFunctionViewModel();
 
             CurrentView = EmployeeAssignmentVM;
 
@@ -133,6 +136,11 @@ namespace tabulator.MVVM.Viewmodels
             AddEmployeeDataCommand = new RelayCommand(o =>
             {
                 CurrentView = AddEmployeeVM;
+            });
+
+            EmployeeFunctionDataCommand = new RelayCommand(o =>
+            {
+                CurrentView = EmployeeFunctionVM;
             });
         }
     }

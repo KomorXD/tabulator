@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 using tabulator.MVVM.Views.UserViews;
+using tabulator.MVVM.Views.UserViews.EmployeeViews;
 
 namespace tabulator.Core
 {
@@ -151,6 +153,30 @@ namespace tabulator.Core
                 EmployeeName = cr.Employee.Name,
                 EmployeeSurname = cr.Employee.Surname
             });
+        }
+
+        public void ShowEmployeeFunction(DataGrid dataGridToShow, List<FacultyTechEmployee> facultyTechEmployees, List<DepartmentTechEmployee> departmentTechEmployees, List<Employee> employees)
+        {
+            var mergedData = facultyTechEmployees.Select(fac => new EmployeeData
+            {
+                Id = fac.Employee.Id,
+                Name = fac.Employee.Name,
+                Surname = fac.Employee.Surname,
+                Faculty = fac.Faculty.Name
+            }).Concat(departmentTechEmployees.Select(dep => new EmployeeData
+            {
+                Id = dep.Employee.Id,
+                Name = dep.Employee.Name,
+                Surname = dep.Employee.Surname,
+                Department = dep.Department.Name
+            })).Concat(employees.Select(emp => new EmployeeData
+            {
+                Id = emp.Id,
+                Name = emp.Name,
+                Surname = emp.Surname
+            })).GroupBy(emp => emp.Id).Select(grp => grp.First()).OrderBy(emp => emp.Name);
+
+            dataGridToShow.ItemsSource = mergedData;
         }
     }
 }

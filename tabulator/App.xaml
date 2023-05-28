@@ -7,6 +7,7 @@
              xmlns:userXD="clr-namespace:tabulator.MVVM.Viewmodels.UserVM.EmployeeVM"
              xmlns:adminView="clr-namespace:tabulator.MVVM.Views.AdminViews"
              xmlns:userView="clr-namespace:tabulator.MVVM.Views.UserViews"
+             xmlns:xdView="clr-namespace:tabulator.MVVM.Views.UserViews.EmployeeViews"
              StartupUri="MVVM/Views/UserView.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -78,6 +79,10 @@
 
             <DataTemplate DataType="{x:Type userXD:EditEmployeeAssignmentViewModel}">
                 <userView:EditEmployeeAssignmentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type userXD:EmployeeFunctionViewModel}">
+                <xdView:EmployeeFunction/>
             </DataTemplate>
 
         </ResourceDictionary>
