@@ -15,11 +15,6 @@ namespace tabulator.MVVM.Models
 
         [Column]
         public string Address { get; set; }
-
-        [ForeignKey("StorageRoom")]
-        public int StorageId { get; set; }
-        
-        public virtual Room StorageRoom { get; set; }
         
         public virtual ICollection<Department> Departments { get; set; }
 
