@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tabulator.Core;
 using tabulator.DatabaseContext;
+using tabulator.MVVM.Models;
 
 namespace tabulator.MVVM.Views.UserViews
 {
@@ -24,7 +25,7 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class AddEquipmentView : UserControl
     {
         DBContext context = DBContext.GetInstance();
-
+        string available = "";
         public AddEquipmentView()
         {
             InitializeComponent();
@@ -34,13 +35,44 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (!AllFieldsAreFilled())
+            {
+                errorText.Text = "Fill out all fields!";
+                return;
+            }
+
+            EquipmentItem temp = new EquipmentItem();
+            PopulateTempEquipment(temp);
+
+            context.Equipment.Add(temp);
+            context.SaveChanges();
+            ClearAllFields();
         }
 
-        private bool StringToBool(string str)
+        private void PopulateTempEquipment(EquipmentItem temp)
         {
-            if (str == "True") return true;
-            return false;
+            temp.Name = NameInput.Text;
+            temp.Description = DescriptionInput.Text;
+            temp.Available = GetCheckboxValue(AvailableInput);
+            temp.NotInUse = GetCheckboxValue(NotInUseInput);
+            temp.Destroyed = GetCheckboxValue(DestroyedInput);
+            temp.Room = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
+        }
+
+        private bool GetCheckboxValue(ComboBox combobox)
+        {
+            string comboboxText = ((ComboBoxItem)combobox.SelectedItem)?.Content?.ToString();
+            switch (comboboxText)
+            {
+                case "True":
+                    return true;
+
+                case "False":
+                    return false;
+
+                default:
+                    return false;
+            }
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -48,9 +80,42 @@ namespace tabulator.MVVM.Views.UserViews
 
         }
 
+        bool AllFieldsAreFilled()
+        {
+            if (NameInput.Text.Equals(string.Empty)) return false; 
+            if (DescriptionInput.Text.Equals(string.Empty)) return false; 
+            if (AvailableInput.SelectedIndex.Equals(-1)) return false; 
+            if (RoomDataGrid.SelectedIndex.Equals(-1)) return false; 
+
+            if(AvailableInput.SelectedIndex.Equals(1))
+            {
+                if (NotInUseInput.SelectedIndex.Equals(-1)) return false; 
+                if (DestroyedInput.SelectedIndex.Equals(-1)) return false; 
+            }
+            
+            return true;
+        }
+
+        void ClearAllFields()
+        {
+            NameInput.Text = string.Empty;
+            DescriptionInput.Text = string.Empty;
+            AvailableInput.SelectedIndex = 0;
+            NotInUseInput.SelectedIndex = 0;
+            DestroyedInput.SelectedIndex = 0;
+            RoomDataGrid.SelectedIndex = 0;
+            errorText.Text = string.Empty; 
+        }
+
         private void AvailableInput_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var available = ((ComboBoxItem)AvailableInput.SelectedItem)?.Content?.ToString();
+            ChangeCheckboxVisibility();
+        }
+
+        private void ChangeCheckboxVisibility()
+        {
+            available = ((ComboBoxItem)AvailableInput.SelectedItem)?.Content?.ToString();
+
             switch (available)
             {
                 case "True":
@@ -61,12 +126,12 @@ namespace tabulator.MVVM.Views.UserViews
                     break;
 
                 case "False":
-                    NotInUseInput.Visibility= Visibility.Visible;
-                    destroyedText.Visibility= Visibility.Visible;
-                    DestroyedInput.Visibility= Visibility.Visible;
-                    notinuseText.Visibility= Visibility.Visible;
-                    NotInUseInput.SelectedIndex= 0;
-                    DestroyedInput.SelectedIndex= 1;
+                    NotInUseInput.Visibility = Visibility.Visible;
+                    destroyedText.Visibility = Visibility.Visible;
+                    DestroyedInput.Visibility = Visibility.Visible;
+                    notinuseText.Visibility = Visibility.Visible;
+                    NotInUseInput.SelectedIndex = 0;
+                    DestroyedInput.SelectedIndex = 1;
                     break;
             }
         }

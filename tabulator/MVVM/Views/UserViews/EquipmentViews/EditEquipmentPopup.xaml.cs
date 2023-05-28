@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
@@ -23,23 +15,40 @@ namespace tabulator.MVVM.Views.UserViews
     public partial class EditEquipmentPopup : Window
     {
         DBContext context = DBContext.GetInstance();
-        int Id;
+        EquipmentItem _equipmentToEdit;
 
-        public EditEquipmentPopup(int EquipmentID)
+        public EditEquipmentPopup(EquipmentItem equipmentToEdit)
         {
             InitializeComponent();
-            Id = EquipmentID;
+            _equipmentToEdit = equipmentToEdit;
 
-            var editEquipment = (from m in context.Equipment where m.Id == EquipmentID select m).FirstOrDefault();
-            NameInput.Text = editEquipment.Name;
-            DescriptionInput.Text = editEquipment.Description;
+            NameInput.Text = _equipmentToEdit.Name;
+            DescriptionInput.Text = _equipmentToEdit.Description;
 
-            if (editEquipment.Available)
+            if (_equipmentToEdit.Available)
                 AvailableInput.SelectedIndex = 0;
             else AvailableInput.SelectedIndex = 1;
-
             AvailableInput_SelectionChanged(AvailableInput, null);
             DataGridManager.GetInstance().ShowRoomsDataGrid(RoomDataGrid, context.Rooms.ToList(), context.FacultyRooms.ToList(), context.DepartmentRooms.ToList());
+            RoomDataGrid.SelectedIndex = FindCurrentRoomIndex();
+        }
+
+        private int FindCurrentRoomIndex()
+        {
+            int roomID = _equipmentToEdit.Room.Id;
+
+            foreach (var item in RoomDataGrid.Items)
+            {
+                var datagridRoomId = ((dynamic)item).ID;
+                var datagridIndex = RoomDataGrid.Items.IndexOf(item);
+
+                if(roomID.Equals(datagridRoomId))
+                {
+                    return datagridIndex;
+                }
+            }
+
+            return -1;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -55,13 +64,69 @@ namespace tabulator.MVVM.Views.UserViews
             }
         }
 
+        private void PopulateTempEquipment(EquipmentItem temp)
+        {
+            temp.Name = NameInput.Text;
+            temp.Description = DescriptionInput.Text;
+            temp.Available = GetCheckboxValue(AvailableInput);
+            temp.NotInUse = GetCheckboxValue(NotInUseInput);
+            temp.Destroyed = GetCheckboxValue(DestroyedInput);
+            temp.Room = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
+        }
+
+        private bool GetCheckboxValue(ComboBox combobox)
+        {
+            string comboboxText = ((ComboBoxItem)combobox.SelectedItem)?.Content?.ToString();
+            switch (comboboxText)
+            {
+                case "True":
+                    return true;
+
+                case "False":
+                    return false;
+
+                default:
+                    return false;
+            }
+        }
+
+        bool AllFieldsAreFilled()
+        {
+            if (NameInput.Text.Equals(string.Empty)) return false;
+            if (DescriptionInput.Text.Equals(string.Empty)) return false;
+            if (AvailableInput.SelectedIndex.Equals(-1)) return false;
+            if (RoomDataGrid.SelectedIndex.Equals(-1)) return false;
+
+            if (AvailableInput.SelectedIndex.Equals(1))
+            {
+                if (NotInUseInput.SelectedIndex.Equals(-1)) return false;
+                if (DestroyedInput.SelectedIndex.Equals(-1)) return false;
+            }
+
+            return true;
+        }
+
+        void ClearAllFields()
+        {
+            NameInput.Text = string.Empty;
+            DescriptionInput.Text = string.Empty;
+            AvailableInput.SelectedIndex = 0;
+            NotInUseInput.SelectedIndex = 0;
+            DestroyedInput.SelectedIndex = 0;
+            RoomDataGrid.SelectedIndex = 0;
+            errorText.Text = string.Empty;
+        }
+
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            EquipmentItem equipment = (from m in context.Equipment where m.Id == Id select m).FirstOrDefault();
-            equipment.Name = NameInput.Text;
-            equipment.Description = DescriptionInput.Text;
+            if (!AllFieldsAreFilled())
+            {
+                errorText.Text = "Fill out all fields!";
+                return;
+            }
 
-            // do ogarniecia przez tylny koniec xd
+            EquipmentItem temp = new EquipmentItem();
+            PopulateTempEquipment(temp);
 
             context.SaveChanges();
             EditEquipmentDataView editEquipmentDataView = new EditEquipmentDataView();
