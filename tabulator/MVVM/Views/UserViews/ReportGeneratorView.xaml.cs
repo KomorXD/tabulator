@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 using tabulator.MVVM.Viewmodels.UserVM;
@@ -22,21 +23,21 @@ namespace tabulator.MVVM.Views.UserViews
     /// <summary>
     /// Interaction logic for ReportGeneratorView.xaml
     /// </summary>
+    /// 
+
+
     public partial class ReportGeneratorView : UserControl
     {
         public AddDepartmentViewModel ViewModel { get; set; }
         DBContext context = DBContext.GetInstance();
         List<Faculty> _facultyList;
+        List<Department> _departmentList;
+        List<FacultyRoom> _facultyRoomsList;
+        List<DepartmentRoom> _departmentRoomsList;
         Faculty _selectedFaculty;
         Department _selectedDepartment;
-        List<Department> _departmentList;
         List<EquipmentItem> _recordsFoundList;
         int _recordsFoundCount = 0;
-
-
-        bool _facultyStopSearch = true;
-        bool _departmentStopSearch = true;
-
         
         bool _available = true;
         bool _notInUse = false;
@@ -47,29 +48,107 @@ namespace tabulator.MVVM.Views.UserViews
             InitializeComponent();
             Available.IsChecked = true;
             _facultyList = context.Faculties.ToList();
+            _departmentList = context.Departments.ToList();
+            _departmentRoomsList = context.DepartmentRooms.ToList();
+            _facultyRoomsList = context.FacultyRooms.ToList();
+            
             ViewModel = new AddDepartmentViewModel();
             FillFacultyDropBoxes();
         }
 
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
+            if (_recordsFoundList.Count == 0)
+                return;
 
+            PdfCreator pdfCreator = new PdfCreator();
+            RaportStats stats = GenerateStats();        
+
+            pdfCreator.Generate(GeneratOutputList(), stats);
+        }
+
+        private List<OutputItemData> GeneratOutputList()
+        {
+            List<OutputItemData> tempList = new List<OutputItemData>();
+            foreach (EquipmentItem record in _recordsFoundList)
+            {
+                OutputItemData temp;
+
+                temp.itemName = record.Name;
+                temp.itemDescription = record.Description;
+                temp.owner = FindOwnerOfEquipment(record);
+                temp.room = record.Room.Number;
+                temp.site = FindSiteEquipment(record);
+                temp.state = FindStateEquipment(record);
+
+                tempList.Add(temp);
+            }
+            return tempList;
+        }
+
+        private string FindStateEquipment(EquipmentItem record)
+        {
+            string temp = string.Empty;
+
+            if (record.Available)
+                temp += "-Available\n";
+            if (record.NotInUse)
+                temp += "-Not in use\n";
+            if (record.Destroyed)
+                temp += "-Destroyed\n";
+
+            if (temp.Equals(string.Empty))
+                temp = "-";
+
+            return temp;
+        }
+
+        private string FindOwnerOfEquipment(EquipmentItem eq)
+        {
+            foreach (EquipmentCaretakers caretaker in context.EquipmentCaretakers)
+            {
+                if (eq.Id == caretaker.Item.Id)
+                    return caretaker.Employee.Name + " " + caretaker.Employee.Surname;
+            }
+            return "-";
+        }
+
+        private string FindSiteEquipment(EquipmentItem eq)
+        {
+            foreach (FacultyRoom facultyRoom in context.FacultyRooms)
+            {
+                if (facultyRoom.Room.Id.Equals(eq.Id))
+                    return facultyRoom.Faculty.Name + " - shared resource";
+            }
+            foreach (DepartmentRoom departmentRoom in context.DepartmentRooms)
+            {
+                if (departmentRoom.Room.Id.Equals(eq.Id))
+                    return departmentRoom.Department.Faculty.Name + " - " + departmentRoom.Department.Name;
+            }
+
+            return "-";
+        }
+
+        private RaportStats GenerateStats()
+        {
+            RaportStats temp;
+
+            temp.employeeName = NameInput.Text.Equals(string.Empty) ? "-" : NameInput.Text;
+            temp.employeeSurname = SurnameInput.Text.Equals(string.Empty) ? "-" : SurnameInput.Text;
+            temp.roomNumber = RoomInput.Text.Equals(string.Empty) ? "-" : RoomInput.Text;
+            temp.equipmentName = EquipmentInput.Text.Equals(string.Empty) ? "-" : EquipmentInput.Text;
+            temp.faculty = _selectedFaculty == null ? "-" : _selectedFaculty.Name;
+            temp.department = _selectedDepartment == null ? "-" : _selectedDepartment.Name;
+            temp.available = _available ? "Yes" : "No";
+            temp.notInUse = _notInUse ? "Yes" : "No";
+            temp.destroyed = _destroyed ? "Yes" : "No";
+
+            return temp;
         }
 
         private void UpdateRecordsFoundText()
         {
             List<EquipmentItem> allEquipment = context.Equipment.ToList();
-            //EquipmentItem eq = allEquipment.ElementAt(0);
-            //int warunek = 0;
-            //if (eq.Available.Equals(_available)) warunek++;
-            //if (eq.Destroyed.Equals(_destroyed)) warunek++;
-            //if (eq.NotInUse.Equals(_notInUse)) warunek++;
-            //if (InFacultyEquipmentSearch(eq)) warunek++;
-            //if (InDepartmentEquipmentSearch(eq)) warunek++;
-            //if (CaretakernNameEquipmentSearch(eq, NameInput.Text)) warunek++;
-            //if (CaretakernSurnameEquipmentSearch(eq, SurnameInput.Text)) warunek++;
-            //if (NameEquipmentSearch(eq, EquipmentInput.Text)) warunek++;
-            //if (RoomEquipmentSearch(eq, RoomInput.Text)) warunek++;
             _recordsFoundList = allEquipment
                 .Where(eq => eq.Available.Equals(_available) &&
                              eq.Destroyed.Equals(_destroyed) &&
@@ -87,18 +166,26 @@ namespace tabulator.MVVM.Views.UserViews
 
         bool InFacultyEquipmentSearch(EquipmentItem eq)
         {
-            //Dodać przeszukanie wszytskich departmentów w danym fakultecie
-
-            //Wyłączyć szukanie jeżeli wybrany jest jakis department
 
             if (FacultyDropdown.SelectedIndex <= 0) return true;
 
-            foreach (FacultyRoom facultyRoom in context.FacultyRooms)
+            foreach (FacultyRoom facultyRoom in _facultyRoomsList)
             {
                 if(eq.Room == facultyRoom.Room && _selectedFaculty == facultyRoom.Faculty)
                 {
                     return true;
                 }
+                else if (_selectedFaculty == facultyRoom.Faculty && _selectedDepartment is null)
+                {
+                    foreach (DepartmentRoom departmentRoom in _departmentRoomsList)
+                    {
+                        if (eq.Room == departmentRoom.Room && _selectedFaculty == departmentRoom.Department.Faculty)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
             }
 
             return false;
@@ -107,7 +194,7 @@ namespace tabulator.MVVM.Views.UserViews
         {
             if (DepartmentDropdown.SelectedIndex <= 0) return true;
 
-            foreach (DepartmentRoom departmentRoom in context.DepartmentRooms)
+            foreach (DepartmentRoom departmentRoom in _departmentRoomsList)
             {
                 if (eq.Room == departmentRoom.Room && _selectedDepartment == departmentRoom.Department)
                 {
