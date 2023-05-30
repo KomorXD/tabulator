@@ -58,7 +58,7 @@ namespace tabulator.Core
                 document.Open();
 
                 string currentDateTimeString = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                Paragraph title = new Paragraph("University equipment raport", new Font(Font.FontFamily.HELVETICA, 22, Font.BOLD));
+                Paragraph title = new Paragraph("University equipment report", new Font(Font.FontFamily.HELVETICA, 22, Font.BOLD));
                 document.Add(title);
 
                 Paragraph date = new Paragraph(currentDateTimeString, new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC));
