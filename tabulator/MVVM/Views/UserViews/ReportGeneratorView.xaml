@@ -152,7 +152,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Content="dupa"
+                Content="Generate a report from the database. Select the desired data parameters and generate a PDF report with the relevant information."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>
