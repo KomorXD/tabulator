@@ -122,7 +122,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="3"
-                Content="ffffffffffffffff"
+                Content="Add a new equipment entry to the database. Enter the name, description, specify availability, and assign it to a room."
                 Style="{StaticResource HelpButtonTheme}"/>
 
     </Grid>

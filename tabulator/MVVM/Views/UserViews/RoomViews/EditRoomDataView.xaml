@@ -72,7 +72,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
-                Content="esss"
+                Content="Edit existing room data in the database. Modify the room number or change the associated faculty/department."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

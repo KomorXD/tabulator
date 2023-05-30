@@ -80,7 +80,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
-                Content="dupaaaaaa"
+                Content="Edit existing employee data in the database. Modify the name, surname, PESEL number, phone number, or update the role."
                 Style="{StaticResource HelpButtonTheme}"/>
 
     </Grid>

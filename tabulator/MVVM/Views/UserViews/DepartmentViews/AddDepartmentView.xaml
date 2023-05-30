@@ -53,7 +53,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Content="sperma z hujasperma z hujasperma z hujasperma z hujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z hujahujasperma z hujasperma z hujasperma z hujasperma z huja"
+                Content="Add a new department to the database. Enter the department name and select the associated faculty."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

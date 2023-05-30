@@ -69,7 +69,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
-                Content="aha"
+                Content="Edit existing faculty data in the database. Modify the faculty name or update its address."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

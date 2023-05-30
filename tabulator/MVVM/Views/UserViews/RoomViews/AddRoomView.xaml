@@ -55,7 +55,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
-                Content="xd"
+                Content="Add a new room to the database. Enter the room number and select the department or faculty where it is located."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

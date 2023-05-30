@@ -72,7 +72,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Content="huj z dupy jebanie kutas"
+                Content="Search and manage employee functions. Find specific employees and edit their functions or roles within the organization."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

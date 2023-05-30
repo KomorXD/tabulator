@@ -129,7 +129,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="3"
-                Content="opierdol mi fjuta kurwo"
+                Content="Add a new employee to the database. Enter the name, surname, PESEL number, phone number, and specify their role."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

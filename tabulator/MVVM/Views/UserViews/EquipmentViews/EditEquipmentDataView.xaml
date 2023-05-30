@@ -83,7 +83,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
-                Content="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                Content="Edit existing equipment data. Update name, description, room assignment, and status (Not in use/Destroyed)."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

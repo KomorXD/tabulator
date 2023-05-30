@@ -53,7 +53,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Content="gggggggggggggggggggggg"
+                Content="Add a new faculty to the database. Enter the faculty name and provide its address."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>
