@@ -76,7 +76,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
-                Content="gowno"
+                Content="Edit or delete existing user data. Modify the username, name, surname, password, and function or role of the user."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

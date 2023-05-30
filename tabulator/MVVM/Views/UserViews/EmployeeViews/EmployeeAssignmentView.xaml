@@ -125,7 +125,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Content="jebanie"
+                Content="Assign equipment to an employee. Select the equipment and associate it with a specific employee."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

@@ -72,7 +72,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
-                Content="huj z dupy jebanie kutas"
+                Content="Edit existing assignments. Modify equipment-to-employee associations or other relevant details."
                 Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>
