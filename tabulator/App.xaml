@@ -8,7 +8,7 @@
              xmlns:adminView="clr-namespace:tabulator.MVVM.Views.AdminViews"
              xmlns:userView="clr-namespace:tabulator.MVVM.Views.UserViews"
              xmlns:xdView="clr-namespace:tabulator.MVVM.Views.UserViews.EmployeeViews"
-             StartupUri="MVVM/Views/UserView.xaml">
+             StartupUri="MVVM/Views/LoginView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
