@@ -6,8 +6,17 @@ namespace tabulator.DatabaseContext
     internal class DBContext : DbContext
     {
         static public DBContext INSTANCE = null;
+        static public DBContext GetInstance()
+        {
+            if (INSTANCE == null)
+            {
+                INSTANCE = new DBContext();
+            }
 
-        private DBContext(): base(Properties.Settings.Default.db_connect_str)
+            return INSTANCE;
+        }
+
+        private DBContext() : base(Properties.Settings.Default.db_connect_str)
         {
 
         }
@@ -19,16 +28,11 @@ namespace tabulator.DatabaseContext
         public DbSet<EquipmentItem> Equipment { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserFunction> UserFunctions { get; set; }
-
-        static public DBContext GetInstance()
-        {
-            if(INSTANCE == null)
-            {
-                INSTANCE = new DBContext();
-            }
-
-            return INSTANCE;
-
-        }
+        public DbSet<FacultyRoom> FacultyRooms { get; set; }
+        public DbSet<DepartmentRoom> DepartmentRooms { get; set; }
+        public DbSet<EquipmentCaretakers> EquipmentCaretakers { get; set; }
+        public DbSet<FacultyTechEmployee> FacultyTechEmployee { get; set; }
+        public DbSet<DepartmentTechEmployee> DepartmentTechEmployee { get; set; }
+       
     }
 }

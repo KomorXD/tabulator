@@ -34,16 +34,16 @@
                   Style="{DynamicResource DataGridStyle1}"
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
-                  RowStyle="{DynamicResource DataGridRowStyle1}" Margin="20,27,20,193">
+                  RowStyle="{DynamicResource DataGridRowStyle1}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Username"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Username}"/>
-                <DataGridTextColumn Header="Password"
+                <!--<DataGridTextColumn Header="Password"
                                     IsReadOnly="True"
                                     Width="*"
-                                    Binding="{Binding Password}"/>
+                                    Binding="{Binding Password}"/>-->
                 <DataGridTextColumn Header="Name"
                                     IsReadOnly="True"
                                     Width="*"
@@ -52,10 +52,10 @@
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Surname}"/>
-
+              
                 <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"
-                                        Width="auto">
+                                        Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -76,7 +76,7 @@
         <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
-                Style="{StaticResource HelpButtonTheme}"
-                Click="btnHelp_Click"/>
+                Content="Edit or delete existing user data. Modify the username, name, surname, password, and function or role of the user."
+                Style="{StaticResource HelpButtonTheme}"/>
     </Grid>
 </UserControl>

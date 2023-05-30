@@ -53,16 +53,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.0.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.2.88.3\lib\net462\SkiaSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,8 +108,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\DBContext.cs" />
+    <Compile Include="Core\DataGridManager.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\PasswordManager.cs" />
+    <Compile Include="Core\PdfCreator.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MVVM\Models\Department.cs" />
     <Compile Include="MVVM\Models\DepartmentRooms.cs" />
@@ -97,39 +125,63 @@
     <Compile Include="MVVM\Models\UserFunction.cs" />
     <Compile Include="MVVM\Models\User.cs" />
     <Compile Include="MVVM\Models\Room.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\AddEmployeeViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\EditEmployeeAssignmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\EditEmployeeDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\EmployeeFunctionViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\GenerateReportViewModel.cs" />
+    <Compile Include="MVVM\Views\AdminViews\ChangePasswordPopup.xaml.cs">
+      <DependentUpon>ChangePasswordPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Views\AdminViews\EditUserPopup.xaml.cs">
       <DependentUpon>EditUserPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\AddemployeePopup.xaml.cs">
+      <DependentUpon>AddemployeePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\AddEmployeeView.xaml.cs">
+      <DependentUpon>AddEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\DepartmentViews\EditDepartmentPopup.xaml.cs">
       <DependentUpon>EditDepartmentPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditEquipmentPopup.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\EditEmployeeAssignmentView.xaml.cs">
+      <DependentUpon>EditEmployeeAssignmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\EditEmployeeDataView.xaml.cs">
+      <DependentUpon>EditEmployeeDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunction.xaml.cs">
+      <DependentUpon>EmployeeFunction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunctionPopup.xaml.cs">
+      <DependentUpon>EmployeeFunctionPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\UserViews\EquipmentViews\EditEquipmentPopup.xaml.cs">
       <DependentUpon>EditEquipmentPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditFacultyPopup.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\FacultyViews\EditFacultyPopup.xaml.cs">
       <DependentUpon>EditFacultyPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditRoomPopup.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\RoomViews\EditRoomPopup.xaml.cs">
       <DependentUpon>EditRoomPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
+    <Compile Include="MVVM\Views\UserViews\ReportGeneratorView.xaml.cs">
+      <DependentUpon>ReportGeneratorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Viewmodels\AdminVM\AddUserViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\AdminViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\AdminVM\EditUserDataViewModel.cs" />
     <Compile Include="MVVM\Viewmodels\UserViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\AddDepartmentViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\AddEquipmentViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\AddFacultyViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\AddRoomViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\EditDepartmentDataViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\EditEquipmentDataViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\EditFacultyDataViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\EditRoomDataViewModel.cs" />
-    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeAssignmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\DepartmentVM\AddDepartmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EquipmentVM\AddEquipmentViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\FacultyVM\AddFacultyViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\RoomVM\AddRoomViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\DepartmentVM\EditDepartmentDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EquipmentVM\EditEquipmentDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\FacultyVM\EditFacultyDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\RoomVM\EditRoomDataViewModel.cs" />
+    <Compile Include="MVVM\Viewmodels\UserVM\EmployeeVM\EmployeeAssignmentViewModel.cs" />
     <Compile Include="MVVM\Views\AdminViews\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
     </Compile>
@@ -145,32 +197,37 @@
     <Compile Include="MVVM\Views\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\AddDepartmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\DepartmentViews\AddDepartmentView.xaml.cs">
       <DependentUpon>AddDepartmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\AddEquipmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EquipmentViews\AddEquipmentView.xaml.cs">
       <DependentUpon>AddEquipmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\AddFacultyView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\FacultyViews\AddFacultyView.xaml.cs">
       <DependentUpon>AddFacultyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\AddRoomView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\RoomViews\AddRoomView.xaml.cs">
       <DependentUpon>AddRoomView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditDepartmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\DepartmentViews\EditDepartmentView.xaml.cs">
       <DependentUpon>EditDepartmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditEquipmentDataView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EquipmentViews\EditEquipmentDataView.xaml.cs">
       <DependentUpon>EditEquipmentDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditFacultyDataView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\FacultyViews\EditFacultyDataView.xaml.cs">
       <DependentUpon>EditFacultyDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EditRoomDataView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\RoomViews\EditRoomDataView.xaml.cs">
       <DependentUpon>EditRoomDataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml.cs">
+    <Compile Include="MVVM\Views\UserViews\EmployeeViews\EmployeeAssignmentView.xaml.cs">
       <DependentUpon>EmployeeAssignmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\AdminViews\ChangePasswordPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,55 +297,83 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\AddDepartmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\DepartmentViews\AddDepartmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\AddEquipmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\AddemployeePopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\AddFacultyView.xaml">
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\AddEmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\AddRoomView.xaml">
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\EditEmployeeAssignmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditDepartmentPopup.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\Views\UserViews\EditDepartmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditEquipmentDataView.xaml">
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\EmployeeFunctionPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditEquipmentPopup.xaml">
+    <Page Include="MVVM\Views\UserViews\EquipmentViews\AddEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditFacultyDataView.xaml">
+    <Page Include="MVVM\Views\UserViews\FacultyViews\AddFacultyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditFacultyPopup.xaml">
+    <Page Include="MVVM\Views\UserViews\RoomViews\AddRoomView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditRoomDataView.xaml">
+    <Page Include="MVVM\Views\UserViews\DepartmentViews\EditDepartmentPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\DepartmentViews\EditDepartmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EditRoomPopup.xaml">
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\EditEmployeeDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\UserViews\EmployeeAssignmentView.xaml">
+    <Page Include="MVVM\Views\UserViews\EquipmentViews\EditEquipmentDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EquipmentViews\EditEquipmentPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\FacultyViews\EditFacultyDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\FacultyViews\EditFacultyPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\RoomViews\EditRoomDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\RoomViews\EditRoomPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\EmployeeViews\EmployeeAssignmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\UserViews\ReportGeneratorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -333,8 +422,10 @@
     <Resource Include="Resources\Images\editdark.png" />
     <Resource Include="Resources\Images\deletelight.png" />
     <Resource Include="Resources\Images\editlight.png" />
-    <Resource Include="Resources\Images\helpicon.png" />
-    <Resource Include="Resources\Images\helpicon2.png" />
+    <Resource Include="Resources\Images\adddark.png" />
+    <Resource Include="Resources\Images\addlight.png" />
+    <Resource Include="Resources\Images\helpdark.png" />
+    <Resource Include="Resources\Images\helplight.png" />
     <Content Include="_Data\EqRecordsDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -351,6 +442,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
 </Project>

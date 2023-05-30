@@ -62,12 +62,14 @@
             </StackPanel>
             <StackPanel Grid.Column="1"
                     Grid.Row="1">
-                <TextBlock Text="Password"
-                       Margin="0,5,0,0"
-                       Style="{StaticResource TextblockTheme}"/>
-                <TextBox x:Name="PasswordInput"                    
-                     Style="{StaticResource InputTextboxTheme}" />
+                <Button x:Name="btnChangePassword"
+                        Margin="0,20,0,0"
+                        Width="200"
+                        Content="Change password"
+                        Click="btnChangePassword_Click"
+                        Style="{StaticResource ButtonTheme}"/>
                 <TextBlock Text="Surname"
+                           Margin="0,35,0,0"
                        Style="{StaticResource TextblockTheme}"/>
                 <TextBox x:Name="SurnameInput"                    
                      Style="{StaticResource InputTextboxTheme}" />

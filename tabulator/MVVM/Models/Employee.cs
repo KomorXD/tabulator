@@ -22,6 +22,12 @@ namespace tabulator.MVVM.Models
         [Column]
         public string PhoneNumber { get; set; }
 
+        [ForeignKey("Room")]
+        public int RoomId { get; set; }
+
+        [InverseProperty("Employees")]
+        public virtual Room Room { get; set; }
+
         [ForeignKey("EmployeeId")]
         public virtual ICollection<DepartmentTechEmployee> DepartmentTechEmployees { get; set; }
 

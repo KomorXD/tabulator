@@ -19,7 +19,6 @@
     </Window.DataContext>
 
     <Border>
-
         <Border CornerRadius="5"
                 Background="#364156"
                 BorderBrush="#11151c"
@@ -37,9 +36,19 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
+                <Border Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Grid.ColumnSpan="2">
+                    <Border.Background>
+                        <ImageBrush ImageSource="../../Resources/Images/loginBg.jpg"
+                        Stretch="Fill" />
+                    </Border.Background>
+                </Border>
+
                 <Border Grid.ColumnSpan="2"
                         BorderBrush="#11151c"
-                        BorderThickness="0,0,0,3">
+                        BorderThickness="0,0,0,3"
+                        Background="#364156">
 
                     <Grid>
 
@@ -78,7 +87,10 @@
                 <Border Grid.Row="1"
                         Grid.RowSpan="2"
                         BorderBrush="#11151c"
-                        BorderThickness="0,0,3,0">
+                        BorderThickness="0,0,3,0"
+                        Background="#364156"
+                        Opacity="0.9">
+
 
                     <StackPanel Orientation="Vertical"
                                 Margin="3">
@@ -99,7 +111,8 @@
                 <ContentControl Grid.Row="1" 
                                 Grid.Column="1"
                                 Grid.RowSpan="2"
-                                Content="{Binding CurrentView}"/>
+                                Content="{Binding CurrentView}"
+                                Opacity="0.9"/>
 
                 <Button x:Name="btnLogin"
                         Grid.Row="2"

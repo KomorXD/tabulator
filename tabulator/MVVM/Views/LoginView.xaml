@@ -75,8 +75,7 @@
                         Opacity="0.8"
                         Background="#364156">
 
-                    <StackPanel Width="250"
-                                Grid.Row="2"
+                    <StackPanel Grid.Row="2"
                                 Orientation="Vertical"
                                 Margin="0, 35, 0, 0">
 
@@ -95,8 +94,14 @@
                         <PasswordBox x:Name="PasswordInput"
                                      Style="{StaticResource PasswordboxTheme}" />
 
+                        <TextBlock x:Name="errorText"
+                                   TextAlignment="Center"
+                                   Width="600"     
+                                   Foreground="Red"                                   
+                                   Style="{StaticResource TextblockTheme}"/>
+
                         <Button x:Name="btnLogin"
-                                Margin="0,100,0,0"
+                                Margin="0,80,0,0"
                                 Content="Login"
                                 Click="btnLogin_Click"
                                 Style="{StaticResource ButtonTheme}"/>

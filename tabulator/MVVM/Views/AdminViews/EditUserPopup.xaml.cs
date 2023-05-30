@@ -33,7 +33,6 @@ namespace tabulator.MVVM.Views.AdminViews
             UsernameInput.Text = editUser.Username;
             NameInput.Text = editUser.Name;
             SurnameInput.Text = editUser.Surname;
-            PasswordInput.Text = editUser.Password;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -52,13 +51,18 @@ namespace tabulator.MVVM.Views.AdminViews
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             User user = (from m in context.Users where m.Id == Id select m).FirstOrDefault();
-            user.Name = NameInput.Text;
-            user.Password = PasswordInput.Text;
+            user.Name = NameInput.Text;           
             user.Surname = SurnameInput.Text;
             user.Username = UsernameInput.Text;
             context.SaveChanges();
             EditUserDataView.dataGrid.ItemsSource = context.Users.ToList();
             this.Close();
+        }
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordPopup editPassword = new ChangePasswordPopup(Id);
+            editPassword.ShowDialog();
         }
     }
 }

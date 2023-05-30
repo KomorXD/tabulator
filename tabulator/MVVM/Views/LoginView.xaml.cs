@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
 using tabulator.MVVM.Views.AdminViews;
@@ -24,9 +27,11 @@ namespace tabulator.MVVM.Views
     /// </summary>
     public partial class LoginView : Window
     {
+        private DBContext context;
         public LoginView()
         {
             InitializeComponent();
+            context = DBContext.GetInstance();
         }
 
         private void SwitchToAdminView(object sender, RoutedEventArgs e)
@@ -61,12 +66,54 @@ namespace tabulator.MVVM.Views
             Application.Current.Shutdown();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private CancellationTokenSource cancellationTokenSource;
+
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //we se to ogarnijcie rzeby dzialalo
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+            }
+
+            cancellationTokenSource = new CancellationTokenSource();
+
             string username = UsernameInput.Text;
-            PasswordBox passwordBox = PasswordInput;
-            SwitchToUserView(sender, e);
+            User foundUser = context.Users.FirstOrDefault(u => u.Username == username);
+
+            try
+            {
+                if (foundUser is null)
+                {
+                    errorText.Text = "No user found!";
+                    errorText.Visibility = Visibility.Visible;
+                    await Task.Delay(3000, cancellationTokenSource.Token);
+                    DisableErrorMsg();
+                    return;
+                }
+
+                if (PasswordManager.VerifyPassword(PasswordInput.Password, foundUser.Password, foundUser.Salt))
+                {
+                    if (foundUser.FunctionId == UserFunction.USER_ROLE)
+                    {
+                        SwitchToUserView(sender, e);
+                    }
+                    else if (foundUser.FunctionId == UserFunction.ADMIN_ROLE)
+                    {
+                        SwitchToAdminView(sender, e);
+                    }
+                }
+                else
+                {
+                    errorText.Text = "Wrong password!";
+                    errorText.Visibility = Visibility.Visible;
+                    await Task.Delay(3000, cancellationTokenSource.Token);
+                    DisableErrorMsg();
+                }
+            }catch (Exception ex) { }
+        }
+        private void DisableErrorMsg()
+        {
+            errorText.Visibility = Visibility.Hidden;
         }
     }
 }

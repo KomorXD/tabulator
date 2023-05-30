@@ -88,6 +88,10 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EmployeeAssignmentCommand}"/>
 
+                        <RadioButton Content="Edit assignment"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EditEmployeeAssignmentCommand}"/>
+
                         <RadioButton Content="Add equipment" 
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddEquipmentCommand}"/>
@@ -119,6 +123,22 @@
                         <RadioButton Content="Edit faculty data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditFacultyDataCommand}"/>
+
+                        <RadioButton Content="Add employee"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding AddEmployeeDataCommand}"/>
+
+                        <RadioButton Content="Edit employee data"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EditEmployeeDataCommand}"/>
+
+                        <RadioButton Content="Employee functions"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding EmployeeFunctionDataCommand}"/>
+
+                        <RadioButton Content="Generate report"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding GenerateReportDataCommand}"/>
 
                     </StackPanel>
 
