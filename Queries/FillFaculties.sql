@@ -1,0 +1,23 @@
+﻿INSERT INTO [dbo].[Faculties] ([Name], [Address])
+VALUES
+    ('Wydział Elektroniki', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Informatyki i Nauki o Materiałach', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Automatyki, Elektroniki i Informatyki', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Budownictwa', 'Akademicka 5, 44-100 Gliwice, Polska'),
+    ('Wydział Elektrotechniki', 'Akademicka 2A, 44-100 Gliwice, Polska'),
+    ('Wydział Górniczy', 'Akademicka 2A, 44-100 Gliwice, Polska'),
+    ('Wydział Informatyki', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Matematyki Stosowanej', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Mechaniczny Technologiczny', 'Konarskiego 18A, 44-100 Gliwice, Polska'),
+    ('Wydział Organizacji i Zarządzania', 'Kościuszki 8, 40-019 Katowice, Polska'),
+    ('Wydział Transportu', 'Akademicka 2A, 44-100 Gliwice, Polska'),
+    ('Wydział Architektury', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Chemiczny', 'Akademicka 2A, 44-100 Gliwice, Polska'),
+    ('Wydział Fizyki i Matematyki Stosowanej', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Geodezji i Kartografii', 'Akademicka 2A, 44-100 Gliwice, Polska'),
+    ('Wydział Inżynierii Materiałowej i Metalurgii', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Inżynierii Środowiska i Energetyki', 'Akademicka 2A, 44-100 Gliwice, Polska'),
+    ('Wydział Matematyki Stosowanej', 'Akademicka 16, 44-100 Gliwice, Polska'),
+    ('Wydział Mechaniczny', 'Konarskiego 18A, 44-100 Gliwice, Polska'),
+    ('Wydział Metali Nieżelaznych', 'Akademicka 2A, 44-100 Gliwice, Polska'),
+    ('Wydział Organizacji i Zarządzania', 'Kościuszki 8, 40-019 Katowice, Polska')
