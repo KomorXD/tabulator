@@ -8,7 +8,7 @@
              d:DesignHeight="520" d:DesignWidth="600"
              Background="Transparent">
 
-    <Border>
+    <Border KeyDown="Border_KeyDown">
         <Border.Background>
             <ImageBrush ImageSource="../../../Resources/Images/yor.png"
                         Stretch="Uniform" />

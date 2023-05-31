@@ -95,5 +95,12 @@ namespace tabulator.MVVM.Views.UserViews
             errorText.Text = string.Empty;
         }
 
+        private void Border_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == System.Windows.Input.Key.Enter)
+            {
+                btnAddRoom_Click(sender, e);
+            }
+        }
     }
 }

@@ -62,5 +62,13 @@ namespace tabulator.MVVM.Views.UserViews
             context.SaveChanges();
             this.Close();
         }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnEdit_Click(sender, e);
+            }
+        }
     }
 }

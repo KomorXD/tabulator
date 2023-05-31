@@ -16,7 +16,8 @@
 
     <Border CornerRadius="5"
             BorderBrush="#11151c"
-            BorderThickness="3">
+            BorderThickness="3"
+            KeyDown="Border_KeyDown">
         <Border.Background>
             <ImageBrush ImageSource="../../../../Resources/Images/kanna.png"
                         Stretch="Uniform" />

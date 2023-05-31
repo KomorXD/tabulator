@@ -38,5 +38,13 @@ namespace tabulator.MVVM.Views.UserViews
             AddressInput.Text = string.Empty;
             errorText.Text = string.Empty;
         }
+
+        private void Border_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == System.Windows.Input.Key.Enter)
+            {
+                btnAddFaculty_Click(sender, e);
+            }
+        }
     }
 }

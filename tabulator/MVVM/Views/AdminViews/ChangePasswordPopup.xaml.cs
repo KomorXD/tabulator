@@ -79,5 +79,13 @@ namespace tabulator.MVVM.Views.AdminViews
 
             return true;
         }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnChange_Click(sender, e);
+            }
+        }
     }
 }

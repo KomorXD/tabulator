@@ -68,5 +68,13 @@ namespace tabulator.MVVM.Views.UserViews
                 FacultyName = dep.Faculty.Name
             }).ToList();
         }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                BtnEdit_Click(sender, e);
+            }
+        }
     }
 }

@@ -162,5 +162,13 @@ namespace tabulator.MVVM.Views.AdminViews
         {
             errorPlaceholder.Text = msg;
         }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnEdit_Click(sender, e);
+            }
+        }
     }
 }

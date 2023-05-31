@@ -66,5 +66,13 @@ namespace tabulator.MVVM.Views.UserViews
             }
             FacultyDropdown.SelectedIndex = 0;
         }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnAdd_Click(sender, e);
+            }
+        }
     }
 }

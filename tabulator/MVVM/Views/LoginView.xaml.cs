@@ -115,5 +115,13 @@ namespace tabulator.MVVM.Views
         {
             errorText.Visibility = Visibility.Hidden;
         }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }

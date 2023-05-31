@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="670" d:DesignWidth="900">
 
-    <Border>
+    <Border KeyDown="Border_KeyDown">
         <Border.Background>
             <ImageBrush ImageSource="../../../../Resources/Images/yotsuba.png"
                         Stretch="Uniform" />

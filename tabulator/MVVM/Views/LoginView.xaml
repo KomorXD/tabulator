@@ -14,8 +14,7 @@
         Background="Transparent"
         AllowsTransparency="True">
 
-    <Border>
-
+    <Border KeyDown="Border_KeyDown">
         <Border CornerRadius="5"
                 Background="#364156"
                 BorderBrush="#11151c"
