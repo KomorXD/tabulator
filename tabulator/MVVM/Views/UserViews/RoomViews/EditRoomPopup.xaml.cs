@@ -57,6 +57,13 @@ namespace tabulator.MVVM.Views.UserViews
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             _roomToEdit.Number = RoomNumberInput.Text;
+
+            if(RoomNumberInput.Text == string.Empty)
+            {
+                errorText.Text = "Fill all fields!";
+                return;
+            }
+
             switch(selectedRoomType)
             {
                 case "Faculty":

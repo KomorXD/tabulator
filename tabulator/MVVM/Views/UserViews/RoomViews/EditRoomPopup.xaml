@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="UserView" Height="480" Width="600"
+        Title="UserView" Height="500" Width="600"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -78,11 +78,19 @@
                       Style="{StaticResource ComboBoxTheme}"      
                       Width="400">
                     </ComboBox>
-                    <Button x:Name="btnEditRoom"
-                    Margin="0,50,0,0"
-                    Content="Edit"
-                    Click="btnEdit_Click"
-                    Style="{StaticResource ButtonTheme}"/>
+
+                <TextBlock x:Name="errorText"
+                       TextAlignment="Center"
+                       Width="600"     
+                       Margin="0,50,0,0"
+                       Foreground="Red"                                   
+                       Style="{StaticResource TextblockTheme}"/>
+
+                <Button x:Name="btnEditRoom"
+                            Margin="0,20,0,0"
+                            Content="Edit"
+                            Click="btnEdit_Click"
+                            Style="{StaticResource ButtonTheme}"/>
                 </StackPanel>
 
         </Grid>

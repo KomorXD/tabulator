@@ -33,7 +33,7 @@ namespace tabulator.MVVM.Views.UserViews
         {
             if(RoomNumberInput.Text.Equals(string.Empty))
             {
-                //Warning
+                errorText.Text = "Fill all fields!";
                 return;
             }
 
@@ -92,6 +92,7 @@ namespace tabulator.MVVM.Views.UserViews
             RoomNumberInput.Text = string.Empty;
             RoomTypeDropdown.SelectedIndex = 0;
             TypeNameDropdown.SelectedIndex = 0;
+            errorText.Text = string.Empty;
         }
 
     }
