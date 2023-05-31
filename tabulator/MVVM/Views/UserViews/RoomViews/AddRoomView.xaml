@@ -9,7 +9,7 @@
 
     <Border KeyDown="Border_KeyDown">
         <Border.Background>
-            <ImageBrush ImageSource="../../../../Resources/Images/chika.png"
+            <ImageBrush ImageSource="../../../../Resources/Images/chizuru.png"
                         Stretch="Uniform" />
         </Border.Background>
         <Grid Background="#364156"

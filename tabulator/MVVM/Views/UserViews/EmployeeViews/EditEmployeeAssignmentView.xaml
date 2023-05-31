@@ -9,7 +9,7 @@
 
     <Border>
         <Border.Background>
-            <ImageBrush ImageSource="../../../../Resources/Images/arikawa.png"
+            <ImageBrush ImageSource="../../../../Resources/Images/mio.png"
                         Stretch="Uniform" />
         </Border.Background>
 

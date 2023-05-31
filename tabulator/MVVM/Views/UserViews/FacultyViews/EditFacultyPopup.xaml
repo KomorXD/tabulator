@@ -20,7 +20,7 @@
             KeyDown="Border_KeyDown">
 
         <Border.Background>
-            <ImageBrush ImageSource="../../../../Resources/Images/yotsuba.png"
+            <ImageBrush ImageSource="../../../../Resources/Images/kaori.png"
                         Stretch="Uniform" />
         </Border.Background>
 
