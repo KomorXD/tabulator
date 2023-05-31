@@ -38,6 +38,12 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            if(NameInput.Text == string.Empty)
+            {
+                errorText.Text = "Fill all fields!";
+                return;
+            }
+
             Department department = new Department();
             department.Name = NameInput.Text;
             department.Faculty = _facultyList.ElementAt(FacultyDropdown.SelectedIndex);
@@ -49,6 +55,7 @@ namespace tabulator.MVVM.Views.UserViews
         {
             NameInput.Text = string.Empty;
             FacultyDropdown.SelectedIndex = 0;
+            errorText.Text = string.Empty;
         }
 
         private void FacultyDropdownSelection(object sender, SelectionChangedEventArgs e)

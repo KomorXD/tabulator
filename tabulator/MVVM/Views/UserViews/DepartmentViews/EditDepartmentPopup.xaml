@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:tabulator.MVVM.Viewmodels"
         xmlns:local="clr-namespace:tabulator.MVVM.Views"
         mc:Ignorable="d"
-        Title="UserView" Height="340" Width="800"
+        Title="UserView" Height="350" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -80,6 +80,7 @@
                 
                 <Button x:Name="btnEdit"
                     Content="Edit"
+                        Margin="0,20,0,0"
                     Click="btnEdit_Click"
                     Style="{StaticResource ButtonTheme}"/>
 

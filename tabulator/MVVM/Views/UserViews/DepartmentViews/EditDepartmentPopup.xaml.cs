@@ -57,6 +57,12 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            if(NameInput.Text == string.Empty)
+            {
+                errorText.Text = "Fill all fields!";
+                return;
+            }
+
             Department department = (from m in context.Departments where m.Id == Id select m).FirstOrDefault();
             department.Name = NameInput.Text;
             int selectedRole = FacultyDropdown.SelectedIndex;
