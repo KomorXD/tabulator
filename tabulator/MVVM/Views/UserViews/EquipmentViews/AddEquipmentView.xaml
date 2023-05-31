@@ -5,78 +5,83 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tabulator.MVVM.Views.UserViews"
              mc:Ignorable="d" 
-             d:DesignHeight="670" d:DesignWidth="900"
-             Background="#364156">
+             d:DesignHeight="670" d:DesignWidth="900">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="200"/>
-            <RowDefinition />
-            <RowDefinition Height="100"/>
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="../../../../Resources/Images/melody.png"
+                        Stretch="Uniform" />
+        </Border.Background>
+        <Grid Background="#364156"
+              Opacity="0.8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition />
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0"
+            <StackPanel Grid.Column="0"
                     Grid.Row="1">
-            <TextBlock Text="Name"
+                <TextBlock Text="Name"
                        Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="NameInput" 
+                <TextBox x:Name="NameInput" 
                      Margin="0"
 
                      Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="Description"
+                <TextBlock Text="Description"
                        Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="DescriptionInput"
+                <TextBox x:Name="DescriptionInput"
                      Margin="0"
                      Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="Available"
+                <TextBlock Text="Available"
                        Margin="0, 10, 0, 0"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox x:Name="AvailableInput"
+                <ComboBox x:Name="AvailableInput"
                       Width="200"
                       Margin="0,10,0,0"
                       Style="{StaticResource ComboBoxTheme}"
                       SelectionChanged="AvailableInput_SelectionChanged">
-                <ComboBoxItem IsSelected="True">True</ComboBoxItem>
-                <ComboBoxItem>False</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
-        <StackPanel Grid.Column="1"
+                    <ComboBoxItem IsSelected="True">True</ComboBoxItem>
+                    <ComboBoxItem>False</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
                     Grid.Row="1">
-            <TextBlock Name="destroyedText" 
+                <TextBlock Name="destroyedText" 
                        Text="Destroyed"
                        Margin="0,10,0,0"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox x:Name="DestroyedInput" 
+                <ComboBox x:Name="DestroyedInput" 
                         Width="200"
                         Margin="0,10,0,0"
                         Style="{StaticResource ComboBoxTheme}">
-                <ComboBoxItem>True</ComboBoxItem>
-                <ComboBoxItem>False</ComboBoxItem>
-            </ComboBox>
-            <TextBlock Name="notinuseText"
+                    <ComboBoxItem>True</ComboBoxItem>
+                    <ComboBoxItem>False</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Name="notinuseText"
                        Text="Not in use"
                        Margin="0,53,0,0"
                        Style="{StaticResource TextblockTheme}"/>
-            <ComboBox x:Name="NotInUseInput" 
+                <ComboBox x:Name="NotInUseInput" 
                         Width="200"
                         Margin="0,10,0,0"
                         Style="{StaticResource ComboBoxTheme}">
-                <ComboBoxItem>True</ComboBoxItem>
-                <ComboBoxItem>False</ComboBoxItem>
-            </ComboBox>
-            
+                    <ComboBoxItem>True</ComboBoxItem>
+                    <ComboBoxItem>False</ComboBoxItem>
+                </ComboBox>
 
-        </StackPanel>
 
-        <DataGrid x:Name="RoomDataGrid"
+            </StackPanel>
+
+            <DataGrid x:Name="RoomDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="2"
                   Grid.Column="0"
@@ -86,44 +91,46 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
                   RowStyle="{DynamicResource DataGridRowStyle1}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="RoomName"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="RoomName"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding RoomName}"/>
-                <DataGridTextColumn Header="FacultyName"
+                    <DataGridTextColumn Header="FacultyName"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding FacultyName}"/>
-                <DataGridTextColumn Header="DepartmentName"
+                    <DataGridTextColumn Header="DepartmentName"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding DepartmentName}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <StackPanel Grid.ColumnSpan="2"
+            <StackPanel Grid.ColumnSpan="2"
                     Grid.Row="3">
-            <TextBlock x:Name="errorText"
+                <TextBlock x:Name="errorText"
                        TextAlignment="Center"
                        Width="600"     
                        Margin="0,10,0,0"
                        Foreground="Red"                                   
                        Style="{StaticResource TextblockTheme}"/>
-            <Button x:Name="btnAdd"
+                <Button x:Name="btnAdd"
                     Content="Add"     
                     Margin="0,15,0,0"
                     Click="btnAdd_Click"
                     Style="{StaticResource ButtonTheme}"/>
-        </StackPanel>
+            </StackPanel>
 
 
 
-        <Button Name="btnHelp"
+            <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="3"
                 Content="Add a new equipment entry to the database. Enter the name, description, specify availability, and assign it to a room."
                 Style="{StaticResource HelpButtonTheme}"/>
 
-    </Grid>
+        </Grid>
+    </Border>
+    
 </UserControl>

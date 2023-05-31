@@ -8,26 +8,31 @@
              d:DesignHeight="670" d:DesignWidth="900"
              Background="#364156">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="../../../../Resources/Images/kuromi.png"
+                        Stretch="Uniform" />
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-        <TextBox Name="SearchTextBox"
+            <TextBox Name="SearchTextBox"
                  Margin="0,0,200,0"
                  Grid.Row="0"
                  TextChanged="SearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"/>
-        <Image Style="{StaticResource IconSearchStyle}"
+            <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"/>
 
-        <DataGrid x:Name="FunctionsDataGrid"
+            <DataGrid x:Name="FunctionsDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="0"
@@ -36,43 +41,46 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
                   RowStyle="{DynamicResource DataGridRowStyle1}" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"
                                     IsReadOnly="True"
                                     Width="100"
                                     Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Surname"
+                    <DataGridTextColumn Header="Surname"
                                     IsReadOnly="True"
                                     Width="100"
                                     Binding="{Binding Surname}"/>
-                <DataGridTextColumn Header="Faculty"
+                    <DataGridTextColumn Header="Faculty"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Faculty}"/>
-                <DataGridTextColumn Header="Department"
+                    <DataGridTextColumn Header="Department"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Department}"/>
-                <DataGridTemplateColumn Header="Edit"
+                    <DataGridTemplateColumn Header="Edit"
                                         IsReadOnly="True"
                                         Width="70">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="BtnEdit"
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="BtnEdit"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left"
                                     Style="{StaticResource EditButtonTheme}"
                                     Click="BtnEdit_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <Button Name="btnHelp"
+            <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
                 Content="Search and manage employee functions. Find specific employees and edit their functions or roles within the organization."
                 Style="{StaticResource HelpButtonTheme}"/>
-    </Grid>
+        </Grid>
+    </Border>
+    
+    
 </UserControl>
