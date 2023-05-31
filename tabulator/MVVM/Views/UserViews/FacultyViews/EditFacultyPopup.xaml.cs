@@ -50,6 +50,12 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            if(NameInput.Text == string.Empty || AddressInput.Text == string.Empty)
+            {
+                errorText.Text = "Fill all fields!";
+                return;
+            }
+
             Faculty faculty = (from m in context.Faculties where m.Id == Id select m).FirstOrDefault();
             faculty.Name = NameInput.Text;
             faculty.Address = AddressInput.Text;

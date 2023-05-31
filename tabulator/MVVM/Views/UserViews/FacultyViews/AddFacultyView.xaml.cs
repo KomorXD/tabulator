@@ -19,6 +19,12 @@ namespace tabulator.MVVM.Views.UserViews
 
         private void btnAddFaculty_Click(object sender, RoutedEventArgs e)
         {
+            if(NameInput.Text == string.Empty || AddressInput.Text == string.Empty)
+            {
+                errorText.Text = "Fill all fields!";
+                return;
+            }
+
             Faculty faculty = new Faculty();
             faculty.Name = NameInput.Text;
             faculty.Address = AddressInput.Text;
@@ -30,6 +36,7 @@ namespace tabulator.MVVM.Views.UserViews
         {
             NameInput.Text = string.Empty;
             AddressInput.Text = string.Empty;
+            errorText.Text = string.Empty;
         }
     }
 }
