@@ -33,9 +33,8 @@ namespace tabulator.MVVM.Views.AdminViews
             if (ValidateUser(addUser))
             {
                 ViewModel.AddUser(addUser);
+                ClearTextBoxes();
             }
-
-            ClearTextBoxes();
         }
 
         private bool ValidateUser(User addUser)

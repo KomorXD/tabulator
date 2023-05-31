@@ -58,8 +58,8 @@
             <TextBlock Name="errorPlaceholder"
                        Width="550"
                        TextAlignment="Center"
+                       Foreground="Red"
                        Style="{StaticResource TextblockTheme}"/>
-
 
             <Button x:Name="btnLogin"
                     Margin="0,40,0,0"
