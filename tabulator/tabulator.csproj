@@ -426,6 +426,9 @@
     <Resource Include="Resources\Images\addlight.png" />
     <Resource Include="Resources\Images\helpdark.png" />
     <Resource Include="Resources\Images\helplight.png" />
+    <Resource Include="Resources\Images\chihiro.png" />
+    <Resource Include="Resources\Images\yor.png" />
+    <Resource Include="Resources\Images\arikawa.png" />
     <Content Include="_Data\EqRecordsDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

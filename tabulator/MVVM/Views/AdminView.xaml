@@ -39,10 +39,6 @@
                 <Border Grid.Row="0"
                         Grid.RowSpan="3"
                         Grid.ColumnSpan="2">
-                    <Border.Background>
-                        <ImageBrush ImageSource="../../Resources/Images/loginBg.jpg"
-                        Stretch="Fill" />
-                    </Border.Background>
                 </Border>
 
                 <Border Grid.ColumnSpan="2"
@@ -85,28 +81,36 @@
                 </Border>
 
                 <Border Grid.Row="1"
-                        Grid.RowSpan="2"
-                        BorderBrush="#11151c"
-                        BorderThickness="0,0,3,0"
-                        Background="#364156"
-                        Opacity="0.9">
+                        Grid.RowSpan="2">
+
+                    <Border.Background>
+                        <ImageBrush ImageSource="../../Resources/Images/chihiro.png" Stretch="None" />
+                    </Border.Background>
+
+                    <Border BorderBrush="#11151c"
+                            BorderThickness="0,0,3,0"
+                            Background="#364156"
+                            Opacity="0.8">
 
 
-                    <StackPanel Orientation="Vertical"
+                        <StackPanel Orientation="Vertical"
                                 Margin="3">
-                        
-                        <RadioButton Content="Add user"
+
+                            <RadioButton Content="Add user"
                                      IsChecked="True"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddUserViewCommand}"/>
 
-                        <RadioButton Content="Edit user data"
+                            <RadioButton Content="Edit user data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditUserDataViewCommand}"/>
 
-                    </StackPanel>
-                    
+                        </StackPanel>
+
+                    </Border>
                 </Border>
+                
+
 
                 <ContentControl Grid.Row="1" 
                                 Grid.Column="1"
