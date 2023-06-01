@@ -117,12 +117,12 @@ namespace tabulator.MVVM.Views.UserViews
         {
             foreach (FacultyRoom facultyRoom in context.FacultyRooms)
             {
-                if (facultyRoom.Room.Id.Equals(eq.Id))
+                if (facultyRoom.Room.Id == eq.Room.Id)
                     return facultyRoom.Faculty.Name + " - shared resource";
             }
             foreach (DepartmentRoom departmentRoom in context.DepartmentRooms)
             {
-                if (departmentRoom.Room.Id.Equals(eq.Id))
+                if (departmentRoom.Room.Id == eq.Room.Id)
                     return departmentRoom.Department.Faculty.Name + " - " + departmentRoom.Department.Name;
             }
 
