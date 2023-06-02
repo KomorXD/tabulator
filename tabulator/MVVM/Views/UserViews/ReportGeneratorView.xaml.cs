@@ -92,8 +92,12 @@ namespace tabulator.MVVM.Views.UserViews
 
             if (record.Available)
                 temp += "-Available\n";
+            else
+                temp += "-Non available\n";
+
             if (record.NotInUse)
                 temp += "-Not in use\n";
+
             if (record.Destroyed)
                 temp += "-Destroyed\n";
 
@@ -117,12 +121,12 @@ namespace tabulator.MVVM.Views.UserViews
         {
             foreach (FacultyRoom facultyRoom in context.FacultyRooms)
             {
-                if (facultyRoom.Room.Id.Equals(eq.Id))
+                if (facultyRoom.Room.Id == eq.Room.Id)
                     return facultyRoom.Faculty.Name + " - shared resource";
             }
             foreach (DepartmentRoom departmentRoom in context.DepartmentRooms)
             {
-                if (departmentRoom.Room.Id.Equals(eq.Id))
+                if (departmentRoom.Room.Id == eq.Room.Id)
                     return departmentRoom.Department.Faculty.Name + " - " + departmentRoom.Department.Name;
             }
 
@@ -211,7 +215,7 @@ namespace tabulator.MVVM.Views.UserViews
 
             foreach (EquipmentCaretakers equipmentCaretakers in context.EquipmentCaretakers)
             {
-                if(eq == equipmentCaretakers.Item && equipmentCaretakers.Employee.Name.Contains(name))
+                if(eq.Id == equipmentCaretakers.EquipmentId && equipmentCaretakers.Employee.Name.Contains(name))
                 {
                     return true;
                 }
@@ -226,7 +230,7 @@ namespace tabulator.MVVM.Views.UserViews
 
             foreach (EquipmentCaretakers equipmentCaretakers in context.EquipmentCaretakers)
             {
-                if (eq == equipmentCaretakers.Item && equipmentCaretakers.Employee.Surname.Contains(surname))
+                if (eq.Id == equipmentCaretakers.EquipmentId && equipmentCaretakers.Employee.Surname.Contains(surname))
                 {
                     return true;
                 }

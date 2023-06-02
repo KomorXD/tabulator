@@ -64,14 +64,14 @@ namespace tabulator.MVVM.Views.UserViews
             }
         }
 
-        private void PopulateTempEquipment(EquipmentItem temp)
+        private void EditEquipment()
         {
-            temp.Name = NameInput.Text;
-            temp.Description = DescriptionInput.Text;
-            temp.Available = GetCheckboxValue(AvailableInput);
-            temp.NotInUse = GetCheckboxValue(NotInUseInput);
-            temp.Destroyed = GetCheckboxValue(DestroyedInput);
-            temp.Room = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
+            _equipmentToEdit.Name = NameInput.Text;
+            _equipmentToEdit.Description = DescriptionInput.Text;
+            _equipmentToEdit.Available = GetCheckboxValue(AvailableInput);
+            _equipmentToEdit.NotInUse = GetCheckboxValue(NotInUseInput);
+            _equipmentToEdit.Destroyed = GetCheckboxValue(DestroyedInput);
+            _equipmentToEdit.Room = context.Rooms.ToList().Where(room => room.Id == (((dynamic)RoomDataGrid.SelectedItem).ID)).FirstOrDefault();
         }
 
         private bool GetCheckboxValue(ComboBox combobox)
@@ -124,9 +124,7 @@ namespace tabulator.MVVM.Views.UserViews
                 errorText.Text = "Fill out all fields!";
                 return;
             }
-
-            EquipmentItem temp = new EquipmentItem();
-            PopulateTempEquipment(temp);
+            EditEquipment();
 
             context.SaveChanges();
             EditEquipmentDataView editEquipmentDataView = new EditEquipmentDataView();
@@ -153,6 +151,14 @@ namespace tabulator.MVVM.Views.UserViews
                     NotInUseInput.SelectedIndex = 0;
                     DestroyedInput.SelectedIndex = 1;
                     break;
+            }
+        }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnEdit_Click(sender, e);
             }
         }
     }

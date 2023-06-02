@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Input;
 using tabulator.Core;
 using tabulator.DatabaseContext;
 using tabulator.MVVM.Models;
@@ -13,7 +15,7 @@ namespace tabulator.MVVM.Views.UserViews
     /// Interaction logic for AddEmployeeView.xaml
     /// </summary>
 
-    public partial class AddEmployeeView : UserControl
+    public partial class AddEmployeeView : System.Windows.Controls.UserControl
     {
         DBContext context = DBContext.GetInstance();
         string selectedOption;
@@ -151,6 +153,14 @@ namespace tabulator.MVVM.Views.UserViews
                         ItemTypeDropdown.Visibility = Visibility.Visible;
                     }
                     break;
+            }
+        }
+
+        private void Border_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnAdd_Click(sender, e);
             }
         }
     }

@@ -33,9 +33,8 @@ namespace tabulator.MVVM.Views.AdminViews
             if (ValidateUser(addUser))
             {
                 ViewModel.AddUser(addUser);
+                ClearTextBoxes();
             }
-
-            ClearTextBoxes();
         }
 
         private bool ValidateUser(User addUser)
@@ -134,6 +133,14 @@ namespace tabulator.MVVM.Views.AdminViews
         void SetWarning(string msg)
         {
             errorPlaceholder.Text = msg;
+        }
+
+        private void Border_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == System.Windows.Input.Key.Enter)
+            {
+                btnAdd_Click(sender, e);
+            }
         }
     }
 }

@@ -8,26 +8,32 @@
              d:DesignHeight="670" d:DesignWidth="900"
              Background="#364156">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition />
-            <RowDefinition Height="100"/>
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="../../../../Resources/Images/ruka.png"
+                        Stretch="Uniform" />
+        </Border.Background>
+        <Grid Background="#364156"
+              Opacity="0.8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-        <TextBox Name="EquipmentSearchTextBox"
+            <TextBox Name="EquipmentSearchTextBox"
                  Margin="0,0,200,0"
                  TextChanged="EquipmentSearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"/>
-        <Image Style="{StaticResource IconSearchStyle}"
+            <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"/>
 
-        <DataGrid x:Name="EqDataGrid"
+            <DataGrid x:Name="EqDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="0"
@@ -36,42 +42,42 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
                   RowStyle="{DynamicResource DataGridRowStyle1}" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Item name"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item name"
                                     IsReadOnly="True"
                                     Width="200"
                                     Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Room number"
+                    <DataGridTextColumn Header="Room number"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding RoomNumber}"/>
 
-                <DataGridTemplateColumn Header="Assign"
+                    <DataGridTemplateColumn Header="Assign"
                                         IsReadOnly="True"
                                         Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ToggleButton x:Name="BtnAddEQ"
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ToggleButton x:Name="BtnAddEQ"
                                           VerticalAlignment="Center"
                                           Style="{StaticResource AddButtonTheme}"
                                           Click="BtnAddEQ_Click"/>
-                            
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
 
-        <TextBox Name="EmployeeSearchTextBox"
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBox Name="EmployeeSearchTextBox"
                  Margin="0,0,200,0"
                  TextChanged="EmployeeSearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"
                  Grid.Column="1"/>
-        <Image Style="{StaticResource IconSearchStyle}"
+            <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"
                Grid.Column="1"/>
 
-        <DataGrid x:Name="EmplDataGrid"
+            <DataGrid x:Name="EmplDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="1"
@@ -80,52 +86,55 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
                   RowStyle="{DynamicResource DataGridRowStyle1}" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Employee name"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Employee name"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Employee surname"
+                    <DataGridTextColumn Header="Employee surname"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Surname}"/>
 
-                <DataGridTemplateColumn Header="Assign"
+                    <DataGridTemplateColumn Header="Assign"
                                         IsReadOnly="True"                                        
                                         Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ToggleButton x:Name="BtnAddEmpl"
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ToggleButton x:Name="BtnAddEmpl"
                                     Cursor="Hand"
                                     VerticalAlignment="Center"
                                     Style="{StaticResource AddButtonTheme}"
                                     Click="BtnAddEmpl_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <StackPanel Grid.ColumnSpan="2"
+            <StackPanel Grid.ColumnSpan="2"
                     Grid.Row="3">
-            <TextBlock x:Name="errorText"
+                <TextBlock x:Name="errorText"
                        TextAlignment="Center"
                        Width="600"     
                        Margin="0,10,0,0"
                        Foreground="Red"                                   
                        Style="{StaticResource TextblockTheme}"/>
-            <Button x:Name="btnAssign"
+                <Button x:Name="btnAssign"
                     Content="Add"     
                     Margin="0,15,0,0"
                     Click="btnAssign_Click"
                     Style="{StaticResource ButtonTheme}"/>
-        </StackPanel>
+            </StackPanel>
 
 
-        <Button Name="btnHelp"
+            <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
                 Content="Assign equipment to an employee. Select the equipment and associate it with a specific employee."
                 Style="{StaticResource HelpButtonTheme}"/>
-    </Grid>
+        </Grid>
+    </Border>
+    
+    
 </UserControl>

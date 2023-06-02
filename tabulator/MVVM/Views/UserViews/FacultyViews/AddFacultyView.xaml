@@ -5,55 +5,64 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tabulator.MVVM.Views.UserViews"
              mc:Ignorable="d" 
-             d:DesignHeight="670" d:DesignWidth="900"
-             Background="#364156">
+             d:DesignHeight="670" d:DesignWidth="900">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <Border KeyDown="Border_KeyDown">
+        <Border.Background>
+            <ImageBrush ImageSource="../../../../Resources/Images/kaori.png"
+                        Stretch="Uniform" />
+        </Border.Background>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+        <Grid Background="#364156"
+              Opacity="0.8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0"
                     Grid.Row="1"
                     Grid.ColumnSpan="2">
-            <TextBlock Text="Name"
+                <TextBlock Text="Name"
                        Width="400"
                        Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="NameInput"  
+                <TextBox x:Name="NameInput"  
                      Width="400"
                      Style="{StaticResource InputTextboxTheme}" />
-            <TextBlock Text="Address"
+                <TextBlock Text="Address"
                        Width="400"
                        Style="{StaticResource TextblockTheme}"/>
-            <TextBox x:Name="AddressInput"    
+                <TextBox x:Name="AddressInput"    
                      Width="400"
                      Style="{StaticResource InputTextboxTheme}" />
-        </StackPanel>
-        <StackPanel Grid.Row="2"
+            </StackPanel>
+            <StackPanel Grid.Row="2"
                     Grid.ColumnSpan="2">
-            <TextBlock x:Name="errorText"
+                <TextBlock x:Name="errorText"
                        TextAlignment="Center"
                        Width="600"     
                        Foreground="Red"                                   
                        Style="{StaticResource TextblockTheme}"/>
-            <Button x:Name="btnAddFaculty"
+                <Button x:Name="btnAddFaculty"
                     Margin="0,30,0,0"
                     Content="Add"
                     Click="btnAddFaculty_Click"
                     Style="{StaticResource ButtonTheme}"/>
-        </StackPanel>
+            </StackPanel>
 
-        <Button Name="btnHelp"
+            <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="2"
                 Content="Add a new faculty to the database. Enter the faculty name and provide its address."
                 Style="{StaticResource HelpButtonTheme}"/>
-    </Grid>
+        </Grid>
+    </Border>
+    
+    
 </UserControl>

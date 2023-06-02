@@ -426,6 +426,26 @@
     <Resource Include="Resources\Images\addlight.png" />
     <Resource Include="Resources\Images\helpdark.png" />
     <Resource Include="Resources\Images\helplight.png" />
+    <Resource Include="Resources\Images\chihiro.png" />
+    <Resource Include="Resources\Images\yor.png" />
+    <Resource Include="Resources\Images\arikawa.png" />
+    <Resource Include="Resources\Images\anya.png" />
+    <Resource Include="Resources\Images\itsuki.png" />
+    <Resource Include="Resources\Images\chika.png" />
+    <Resource Include="Resources\Images\kurumi.png" />
+    <Resource Include="Resources\Images\yotsuba.png" />
+    <Resource Include="Resources\Images\nezuko.png" />
+    <Resource Include="Resources\Images\melody.png" />
+    <Resource Include="Resources\Images\felix.png" />
+    <Resource Include="Resources\Images\kanna.png" />
+    <Resource Include="Resources\Images\ruka.png" />
+    <Resource Include="Resources\Images\astolfo.png" />
+    <Resource Include="Resources\Images\kuromi.png" />
+    <Resource Include="Resources\Images\chizuru.png" />
+    <Resource Include="Resources\Images\kaori.png" />
+    <Resource Include="Resources\Images\mio.png" />
+    <Resource Include="Resources\Images\rin.png" />
+    <Resource Include="Resources\Images\saber.png" />
     <Content Include="_Data\EqRecordsDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

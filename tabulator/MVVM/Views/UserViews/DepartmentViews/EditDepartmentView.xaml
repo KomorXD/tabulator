@@ -5,28 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tabulator.MVVM.Views.UserViews"
              mc:Ignorable="d" 
-             d:DesignHeight="670" d:DesignWidth="900"
-             Background="#364156">
+             d:DesignHeight="670" d:DesignWidth="900">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <Border KeyDown="Border_KeyDown">
+        <Border.Background>
+            <ImageBrush ImageSource="../../../../Resources/Images/chika.png"
+                        Stretch="Uniform" />
+        </Border.Background>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+        <Grid Background="#364156"
+              Opacity="0.8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <TextBox Name="SearchTextBox"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="SearchTextBox"
                  Margin="0,0,200,0"
                  TextChanged="SearchTextBox_TextChanged"
                  Style="{StaticResource SearchBarTheme}"/>
-        <Image Style="{StaticResource IconSearchStyle}"
+            <Image Style="{StaticResource IconSearchStyle}"
                Margin="0,0,370,0"/>
 
-        <DataGrid x:Name="DepartmentDataGrid"
+            <DataGrid x:Name="DepartmentDataGrid"
                   x:FieldModifier="public"
                   Grid.Row="1"
                   Grid.Column="0"
@@ -35,41 +41,44 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                   CellStyle="{DynamicResource DataGridCellStyle1}"
                   RowStyle="{DynamicResource DataGridRowStyle1}" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Department name"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Department name"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Faculty name"
+                    <DataGridTextColumn Header="Faculty name"
                                     IsReadOnly="True"
                                     Width="*"
                                     Binding="{Binding FacultyName}"/>
 
-                <DataGridTemplateColumn Header="Operations"
+                    <DataGridTemplateColumn Header="Operations"
                                         IsReadOnly="True"
                                         Width="90">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button x:Name="BtnEdit"
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="BtnEdit"
                                                 Cursor="Hand"
                                                 Style="{StaticResource EditButtonTheme}"
                                                 Click="BtnEdit_Click"/>
-                                <Button x:Name="BtnDelete"
+                                    <Button x:Name="BtnDelete"
                                                 Cursor="Hand"
                                                 Style="{StaticResource DeleteButtonTheme}"
                                                 Click="BtnDelete_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <Button Name="btnHelp"
+            <Button Name="btnHelp"
                 Grid.Column="1"
                 Grid.Row="1"
                 Content="Edit existing department data in the database. Modify the department name or make change its associated faculty."
                 Style="{StaticResource HelpButtonTheme}"/>
-    </Grid>
+        </Grid>
+    </Border>
+    
+    
 </UserControl>

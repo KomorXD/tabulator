@@ -169,5 +169,13 @@ namespace tabulator.MVVM.Views.UserViews.EmployeeViews
             PeselInput.Text = _employee.PESEL;
             PhoneNumberInput.Text = _employee.PhoneNumber;
         }
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnEdit_Click(sender, e);
+            }
+        }
     }
 }

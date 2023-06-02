@@ -80,67 +80,77 @@
                         BorderBrush="#11151c"
                         BorderThickness="0,0,3,0">
 
-                    <StackPanel Orientation="Vertical"
+                    <Border.Background>
+                        <ImageBrush ImageSource="../../Resources/Images/anya.png"
+                        Stretch="Uniform" />
+                    </Border.Background>
+
+                    <Grid Background="#364156"
+                          Opacity="0.8">
+                        <StackPanel Orientation="Vertical"
                                 Margin="3">
 
-                        <RadioButton Content="Employee assignment"
+                            <RadioButton Content="Employee assignment"
                                      IsChecked="True"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EmployeeAssignmentCommand}"/>
 
-                        <RadioButton Content="Edit assignment"
+                            <RadioButton Content="Edit assignment"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditEmployeeAssignmentCommand}"/>
 
-                        <RadioButton Content="Add equipment" 
+                            <RadioButton Content="Add equipment" 
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddEquipmentCommand}"/>
 
-                        <RadioButton Content="Edit equipment data"
+                            <RadioButton Content="Edit equipment data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditEquipmentDataCommand}"/>
 
-                        <RadioButton Content="Add room"
+                            <RadioButton Content="Add room"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddRoomCommand}"/>
 
-                        <RadioButton Content="Edit room data"
+                            <RadioButton Content="Edit room data"
                                      Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding EditRoomDataCommand}"/> 
-                        
-                        <RadioButton Content="Add department"
+                                     Command="{Binding EditRoomDataCommand}"/>
+
+                            <RadioButton Content="Add department"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddDepartmentCommand}"/>
 
-                        <RadioButton Content="Edit department data"
+                            <RadioButton Content="Edit department data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditDepartmentDataCommand}"/>
 
-                        <RadioButton Content="Add faculty"
+                            <RadioButton Content="Add faculty"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddFacultyCommand}"/>
 
-                        <RadioButton Content="Edit faculty data"
+                            <RadioButton Content="Edit faculty data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditFacultyDataCommand}"/>
 
-                        <RadioButton Content="Add employee"
+                            <RadioButton Content="Add employee"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding AddEmployeeDataCommand}"/>
 
-                        <RadioButton Content="Edit employee data"
+                            <RadioButton Content="Edit employee data"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EditEmployeeDataCommand}"/>
 
-                        <RadioButton Content="Employee functions"
+                            <RadioButton Content="Employee functions"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding EmployeeFunctionDataCommand}"/>
 
-                        <RadioButton Content="Generate report"
+                            <RadioButton Content="Generate report"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding GenerateReportDataCommand}"/>
 
-                    </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    
+                    
 
                 </Border>
 

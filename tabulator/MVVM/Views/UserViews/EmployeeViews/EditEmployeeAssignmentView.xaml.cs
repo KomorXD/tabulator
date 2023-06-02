@@ -50,5 +50,6 @@ namespace tabulator.MVVM.Views.UserViews
             context.SaveChanges();
             DataGridManager.GetInstance().ShowAssaignmentDataGrdi(AssaignmentDataGrid, context.EquipmentCaretakers.ToList());
         }
+
     }
 }
